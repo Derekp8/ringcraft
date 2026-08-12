@@ -1,0 +1,93 @@
+.onboarding-hints {
+  background: linear-gradient(135deg, rgba(255, 200, 0, 0.1) 0%, rgba(200, 150, 0, 0.05) 100%);
+  border-left: 3px solid #ffc800;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.hints-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.hints-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffc800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hints-counter {
+  font-size: 11px;
+  color: #888;
+  font-weight: 500;
+}
+
+.hints-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d0d0d0;
+  margin: 0 0 12px 0;
+}
+
+.hints-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.hints-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hints-button-primary {
+  background: #ffc800;
+  color: #1a1a2e;
+}
+
+.hints-button-primary:hover {
+  background: #ffdb4d;
+}
+
+.hints-button-secondary {
+  background: transparent;
+  border: 1px solid #ffc800;
+  color: #ffc800;
+}
+
+.hints-button-secondary:hover {
+  background: rgba(255, 200, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .onboarding-hints {
+    padding: 12px;
+  }
+
+  .hints-text {
+    font-size: 13px;
+  }
+
+  .hints-button {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hints-button {
+    transition: none;
+  }
+}

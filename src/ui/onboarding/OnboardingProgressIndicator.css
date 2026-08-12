@@ -1,0 +1,129 @@
+.onboarding-progress-compact {
+  padding: 12px 16px;
+  background: rgba(255, 200, 0, 0.1);
+  border-left: 3px solid #ffc800;
+  margin-bottom: 16px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: rgba(255, 200, 0, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffc800, #ffdb4d);
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  display: block;
+  font-size: 12px;
+  color: #ffc800;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Full progress indicator */
+.onboarding-progress-full {
+  background: #2a2a3e;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.onboarding-progress-full h3 {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #ffc800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.phases-list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.phase-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px;
+  border-radius: 6px;
+  background: rgba(255, 200, 0, 0.1);
+  border: 1px solid rgba(255, 200, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.phase-item.active {
+  background: rgba(255, 200, 0, 0.2);
+  border-color: #ffc800;
+}
+
+.phase-item.completed {
+  background: rgba(0, 200, 0, 0.1);
+  border-color: rgba(0, 200, 0, 0.3);
+}
+
+.phase-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  border: 2px solid #ffc800;
+  font-weight: bold;
+  font-size: 12px;
+  color: #ffc800;
+}
+
+.phase-item.completed .phase-number {
+  border-color: #00c800;
+  color: #00c800;
+}
+
+.phase-name {
+  font-size: 11px;
+  color: #d0d0d0;
+  text-transform: capitalize;
+  text-align: center;
+  line-height: 1.3;
+  max-width: 60px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .phases-list {
+    gap: 8px;
+  }
+
+  .phase-item {
+    padding: 8px;
+  }
+
+  .phase-number {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .phase-name {
+    font-size: 10px;
+  }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .progress-fill,
+  .phase-item {
+    transition: none;
+  }
+}
