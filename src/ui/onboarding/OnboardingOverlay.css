@@ -1,0 +1,152 @@
+.onboarding-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.onboarding-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  pointer-events: auto;
+}
+
+.onboarding-spotlight {
+  position: absolute;
+  border: 3px solid rgba(255, 200, 0, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 200, 0, 0.5), inset 0 0 20px rgba(255, 200, 0, 0.1);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.onboarding-card {
+  position: relative;
+  z-index: 10000;
+  background: #1a1a2e;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 200, 0, 0.3);
+  max-width: 500px;
+  padding: 32px;
+  pointer-events: auto;
+  color: #e0e0e0;
+}
+
+.onboarding-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.onboarding-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #ffc800;
+}
+
+.onboarding-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #888;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.onboarding-close:hover {
+  color: #fff;
+}
+
+.onboarding-card-body {
+  margin-bottom: 24px;
+}
+
+.onboarding-description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  color: #d0d0d0;
+}
+
+.onboarding-card-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.onboarding-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.onboarding-button-primary {
+  background: #ffc800;
+  color: #1a1a2e;
+}
+
+.onboarding-button-primary:hover {
+  background: #ffdb4d;
+  transform: translateY(-2px);
+}
+
+.onboarding-button-primary:active {
+  transform: translateY(0);
+}
+
+.onboarding-button-secondary {
+  background: transparent;
+  border: 1px solid #666;
+  color: #d0d0d0;
+}
+
+.onboarding-button-secondary:hover {
+  border-color: #999;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .onboarding-card {
+    max-width: calc(100vw - 32px);
+    padding: 24px;
+    margin: 16px;
+  }
+
+  .onboarding-title {
+    font-size: 20px;
+  }
+
+  .onboarding-description {
+    font-size: 14px;
+  }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .onboarding-spotlight {
+    transition: none;
+  }
+
+  .onboarding-button {
+    transition: none;
+  }
+}
