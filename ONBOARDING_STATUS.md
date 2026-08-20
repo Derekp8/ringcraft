@@ -16,7 +16,7 @@ The system provides a guided, phase-based tutorial flow that introduces new play
 5. **OnboardingFlowOrchestrator.tsx** — Automatic phase progression engine
 6. **OnboardingProgressIndicator.tsx** — Visual progress bar
 7. **OnboardingHints.tsx** — Phase-contextual tips
-8. **useOnboardingPhaseGuard.ts** — Feature access control hook
+8. **useOnboardingPhaseGuard.tsx** — Feature access control hook
 9. **useOnboardingAnalytics.ts** — Event tracking and analytics
 
 ### Content (30+ Steps)
@@ -105,7 +105,7 @@ src/ui/onboarding/
 ├── OnboardingProgressIndicator.css    # Progress styling
 ├── OnboardingHints.tsx                # Context tips
 ├── OnboardingHints.css                # Hints styling
-├── useOnboardingPhaseGuard.ts         # Feature guards
+├── useOnboardingPhaseGuard.tsx        # Feature guards
 ├── useOnboardingAnalytics.ts          # Analytics
 ├── index.ts                           # Main exports
 ├── advanced.ts                        # Advanced feature exports

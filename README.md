@@ -1,8 +1,8 @@
-# Project Ringcraft — M9 private-handoff candidate
+# Project Ringcraft — M13 structural-repair candidate
 
-Project Ringcraft is a deterministic, rules-first private adaptation of the 1991 *All Star Wrestling* tabletop system. Version **1.2.0** contains the verified M5 core, M6 private polish, M7 playtest readiness, M8 accessibility hardening, and the **M9 Private Handoff and External QA Evidence** packaging workflow.
+Project Ringcraft is a deterministic, rules-first private adaptation of the 1991 *All Star Wrestling* tabletop system. Version **1.2.0** contains the M5 career core, M6 private polish, M7 playtest tooling, M8 accessibility hardening, the M9 private-handoff workflow, and opt-in M10–M13 extensions.
 
-This is a private implementation candidate, not a public release or a claim of formal source-perfect acceptance. Independent second-human table transcription and adjudication sign-off remain unperformed external QA steps.
+This branch is a structural-repair candidate, not a verified handoff or public release. The August 20 GitHub uploads flattened most of the repository and also combined files from more than one verification snapshot. The canonical directory tree has been restored, TypeScript and the production build pass, but the deterministic evidence is not yet fully reconciled. Independent second-human table transcription, human accessibility review, and human playtest sign-off remain external QA gates.
 
 ## Clean install and run
 
@@ -28,7 +28,15 @@ npm run fixtures:verify
 npm run visual:qa
 ```
 
-`npm run check` executes **108 deterministic tests** (61 retained M0–M4 tests, 23 M5 tests, 12 M6 presentation tests, 8 M7 playtest tests, and 4 M9 packaging tests), TypeScript compilation, and a production build. `npm run fixtures:verify` loads the example campaign, replays its completed match, reloads the in-progress checkpoint, and continues it deterministically. `npm run visual:qa` exercises the full application and shared M8 keyboard/semantic checks. Reviewed screenshots are written to `output/qa/`; extracted browser runtimes and M9 evidence are ignored.
+The restored tree currently discovers **460 tests across 28 files**. On the structural-repair branch, 447–448 tests pass and 12 deterministic assertions fail; one additional replay-verifier test can hit its five-second timeout under load. The failures are documented in `docs/repository-structure-repair.md` and must not be resolved by silently regenerating fixtures or changing game rules.
+
+The following gates currently pass independently:
+
+- `npm ci` — 74 locked packages installed without changing `package-lock.json`.
+- `npm run typecheck` — both emit-free project checks and `tsc -b` pass.
+- `npm run build` — 45 modules compile into a production Vite bundle.
+
+`npm run fixtures:verify` re-derives the M5 campaign fixtures, the uploaded 1,058-decision M10 corpus, the M10 campaign, M11 match/playtest/trend fixtures, and save-manager fixture. Its final replay-document step correctly reports drift in the ruthless seed-1991 replay: the committed pin is `c14n-fnv1a64-v1:43945f1cc482e0cd`, while the uploaded code replays it as `c14n-fnv1a64-v1:95955a3dd0688411`. `npm run visual:qa` currently stops in the tag profile while waiting for the expected `Nova Hart` surface. Reviewed screenshots are retained unchanged when that gate fails.
 
 To regenerate the included deterministic examples:
 
@@ -111,7 +119,22 @@ The initial campaign schema is `asw91-campaign-v1`. No earlier campaign schema e
 - Four-step AI difficulty ladder (`asw91-ai-policy-v1`): `novice` (seeded mistake injection), `standard` (v1 greedy, byte-identical to the pre-M10 policy, zero RNG consumed), `veteran` (1-ply lookahead over a pure positional evaluation), and `ruthless` (2-ply modeling the opponent's response) within a fixed ≤ 40-clone node budget.
 - Difficulty is stored per match configuration (`aiDifficulty`) and per campaign, flows through scheduling, `createMatch`, saves, and replays, and is a visible labeled setting in Exhibition and Career setup plus a dashboard label — never a hidden modifier.
 - Bounded search dry-run helper `resolveDecisionOnce` (discarded clones, copied RNG) with search-scoped event hashing skipped so lookahead stays cheap; search clones never mutate live state or the dice stream.
-- M10 tests pin default identity against the golden `fixtures/m10/ai-decision-log-v1.json` corpus (1,045 decisions across all 12 decision kinds), replay determinism at every difficulty, the seeded win-share ladder, search hygiene, and ruthless campaign round trips.
+- The uploaded M10 corpus contains 1,058 decisions across all 12 decision kinds and replays internally with fixture hash `35dd5b20`. Several tests and historical handoff documents still pin the earlier 1,050-decision/`64e1f4af` identity; that snapshot mismatch remains unresolved.
+
+## M11 implemented scope
+
+- Optional singles cage and ladder varieties with deterministic escape/retrieval finishes, replay fixtures, and seeded balance/trend reports.
+- A private playtest dashboard presents the pinned M11 report without changing campaign or match state.
+
+## M12 implemented scope
+
+- Opt-in contracts and finance, popularity, chemistry, contract negotiation, and curve-fair renewal policies.
+- Extension-off campaigns omit the M12 fields; the documented intent is to preserve the core campaign identity when these systems are disabled.
+
+## M13 implemented scope
+
+- Opt-in feud heat, title-shot terms, and month-end booking suggestions, including deterministic title-shot and feud-chain replay evidence.
+- Singles and tag feud setup is exposed in Career; suggestions remain advisory and do not auto-schedule matches.
 
 ## Architecture
 
@@ -133,9 +156,10 @@ The initial campaign schema is `asw91-campaign-v1`. No earlier campaign schema e
 - `scripts/m9-packaging-contracts.ts` — deterministic archive allowlist and exclusion contracts.
 - `scripts/build-m9-handoff.mjs` — clean allowlisted archive entrypoint.
 - `scripts/verify-m9-handoff.mjs` — clean-room extraction and verification entrypoint.
-- `tests/` — retained M0–M4 regressions, focused M5/twelve-month campaigns, M6/M7 presentation regressions, and M9 packaging regressions.
+- `tests/` — 28 discovered suites spanning the retained core, career, presentation, packaging, AI, match varieties, save/sync, finance, negotiation, and feud/booking work.
 - `fixtures/m5/` — completed save, in-progress save, compact replay, and orientation notes.
-- `scripts/` — visual QA, fixture generation, and fixture continuation verification.
+- `fixtures/m10/`, `fixtures/m11/`, `fixtures/saves/`, `fixtures/replays/` — deterministic AI, match-variety, playtest, persistence, and replay evidence.
+- `scripts/` — visual QA, fixture generation, clean-room packaging, and fixture/replay verification.
 
 ## Twelve-month correctness gate
 
@@ -158,10 +182,10 @@ Across 730 calendar days, all 77 completed matches replayed identically and all 
 
 ## Boundaries
 
-- No cloud sync, accounts, telemetry, installers, platform certification, public branding, or commercial-release work.
-- Singles and two-person tag only; no three-plus-wrestler, manager, weapon, promo, storyline, contract, finance, popularity, booking-grade, or GM systems.
-- The deterministic policy is visible-state heuristic play, not multi-ply search. M6–M8 improve presentation, private playtesting, and acceptance coverage without altering rules or dice.
+- No configured production cloud service, accounts, telemetry, installers, platform certification, public branding, or commercial-release work. Remote save synchronization is an opt-in client/backend contract with no production endpoint configured.
+- Match play remains singles and two-person tag. Three-plus-wrestler matches, battle royals, managers, weapons, promos, booking grades, and GM mode remain out of scope.
+- M10 uses a bounded four-level policy through two-ply lookahead. M11–M13 add optional digital extensions for match varieties, contracts/finance, and feuds/booking; they are not transcriptions of the 1991 source rules.
 - FNV-1a 64-bit canonical hashes are deterministic identity/replay checks, not adversarial security primitives.
-- Independent source-table transcription and adjudication sign-off remain pending. The bundled manual and audited GDD preserve internal provenance.
+- Independent source-table transcription and adjudication sign-off remain pending. The manual and audited GDD named in the historical M9 manifest are not present in the uploaded GitHub repository and must be restored from the authorized source package before an M9 archive can be rebuilt.
 
 See `FREEBUFF-HANDOFF.md`, `docs/m5-implementation-audit.md`, `docs/m6-implementation-audit.md`, `docs/m7-implementation-audit.md`, `docs/m8-implementation-audit.md`, `docs/m8-accessibility-review-checklist.md`, `docs/m5-traceability-matrix.md`, `docs/save-schema-and-migration.md`, `docs/adjudication-register.md`, and `docs/known-limitations.md` for the full handoff record.

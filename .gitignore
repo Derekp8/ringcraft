@@ -1,4 +1,9 @@
 node_modules/
 dist/
+.freebuff/
 output/qa/browser-cache/
+output/qa/browser-runtime/
+output/qa/baseline/
+output/m9/
+output/playtest/
 *.tsbuildinfo
