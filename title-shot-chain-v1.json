@@ -1,0 +1,110 @@
+{
+  "schema": "m13-title-shot-chain-v1",
+  "capturedPolicy": "asw91-campaign-policy-v1",
+  "derivation": {
+    "name": "M13 Tag Term",
+    "seed": 1991,
+    "startDate": "1991-01-01",
+    "rosterSeedBase": 300,
+    "rosterSize": 8,
+    "playerEntrantId": "t1",
+    "playerDivision": "tag",
+    "champions": {
+      "world-tag": "t1",
+      "american-tag": "t3"
+    },
+    "bookingPolicy": "feuds",
+    "feud": {
+      "entrantIds": [
+        "t1",
+        "t2"
+      ],
+      "label": "championship tag grudge",
+      "initialHeat": 60
+    }
+  },
+  "evidence": {
+    "initialCampaignHash": "c14n-fnv1a64-v1:697e5a247d5991b7",
+    "rolledCampaignHash": "c14n-fnv1a64-v1:5c4a8e38f43b292a",
+    "declinedCampaignHash": "c14n-fnv1a64-v1:9e963253d63e1d01",
+    "acceptedCampaignHash": "c14n-fnv1a64-v1:5ee485b8c91d074f",
+    "offer": {
+      "id": "title-shot-4c1632ac",
+      "titleId": "world-tag",
+      "candidateId": "t2",
+      "rawRoll": 6,
+      "modifiedRoll": 6,
+      "modifiers": [
+        {
+          "label": "same side (tag)",
+          "amount": -3
+        },
+        {
+          "label": "feud heat 60 vs champion",
+          "amount": 3
+        }
+      ]
+    },
+    "rollLine": "6 -3 same side (tag) +3 feud heat 60 vs champion = 6",
+    "grantLine": "t2 granted World Tag offer title-shot-4c1632ac; roll 6 -3 same side (tag) +3 feud heat 60 vs champion = 6.",
+    "grantDetail": [
+      "t3: 3 -3 same side (tag) -1 already holds American Tag = -1; needs rank 1.",
+      "t2: 6 -3 same side (tag) +3 feud heat 60 vs champion = 6; needs rank 2.",
+      "t2 granted World Tag offer title-shot-4c1632ac; roll 6 -3 same side (tag) +3 feud heat 60 vs champion = 6.",
+      "Offer title-shot-4c1632ac granted because 6 >= 2."
+    ],
+    "declineDetail": [
+      "t2 declined World Tag offer title-shot-4c1632ac; roll 6 -3 same side (tag) +3 feud heat 60 vs champion = 6 — candidate traversal may continue."
+    ],
+    "acceptDetail": [
+      "t2 accepted World Tag offer title-shot-4c1632ac; roll 6 -3 same side (tag) +3 feud heat 60 vs champion = 6."
+    ],
+    "declineEvent": {
+      "preStateHash": "c14n-fnv1a64-v1:5c4a8e38f43b292a",
+      "postStateHash": "c14n-fnv1a64-v1:9e963253d63e1d01"
+    },
+    "acceptEvent": {
+      "preStateHash": "c14n-fnv1a64-v1:5c4a8e38f43b292a",
+      "postStateHash": "c14n-fnv1a64-v1:9dbe4e8c65726ebb"
+    },
+    "scheduledDefense": {
+      "date": "1991-01-02",
+      "entrantIds": [
+        "t2",
+        "t1"
+      ],
+      "titleId": "world-tag",
+      "mandatoryDefense": true
+    },
+    "defendedCampaignHash": "c14n-fnv1a64-v1:d7534506f8d4d1de",
+    "extraGrantCampaignHash": "c14n-fnv1a64-v1:a3b496c6bb12e4e6",
+    "defense": {
+      "matchId": "match-60052598",
+      "date": "1991-01-02",
+      "method": "pin",
+      "winnerEntrantId": "t1",
+      "finalMatchHash": "c14n-fnv1a64-v1:11b115985c980250",
+      "completedDefenses": 1,
+      "requiredDefenses": 1
+    },
+    "extraShot": {
+      "matchId": "match-144343ed",
+      "date": "1991-01-03",
+      "titleId": "world-tag",
+      "candidateId": "t3",
+      "mandatoryDefense": false
+    },
+    "extraGrantLine": "t3 granted extra World Tag shot (mandatory defenses complete 1/1).",
+    "extraGrantDetail": [
+      "tag match match-144343ed scheduled for 1991-01-03.",
+      "Entrants: t3 vs t1; seed 90527.",
+      "World Tag title match.",
+      "t3 granted extra World Tag shot (mandatory defenses complete 1/1)."
+    ],
+    "extraGrantEvent": {
+      "preStateHash": "c14n-fnv1a64-v1:d7534506f8d4d1de",
+      "postStateHash": "c14n-fnv1a64-v1:a3b496c6bb12e4e6"
+    }
+  },
+  "fixtureHash": "c14n-fnv1a64-v1:3e154f113603bba6"
+}

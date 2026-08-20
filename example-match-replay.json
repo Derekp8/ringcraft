@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "asw91-campaign-match-replay-v1",
+  "campaignSchemaVersion": "asw91-campaign-v1",
+  "campaignId": "campaign-4b340d10",
+  "matchId": "match-49bdb9f5",
+  "matchConfig": {
+    "seed": 71478,
+    "timeLimitMinutes": 2,
+    "mode": "singles",
+    "titleModifier": 0,
+    "playerRecoveryPolicy": "lowest-percent",
+    "aiRecoveryPolicy": "lowest-percent",
+    "scenarioId": null,
+    "roster": {
+      "freebuff-fixture-4-cd6e30c5": {
+        "id": "freebuff-fixture-4-cd6e30c5",
+        "teamId": "player",
+        "name": "Freebuff Fixture 4",
+        "epithet": "Seed 9103",
+        "side": "fan-favorite",
+        "weight": 252,
+        "heightInches": 73,
+        "attributes": {
+          "pow": 52,
+          "agi": 51,
+          "qui": 51,
+          "tec": 51,
+          "end": 51
+        },
+        "maneuverLevels": {
+          "the-rack": 1,
+          "bear-hug": 1,
+          "piledriver": 1,
+          "shoulder-breaker": 1,
+          "sleeper": 1,
+          "headbutt-flying": 1,
+          "neck-vise": 1
+        },
+        "customManeuvers": {},
+        "skills": {
+          "breakHold": 0,
+          "distractReferee": 0,
+          "dodge": 0,
+          "escapePin": 0,
+          "illegalPin": 0,
+          "irishWhip": 0,
+          "pinInterference": 0,
+          "tagTeam": 0,
+          "charm": 0
+        },
+        "drawbacks": [],
+        "fame": 0,
+        "age": 17,
+        "careerWp": 0,
+        "sourceRecordId": "freebuff-fixture-4-cd6e30c5"
+      },
+      "freebuff-fixture-2-bcdff567": {
+        "id": "freebuff-fixture-2-bcdff567",
+        "teamId": "ai",
+        "name": "Freebuff Fixture 2",
+        "epithet": "Seed 9101",
+        "side": "fan-favorite",
+        "weight": 264,
+        "heightInches": 74,
+        "attributes": {
+          "pow": 51,
+          "agi": 50,
+          "qui": 50,
+          "tec": 50,
+          "end": 50
+        },
+        "maneuverLevels": {
+          "the-rack": 1,
+          "bear-hug": 1,
+          "piledriver": 1,
+          "shoulder-breaker": 1,
+          "sleeper": 1,
+          "headbutt-flying": 1,
+          "neck-vise": 1
+        },
+        "customManeuvers": {},
+        "skills": {
+          "breakHold": 0,
+          "distractReferee": 0,
+          "dodge": 0,
+          "escapePin": 0,
+          "illegalPin": 0,
+          "irishWhip": 0,
+          "pinInterference": 0,
+          "tagTeam": 0,
+          "charm": 0
+        },
+        "drawbacks": [],
+        "fame": 0,
+        "age": 20,
+        "careerWp": 0,
+        "sourceRecordId": "freebuff-fixture-2-bcdff567"
+      }
+    },
+    "teamMembers": {
+      "player": [
+        "freebuff-fixture-4-cd6e30c5"
+      ],
+      "ai": [
+        "freebuff-fixture-2-bcdff567"
+      ]
+    }
+  },
+  "inputLog": [
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    }
+  ],
+  "expectedFinalMatchHash": "c14n-fnv1a64-v1:b5cc3ccccd2e25ee",
+  "expectedCampaignHashAfterCommit": "c14n-fnv1a64-v1:1a11f20c552d50ba"
+}

@@ -1,0 +1,1262 @@
+{
+  "schemaVersion": "asw91-campaign-v1",
+  "rulesetVersion": "1.1.0-m4-candidate",
+  "campaignRulesetVersion": "1.2.0-m5-candidate",
+  "dataPackVersion": "classic-1991-m5-v1",
+  "dataHash": "0d895191",
+  "campaignId": "campaign-4b340d10",
+  "name": "Freebuff M5 Example Career",
+  "seed": 51991,
+  "rng": {
+    "algorithm": "xorshift32-v1",
+    "initialSeed": 51991,
+    "state": 1626248737,
+    "scriptedRolls": [],
+    "scriptedIndex": 0
+  },
+  "createdAt": "1991-01-01",
+  "updatedAt": "1991-01-01",
+  "startDate": "1991-01-01",
+  "currentDate": "1991-01-01",
+  "playerEntrantId": "freebuff-fixture-4-cd6e30c5",
+  "playerDivision": "singles",
+  "vacancyMethod": "tournament",
+  "roster": {
+    "freebuff-fixture-1-1c4455bc": {
+      "schemaVersion": "asw91-wrestler-v1",
+      "rulesetVersion": "1.1.0-m4-candidate",
+      "id": "freebuff-fixture-1-1c4455bc",
+      "name": "Freebuff Fixture 1",
+      "epithet": "Seed 9100",
+      "side": "rulebreaker",
+      "affiliation": "M5 Deterministic Fixture",
+      "heightInches": 73,
+      "weight": 225,
+      "attributes": {
+        "pow": 51,
+        "agi": 51,
+        "qui": 51,
+        "tec": 50,
+        "end": 50
+      },
+      "maneuverLevels": {
+        "the-rack": 1,
+        "bear-hug": 1,
+        "piledriver": 1,
+        "shoulder-breaker": 1,
+        "sleeper": 1,
+        "headbutt-flying": 1,
+        "neck-vise": 1
+      },
+      "customManeuvers": {},
+      "skills": {
+        "breakHold": 0,
+        "distractReferee": 0,
+        "dodge": 0,
+        "escapePin": 0,
+        "illegalPin": 0,
+        "irishWhip": 0,
+        "pinInterference": 0,
+        "tagTeam": 0,
+        "charm": 0
+      },
+      "drawbacks": [],
+      "history": {
+        "debutAge": 24,
+        "currentAge": 24,
+        "previousExperience": [],
+        "debutRoll": 41,
+        "debutTotal": 61,
+        "debutResult": "loss-dq",
+        "priorTitles": []
+      },
+      "fame": 0,
+      "careerWp": 0,
+      "creation": {
+        "seed": 9100,
+        "physicalPointTotal": 253,
+        "baseAttributes": {
+          "pow": 51,
+          "agi": 51,
+          "qui": 51,
+          "tec": 50,
+          "end": 50
+        },
+        "baseSkillPoints": 150,
+        "priorTitlePoints": 0,
+        "drawbackPoints": 0,
+        "spentSkillPoints": 150
+      }
+    },
+    "freebuff-fixture-2-bcdff567": {
+      "schemaVersion": "asw91-wrestler-v1",
+      "rulesetVersion": "1.1.0-m4-candidate",
+      "id": "freebuff-fixture-2-bcdff567",
+      "name": "Freebuff Fixture 2",
+      "epithet": "Seed 9101",
+      "side": "fan-favorite",
+      "affiliation": "M5 Deterministic Fixture",
+      "heightInches": 74,
+      "weight": 264,
+      "attributes": {
+        "pow": 51,
+        "agi": 50,
+        "qui": 50,
+        "tec": 50,
+        "end": 50
+      },
+      "maneuverLevels": {
+        "the-rack": 1,
+        "bear-hug": 1,
+        "piledriver": 1,
+        "shoulder-breaker": 1,
+        "sleeper": 1,
+        "headbutt-flying": 1,
+        "neck-vise": 1
+      },
+      "customManeuvers": {},
+      "skills": {
+        "breakHold": 0,
+        "distractReferee": 0,
+        "dodge": 0,
+        "escapePin": 0,
+        "illegalPin": 0,
+        "irishWhip": 0,
+        "pinInterference": 0,
+        "tagTeam": 0,
+        "charm": 0
+      },
+      "drawbacks": [],
+      "history": {
+        "debutAge": 20,
+        "currentAge": 20,
+        "previousExperience": [],
+        "debutRoll": 90,
+        "debutTotal": 109,
+        "debutResult": "win-pin-submission",
+        "priorTitles": []
+      },
+      "fame": 0,
+      "careerWp": 5,
+      "creation": {
+        "seed": 9101,
+        "physicalPointTotal": 251,
+        "baseAttributes": {
+          "pow": 51,
+          "agi": 50,
+          "qui": 50,
+          "tec": 50,
+          "end": 50
+        },
+        "baseSkillPoints": 150,
+        "priorTitlePoints": 0,
+        "drawbackPoints": 0,
+        "spentSkillPoints": 150
+      }
+    },
+    "freebuff-fixture-3-06de815c": {
+      "schemaVersion": "asw91-wrestler-v1",
+      "rulesetVersion": "1.1.0-m4-candidate",
+      "id": "freebuff-fixture-3-06de815c",
+      "name": "Freebuff Fixture 3",
+      "epithet": "Seed 9102",
+      "side": "rulebreaker",
+      "affiliation": "M5 Deterministic Fixture",
+      "heightInches": 74,
+      "weight": 250,
+      "attributes": {
+        "pow": 51,
+        "agi": 51,
+        "qui": 51,
+        "tec": 51,
+        "end": 50
+      },
+      "maneuverLevels": {
+        "the-rack": 1,
+        "bear-hug": 1,
+        "piledriver": 1,
+        "shoulder-breaker": 1,
+        "sleeper": 1,
+        "headbutt-flying": 1,
+        "neck-vise": 1
+      },
+      "customManeuvers": {},
+      "skills": {
+        "breakHold": 0,
+        "distractReferee": 0,
+        "dodge": 0,
+        "escapePin": 0,
+        "illegalPin": 0,
+        "irishWhip": 0,
+        "pinInterference": 0,
+        "tagTeam": 0,
+        "charm": 0
+      },
+      "drawbacks": [],
+      "history": {
+        "debutAge": 18,
+        "currentAge": 18,
+        "previousExperience": [],
+        "debutRoll": 56,
+        "debutTotal": 77,
+        "debutResult": "double-dq",
+        "priorTitles": []
+      },
+      "fame": 0,
+      "careerWp": 0,
+      "creation": {
+        "seed": 9102,
+        "physicalPointTotal": 254,
+        "baseAttributes": {
+          "pow": 51,
+          "agi": 51,
+          "qui": 51,
+          "tec": 51,
+          "end": 50
+        },
+        "baseSkillPoints": 150,
+        "priorTitlePoints": 0,
+        "drawbackPoints": 0,
+        "spentSkillPoints": 150
+      }
+    },
+    "freebuff-fixture-4-cd6e30c5": {
+      "schemaVersion": "asw91-wrestler-v1",
+      "rulesetVersion": "1.1.0-m4-candidate",
+      "id": "freebuff-fixture-4-cd6e30c5",
+      "name": "Freebuff Fixture 4",
+      "epithet": "Seed 9103",
+      "side": "fan-favorite",
+      "affiliation": "M5 Deterministic Fixture",
+      "heightInches": 73,
+      "weight": 252,
+      "attributes": {
+        "pow": 52,
+        "agi": 51,
+        "qui": 51,
+        "tec": 51,
+        "end": 51
+      },
+      "maneuverLevels": {
+        "the-rack": 1,
+        "bear-hug": 1,
+        "piledriver": 1,
+        "shoulder-breaker": 1,
+        "sleeper": 1,
+        "headbutt-flying": 1,
+        "neck-vise": 1
+      },
+      "customManeuvers": {},
+      "skills": {
+        "breakHold": 0,
+        "distractReferee": 0,
+        "dodge": 0,
+        "escapePin": 0,
+        "illegalPin": 0,
+        "irishWhip": 0,
+        "pinInterference": 0,
+        "tagTeam": 0,
+        "charm": 0
+      },
+      "drawbacks": [],
+      "history": {
+        "debutAge": 17,
+        "currentAge": 17,
+        "previousExperience": [],
+        "debutRoll": 71,
+        "debutTotal": 92,
+        "debutResult": "win-dq",
+        "priorTitles": []
+      },
+      "fame": 0,
+      "careerWp": 2,
+      "creation": {
+        "seed": 9103,
+        "physicalPointTotal": 256,
+        "baseAttributes": {
+          "pow": 52,
+          "agi": 51,
+          "qui": 51,
+          "tec": 51,
+          "end": 51
+        },
+        "baseSkillPoints": 150,
+        "priorTitlePoints": 0,
+        "drawbackPoints": 0,
+        "spentSkillPoints": 150
+      }
+    },
+    "freebuff-fixture-5-679b0cfe": {
+      "schemaVersion": "asw91-wrestler-v1",
+      "rulesetVersion": "1.1.0-m4-candidate",
+      "id": "freebuff-fixture-5-679b0cfe",
+      "name": "Freebuff Fixture 5",
+      "epithet": "Seed 9104",
+      "side": "rulebreaker",
+      "affiliation": "M5 Deterministic Fixture",
+      "heightInches": 69,
+      "weight": 224,
+      "attributes": {
+        "pow": 55,
+        "agi": 55,
+        "qui": 54,
+        "tec": 54,
+        "end": 54
+      },
+      "maneuverLevels": {
+        "claw": 1,
+        "bear-hug": 1,
+        "piledriver": 1,
+        "shoulder-breaker": 1,
+        "sleeper": 1,
+        "suplex-belly-to-belly": 1,
+        "headbutt-flying": 1
+      },
+      "customManeuvers": {},
+      "skills": {
+        "breakHold": 0,
+        "distractReferee": 0,
+        "dodge": 0,
+        "escapePin": 0,
+        "illegalPin": 0,
+        "irishWhip": 0,
+        "pinInterference": 0,
+        "tagTeam": 0,
+        "charm": 0
+      },
+      "drawbacks": [],
+      "history": {
+        "debutAge": 25,
+        "currentAge": 25,
+        "previousExperience": [],
+        "debutRoll": 57,
+        "debutTotal": 78,
+        "debutResult": "double-dq",
+        "priorTitles": []
+      },
+      "fame": 0,
+      "careerWp": 0,
+      "creation": {
+        "seed": 9104,
+        "physicalPointTotal": 272,
+        "baseAttributes": {
+          "pow": 55,
+          "agi": 55,
+          "qui": 54,
+          "tec": 54,
+          "end": 54
+        },
+        "baseSkillPoints": 150,
+        "priorTitlePoints": 0,
+        "drawbackPoints": 0,
+        "spentSkillPoints": 150
+      }
+    },
+    "freebuff-fixture-6-f449d198": {
+      "schemaVersion": "asw91-wrestler-v1",
+      "rulesetVersion": "1.1.0-m4-candidate",
+      "id": "freebuff-fixture-6-f449d198",
+      "name": "Freebuff Fixture 6",
+      "epithet": "Seed 9105",
+      "side": "fan-favorite",
+      "affiliation": "M5 Deterministic Fixture",
+      "heightInches": 78,
+      "weight": 298,
+      "attributes": {
+        "pow": 52,
+        "agi": 52,
+        "qui": 52,
+        "tec": 51,
+        "end": 51
+      },
+      "maneuverLevels": {
+        "the-rack": 1,
+        "bear-hug": 1,
+        "piledriver": 1,
+        "shoulder-breaker": 1,
+        "sleeper": 1,
+        "headbutt-flying": 1,
+        "neck-vise": 1
+      },
+      "customManeuvers": {},
+      "skills": {
+        "breakHold": 0,
+        "distractReferee": 0,
+        "dodge": 0,
+        "escapePin": 0,
+        "illegalPin": 0,
+        "irishWhip": 0,
+        "pinInterference": 0,
+        "tagTeam": 0,
+        "charm": 0
+      },
+      "drawbacks": [],
+      "history": {
+        "debutAge": 27,
+        "currentAge": 27,
+        "previousExperience": [],
+        "debutRoll": 63,
+        "debutTotal": 84,
+        "debutResult": "double-dq",
+        "priorTitles": []
+      },
+      "fame": 0,
+      "careerWp": 0,
+      "creation": {
+        "seed": 9105,
+        "physicalPointTotal": 258,
+        "baseAttributes": {
+          "pow": 52,
+          "agi": 52,
+          "qui": 52,
+          "tec": 51,
+          "end": 51
+        },
+        "baseSkillPoints": 150,
+        "priorTitlePoints": 0,
+        "drawbackPoints": 0,
+        "spentSkillPoints": 150
+      }
+    },
+    "freebuff-fixture-7-d554c967": {
+      "schemaVersion": "asw91-wrestler-v1",
+      "rulesetVersion": "1.1.0-m4-candidate",
+      "id": "freebuff-fixture-7-d554c967",
+      "name": "Freebuff Fixture 7",
+      "epithet": "Seed 9106",
+      "side": "rulebreaker",
+      "affiliation": "M5 Deterministic Fixture",
+      "heightInches": 72,
+      "weight": 236,
+      "attributes": {
+        "pow": 48,
+        "agi": 48,
+        "qui": 47,
+        "tec": 47,
+        "end": 47
+      },
+      "maneuverLevels": {
+        "claw": 1,
+        "bear-hug": 1,
+        "nerve-pinch": 1,
+        "piledriver": 1,
+        "headbutt-flying": 1,
+        "neck-vise": 1,
+        "splash-from-top-rope": 1
+      },
+      "customManeuvers": {},
+      "skills": {
+        "breakHold": 0,
+        "distractReferee": 0,
+        "dodge": 0,
+        "escapePin": 0,
+        "illegalPin": 0,
+        "irishWhip": 0,
+        "pinInterference": 0,
+        "tagTeam": 0,
+        "charm": 0
+      },
+      "drawbacks": [],
+      "history": {
+        "debutAge": 28,
+        "currentAge": 28,
+        "previousExperience": [],
+        "debutRoll": 22,
+        "debutTotal": 40,
+        "debutResult": "loss-pin-submission",
+        "priorTitles": []
+      },
+      "fame": 0,
+      "careerWp": 0,
+      "creation": {
+        "seed": 9106,
+        "physicalPointTotal": 237,
+        "baseAttributes": {
+          "pow": 48,
+          "agi": 48,
+          "qui": 47,
+          "tec": 47,
+          "end": 47
+        },
+        "baseSkillPoints": 150,
+        "priorTitlePoints": 0,
+        "drawbackPoints": 0,
+        "spentSkillPoints": 150
+      }
+    },
+    "freebuff-fixture-8-19d12b3c": {
+      "schemaVersion": "asw91-wrestler-v1",
+      "rulesetVersion": "1.1.0-m4-candidate",
+      "id": "freebuff-fixture-8-19d12b3c",
+      "name": "Freebuff Fixture 8",
+      "epithet": "Seed 9107",
+      "side": "fan-favorite",
+      "affiliation": "M5 Deterministic Fixture",
+      "heightInches": 69,
+      "weight": 211,
+      "attributes": {
+        "pow": 54,
+        "agi": 54,
+        "qui": 54,
+        "tec": 54,
+        "end": 53
+      },
+      "maneuverLevels": {
+        "the-rack": 1,
+        "bear-hug": 1,
+        "piledriver": 1,
+        "shoulder-breaker": 1,
+        "sleeper": 1,
+        "headbutt-flying": 1,
+        "neck-vise": 1
+      },
+      "customManeuvers": {},
+      "skills": {
+        "breakHold": 0,
+        "distractReferee": 0,
+        "dodge": 0,
+        "escapePin": 0,
+        "illegalPin": 0,
+        "irishWhip": 0,
+        "pinInterference": 0,
+        "tagTeam": 0,
+        "charm": 0
+      },
+      "drawbacks": [],
+      "history": {
+        "debutAge": 21,
+        "currentAge": 21,
+        "previousExperience": [],
+        "debutRoll": 28,
+        "debutTotal": 49,
+        "debutResult": "loss-pin-submission",
+        "priorTitles": []
+      },
+      "fame": 0,
+      "careerWp": 0,
+      "creation": {
+        "seed": 9107,
+        "physicalPointTotal": 269,
+        "baseAttributes": {
+          "pow": 54,
+          "agi": 54,
+          "qui": 54,
+          "tec": 54,
+          "end": 53
+        },
+        "baseSkillPoints": 150,
+        "priorTitlePoints": 0,
+        "drawbackPoints": 0,
+        "spentSkillPoints": 150
+      }
+    }
+  },
+  "teams": {
+    "freebuff-fixture-team-1": {
+      "id": "freebuff-fixture-team-1",
+      "name": "Freebuff Fixture Team 1",
+      "memberIds": [
+        "freebuff-fixture-1-1c4455bc",
+        "freebuff-fixture-2-bcdff567"
+      ],
+      "side": "rulebreaker",
+      "active": true,
+      "careerWp": 0,
+      "currentRank": null,
+      "titleIds": [],
+      "titleShotHistory": [],
+      "matchHistory": []
+    },
+    "freebuff-fixture-team-2": {
+      "id": "freebuff-fixture-team-2",
+      "name": "Freebuff Fixture Team 2",
+      "memberIds": [
+        "freebuff-fixture-3-06de815c",
+        "freebuff-fixture-4-cd6e30c5"
+      ],
+      "side": "rulebreaker",
+      "active": true,
+      "careerWp": 0,
+      "currentRank": 1,
+      "titleIds": [],
+      "titleShotHistory": [],
+      "matchHistory": []
+    },
+    "freebuff-fixture-team-3": {
+      "id": "freebuff-fixture-team-3",
+      "name": "Freebuff Fixture Team 3",
+      "memberIds": [
+        "freebuff-fixture-5-679b0cfe",
+        "freebuff-fixture-6-f449d198"
+      ],
+      "side": "rulebreaker",
+      "active": true,
+      "careerWp": 0,
+      "currentRank": 2,
+      "titleIds": [],
+      "titleShotHistory": [],
+      "matchHistory": []
+    },
+    "freebuff-fixture-team-4": {
+      "id": "freebuff-fixture-team-4",
+      "name": "Freebuff Fixture Team 4",
+      "memberIds": [
+        "freebuff-fixture-7-d554c967",
+        "freebuff-fixture-8-19d12b3c"
+      ],
+      "side": "rulebreaker",
+      "active": true,
+      "careerWp": 0,
+      "currentRank": 3,
+      "titleIds": [],
+      "titleShotHistory": [],
+      "matchHistory": []
+    }
+  },
+  "rankings": {
+    "singles": {
+      "id": "ranking-71ead0bf",
+      "month": "1991-01",
+      "division": "singles",
+      "championId": "freebuff-fixture-1-1c4455bc",
+      "entries": [
+        {
+          "entrantId": "freebuff-fixture-2-bcdff567",
+          "rank": 1,
+          "priorRank": 1,
+          "matchPoints": 0,
+          "priorRankBonus": 9,
+          "totalPoints": 9,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        },
+        {
+          "entrantId": "freebuff-fixture-3-06de815c",
+          "rank": 2,
+          "priorRank": 2,
+          "matchPoints": 0,
+          "priorRankBonus": 8,
+          "totalPoints": 8,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        },
+        {
+          "entrantId": "freebuff-fixture-4-cd6e30c5",
+          "rank": 3,
+          "priorRank": 3,
+          "matchPoints": 0,
+          "priorRankBonus": 7,
+          "totalPoints": 7,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        },
+        {
+          "entrantId": "freebuff-fixture-5-679b0cfe",
+          "rank": 4,
+          "priorRank": 4,
+          "matchPoints": 0,
+          "priorRankBonus": 6,
+          "totalPoints": 6,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        },
+        {
+          "entrantId": "freebuff-fixture-6-f449d198",
+          "rank": 5,
+          "priorRank": 5,
+          "matchPoints": 0,
+          "priorRankBonus": 5,
+          "totalPoints": 5,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        },
+        {
+          "entrantId": "freebuff-fixture-7-d554c967",
+          "rank": 6,
+          "priorRank": 6,
+          "matchPoints": 0,
+          "priorRankBonus": 4,
+          "totalPoints": 4,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        },
+        {
+          "entrantId": "freebuff-fixture-8-19d12b3c",
+          "rank": 7,
+          "priorRank": 7,
+          "matchPoints": 0,
+          "priorRankBonus": 3,
+          "totalPoints": 3,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        }
+      ],
+      "finalizedAt": "1991-01-01",
+      "formula": "Initial table: total WP, stable ID; championship guaranteed placements applied."
+    },
+    "tag": {
+      "id": "ranking-7779a808",
+      "month": "1991-01",
+      "division": "tag",
+      "championId": "freebuff-fixture-team-1",
+      "entries": [
+        {
+          "entrantId": "freebuff-fixture-team-2",
+          "rank": 1,
+          "priorRank": 1,
+          "matchPoints": 0,
+          "priorRankBonus": 3,
+          "totalPoints": 3,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        },
+        {
+          "entrantId": "freebuff-fixture-team-3",
+          "rank": 2,
+          "priorRank": 2,
+          "matchPoints": 0,
+          "priorRankBonus": 2,
+          "totalPoints": 2,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        },
+        {
+          "entrantId": "freebuff-fixture-team-4",
+          "rank": 3,
+          "priorRank": 3,
+          "matchPoints": 0,
+          "priorRankBonus": 1,
+          "totalPoints": 1,
+          "totalWp": 0,
+          "tiebreakRolls": []
+        }
+      ],
+      "finalizedAt": "1991-01-01",
+      "formula": "Initial table: total WP, stable ID; championship guaranteed placements applied."
+    }
+  },
+  "rankingHistory": [],
+  "monthlyRatingPoints": {
+    "singles": {
+      "freebuff-fixture-4-cd6e30c5": -1,
+      "freebuff-fixture-2-bcdff567": 2
+    },
+    "tag": {}
+  },
+  "titles": {
+    "world-heavyweight": {
+      "id": "world-heavyweight",
+      "name": "World Heavyweight",
+      "division": "singles",
+      "hierarchy": 3,
+      "holderId": "freebuff-fixture-1-1c4455bc",
+      "status": "active",
+      "wonDate": "1991-01-01",
+      "lastDefenseDate": "1991-01-01",
+      "obligationMonth": "1991-01",
+      "requiredDefenses": 2,
+      "completedDefenses": 0,
+      "shotsReceived": {},
+      "history": [
+        {
+          "date": "1991-01-01",
+          "type": "created",
+          "entrantId": "freebuff-fixture-1-1c4455bc",
+          "detail": "Initial holder freebuff-fixture-1-1c4455bc."
+        }
+      ]
+    },
+    "international": {
+      "id": "international",
+      "name": "International",
+      "division": "singles",
+      "hierarchy": 2,
+      "holderId": "freebuff-fixture-2-bcdff567",
+      "status": "active",
+      "wonDate": "1991-01-01",
+      "lastDefenseDate": "1991-01-01",
+      "obligationMonth": "1991-01",
+      "requiredDefenses": 1,
+      "completedDefenses": 0,
+      "shotsReceived": {},
+      "history": [
+        {
+          "date": "1991-01-01",
+          "type": "created",
+          "entrantId": "freebuff-fixture-2-bcdff567",
+          "detail": "Initial holder freebuff-fixture-2-bcdff567."
+        }
+      ]
+    },
+    "television": {
+      "id": "television",
+      "name": "Television",
+      "division": "singles",
+      "hierarchy": 1,
+      "holderId": "freebuff-fixture-3-06de815c",
+      "status": "active",
+      "wonDate": "1991-01-01",
+      "lastDefenseDate": "1991-01-01",
+      "obligationMonth": "1991-01",
+      "requiredDefenses": 2,
+      "completedDefenses": 0,
+      "shotsReceived": {},
+      "history": [
+        {
+          "date": "1991-01-01",
+          "type": "created",
+          "entrantId": "freebuff-fixture-3-06de815c",
+          "detail": "Initial holder freebuff-fixture-3-06de815c."
+        }
+      ]
+    },
+    "world-tag": {
+      "id": "world-tag",
+      "name": "World Tag",
+      "division": "tag",
+      "hierarchy": 2,
+      "holderId": "freebuff-fixture-team-1",
+      "status": "active",
+      "wonDate": "1991-01-01",
+      "lastDefenseDate": "1991-01-01",
+      "obligationMonth": "1991-01",
+      "requiredDefenses": 1,
+      "completedDefenses": 0,
+      "shotsReceived": {},
+      "history": [
+        {
+          "date": "1991-01-01",
+          "type": "created",
+          "entrantId": "freebuff-fixture-team-1",
+          "detail": "Initial holder freebuff-fixture-team-1."
+        }
+      ]
+    },
+    "american-tag": {
+      "id": "american-tag",
+      "name": "American Tag",
+      "division": "tag",
+      "hierarchy": 1,
+      "holderId": "freebuff-fixture-team-2",
+      "status": "active",
+      "wonDate": "1991-01-01",
+      "lastDefenseDate": "1991-01-01",
+      "obligationMonth": "1991-01",
+      "requiredDefenses": 1,
+      "completedDefenses": 0,
+      "shotsReceived": {},
+      "history": [
+        {
+          "date": "1991-01-01",
+          "type": "created",
+          "entrantId": "freebuff-fixture-team-2",
+          "detail": "Initial holder freebuff-fixture-team-2."
+        }
+      ]
+    }
+  },
+  "schedule": [
+    {
+      "id": "match-49bdb9f5",
+      "date": "1991-01-01",
+      "mode": "singles",
+      "entrantIds": [
+        "freebuff-fixture-4-cd6e30c5",
+        "freebuff-fixture-2-bcdff567"
+      ],
+      "wrestlerIds": [
+        [
+          "freebuff-fixture-4-cd6e30c5"
+        ],
+        [
+          "freebuff-fixture-2-bcdff567"
+        ]
+      ],
+      "playerControlled": false,
+      "titleId": null,
+      "vacancyTitleId": null,
+      "vacancyCompetitionId": null,
+      "vacancyRound": null,
+      "mandatoryDefense": false,
+      "status": "completed",
+      "matchSeed": 71478,
+      "timeLimitMinutes": 2,
+      "result": {
+        "winnerEntrantId": "freebuff-fixture-2-bcdff567",
+        "loserEntrantId": "freebuff-fixture-4-cd6e30c5",
+        "method": "pin",
+        "summary": "Freebuff Fixture 2 wins by pin.",
+        "appliedEventId": "result-application-becbfc29",
+        "finalMatchHash": "c14n-fnv1a64-v1:b5cc3ccccd2e25ee"
+      },
+      "replayConfig": {
+        "seed": 71478,
+        "timeLimitMinutes": 2,
+        "mode": "singles",
+        "titleModifier": 0,
+        "playerRecoveryPolicy": "lowest-percent",
+        "aiRecoveryPolicy": "lowest-percent",
+        "scenarioId": null,
+        "roster": {
+          "freebuff-fixture-4-cd6e30c5": {
+            "id": "freebuff-fixture-4-cd6e30c5",
+            "teamId": "player",
+            "name": "Freebuff Fixture 4",
+            "epithet": "Seed 9103",
+            "side": "fan-favorite",
+            "weight": 252,
+            "heightInches": 73,
+            "attributes": {
+              "pow": 52,
+              "agi": 51,
+              "qui": 51,
+              "tec": 51,
+              "end": 51
+            },
+            "maneuverLevels": {
+              "the-rack": 1,
+              "bear-hug": 1,
+              "piledriver": 1,
+              "shoulder-breaker": 1,
+              "sleeper": 1,
+              "headbutt-flying": 1,
+              "neck-vise": 1
+            },
+            "customManeuvers": {},
+            "skills": {
+              "breakHold": 0,
+              "distractReferee": 0,
+              "dodge": 0,
+              "escapePin": 0,
+              "illegalPin": 0,
+              "irishWhip": 0,
+              "pinInterference": 0,
+              "tagTeam": 0,
+              "charm": 0
+            },
+            "drawbacks": [],
+            "fame": 0,
+            "age": 17,
+            "careerWp": 0,
+            "sourceRecordId": "freebuff-fixture-4-cd6e30c5"
+          },
+          "freebuff-fixture-2-bcdff567": {
+            "id": "freebuff-fixture-2-bcdff567",
+            "teamId": "ai",
+            "name": "Freebuff Fixture 2",
+            "epithet": "Seed 9101",
+            "side": "fan-favorite",
+            "weight": 264,
+            "heightInches": 74,
+            "attributes": {
+              "pow": 51,
+              "agi": 50,
+              "qui": 50,
+              "tec": 50,
+              "end": 50
+            },
+            "maneuverLevels": {
+              "the-rack": 1,
+              "bear-hug": 1,
+              "piledriver": 1,
+              "shoulder-breaker": 1,
+              "sleeper": 1,
+              "headbutt-flying": 1,
+              "neck-vise": 1
+            },
+            "customManeuvers": {},
+            "skills": {
+              "breakHold": 0,
+              "distractReferee": 0,
+              "dodge": 0,
+              "escapePin": 0,
+              "illegalPin": 0,
+              "irishWhip": 0,
+              "pinInterference": 0,
+              "tagTeam": 0,
+              "charm": 0
+            },
+            "drawbacks": [],
+            "fame": 0,
+            "age": 20,
+            "careerWp": 0,
+            "sourceRecordId": "freebuff-fixture-2-bcdff567"
+          }
+        },
+        "teamMembers": {
+          "player": [
+            "freebuff-fixture-4-cd6e30c5"
+          ],
+          "ai": [
+            "freebuff-fixture-2-bcdff567"
+          ]
+        }
+      },
+      "replayInputs": [
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        },
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        },
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        },
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        },
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        },
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        },
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        },
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        },
+        {
+          "type": "dodge-commit",
+          "dodge": true
+        }
+      ],
+      "finalMatchState": null
+    }
+  ],
+  "titleShotOffers": [],
+  "vacancies": [],
+  "injuries": [],
+  "matchHistory": [
+    "match-49bdb9f5"
+  ],
+  "appliedMatchIds": [
+    "match-49bdb9f5"
+  ],
+  "activeMatchId": null,
+  "activeMatch": null,
+  "events": [
+    {
+      "sequence": 1,
+      "id": "career-event-c468f570",
+      "date": "1991-01-01",
+      "type": "campaign-start",
+      "input": {
+        "config": {
+          "name": "Freebuff M5 Example Career",
+          "seed": 51991,
+          "startDate": "1991-01-01",
+          "roster": [
+            "freebuff-fixture-1-1c4455bc",
+            "freebuff-fixture-2-bcdff567",
+            "freebuff-fixture-3-06de815c",
+            "freebuff-fixture-4-cd6e30c5",
+            "freebuff-fixture-5-679b0cfe",
+            "freebuff-fixture-6-f449d198",
+            "freebuff-fixture-7-d554c967",
+            "freebuff-fixture-8-19d12b3c"
+          ],
+          "teams": [
+            {
+              "id": "freebuff-fixture-team-1",
+              "name": "Freebuff Fixture Team 1",
+              "memberIds": [
+                "freebuff-fixture-1-1c4455bc",
+                "freebuff-fixture-2-bcdff567"
+              ],
+              "side": "rulebreaker"
+            },
+            {
+              "id": "freebuff-fixture-team-2",
+              "name": "Freebuff Fixture Team 2",
+              "memberIds": [
+                "freebuff-fixture-3-06de815c",
+                "freebuff-fixture-4-cd6e30c5"
+              ],
+              "side": "rulebreaker"
+            },
+            {
+              "id": "freebuff-fixture-team-3",
+              "name": "Freebuff Fixture Team 3",
+              "memberIds": [
+                "freebuff-fixture-5-679b0cfe",
+                "freebuff-fixture-6-f449d198"
+              ],
+              "side": "rulebreaker"
+            },
+            {
+              "id": "freebuff-fixture-team-4",
+              "name": "Freebuff Fixture Team 4",
+              "memberIds": [
+                "freebuff-fixture-7-d554c967",
+                "freebuff-fixture-8-19d12b3c"
+              ],
+              "side": "rulebreaker"
+            }
+          ],
+          "playerEntrantId": "freebuff-fixture-4-cd6e30c5",
+          "playerDivision": "singles",
+          "vacancyMethod": "tournament"
+        }
+      },
+      "summary": "Started Freebuff M5 Example Career.",
+      "detail": [
+        "Campaign campaign-4b340d10 began on 1991-01-01; rules 1.2.0-m5-candidate; data 0d895191.",
+        "World Heavyweight: ceil(D6 3 / 2) = 2 required defenses for 1991-01.",
+        "International: ceil(D6 2 / 2) = 1 required defenses for 1991-01.",
+        "Television: ceil(D6 3 / 2) = 2 required defenses for 1991-01.",
+        "World Tag: ceil(D6 1 / 2) = 1 required defenses for 1991-01.",
+        "American Tag: ceil(D6 2 / 2) = 1 required defenses for 1991-01."
+      ],
+      "dice": [
+        {
+          "label": "World Heavyweight monthly defense requirement",
+          "sides": 6,
+          "result": 3
+        },
+        {
+          "label": "International monthly defense requirement",
+          "sides": 6,
+          "result": 2
+        },
+        {
+          "label": "Television monthly defense requirement",
+          "sides": 6,
+          "result": 3
+        },
+        {
+          "label": "World Tag monthly defense requirement",
+          "sides": 6,
+          "result": 1
+        },
+        {
+          "label": "American Tag monthly defense requirement",
+          "sides": 6,
+          "result": 2
+        }
+      ],
+      "preStateHash": "c14n-fnv1a64-v1:ebd190f4d54b8a61",
+      "postStateHash": "c14n-fnv1a64-v1:5148411b00aa7ab8"
+    },
+    {
+      "sequence": 2,
+      "id": "career-event-ee3ffcc7",
+      "date": "1991-01-01",
+      "type": "schedule-match",
+      "input": {
+        "request": {
+          "date": "1991-01-01",
+          "entrantIds": [
+            "freebuff-fixture-4-cd6e30c5",
+            "freebuff-fixture-2-bcdff567"
+          ],
+          "titleId": null,
+          "mandatoryDefense": false,
+          "playerControlled": false,
+          "timeLimitMinutes": 2
+        }
+      },
+      "summary": "Scheduled match-49bdb9f5.",
+      "detail": [
+        "singles match match-49bdb9f5 scheduled for 1991-01-01.",
+        "Entrants: freebuff-fixture-4-cd6e30c5 vs freebuff-fixture-2-bcdff567; seed 71478.",
+        "Non-title match."
+      ],
+      "dice": [
+        {
+          "label": "scheduled match seed digit 1",
+          "sides": 10,
+          "result": 8
+        },
+        {
+          "label": "scheduled match seed digit 2",
+          "sides": 10,
+          "result": 2
+        },
+        {
+          "label": "scheduled match seed digit 3",
+          "sides": 10,
+          "result": 5
+        },
+        {
+          "label": "scheduled match seed digit 4",
+          "sides": 10,
+          "result": 8
+        },
+        {
+          "label": "scheduled match seed digit 5",
+          "sides": 10,
+          "result": 8
+        }
+      ],
+      "preStateHash": "c14n-fnv1a64-v1:5148411b00aa7ab8",
+      "postStateHash": "c14n-fnv1a64-v1:db5137592a31227c"
+    },
+    {
+      "sequence": 3,
+      "id": "career-event-503c156e",
+      "date": "1991-01-01",
+      "type": "begin-scheduled-match",
+      "input": {
+        "matchId": "match-49bdb9f5"
+      },
+      "summary": "Began match-49bdb9f5.",
+      "detail": [
+        "Full singles engine created at c14n-fnv1a64-v1:4f40f0cf45a83c7f.",
+        "No shortcut result table was used; match seed 71478."
+      ],
+      "dice": [],
+      "preStateHash": "c14n-fnv1a64-v1:db5137592a31227c",
+      "postStateHash": "c14n-fnv1a64-v1:34d052c351b3c6c2"
+    },
+    {
+      "sequence": 4,
+      "id": "career-event-aae0592e",
+      "date": "1991-01-01",
+      "type": "match-checkpoint",
+      "input": {
+        "matchId": "match-49bdb9f5",
+        "inputCount": 9,
+        "matchHash": "c14n-fnv1a64-v1:b5cc3ccccd2e25ee"
+      },
+      "summary": "Checkpointed match-49bdb9f5.",
+      "detail": [
+        "Committed match phase/input checkpoint c14n-fnv1a64-v1:b5cc3ccccd2e25ee.",
+        "Replay reproduced c14n-fnv1a64-v1:b5cc3ccccd2e25ee from 9 player inputs."
+      ],
+      "dice": [],
+      "preStateHash": "c14n-fnv1a64-v1:34d052c351b3c6c2",
+      "postStateHash": "c14n-fnv1a64-v1:88d9bc7877c1dc0a"
+    },
+    {
+      "sequence": 5,
+      "id": "career-event-d3eeb614",
+      "date": "1991-01-01",
+      "type": "commit-match-result",
+      "input": {
+        "matchId": "match-49bdb9f5",
+        "matchHash": "c14n-fnv1a64-v1:b5cc3ccccd2e25ee"
+      },
+      "summary": "Committed match-49bdb9f5: Freebuff Fixture 2 wins by pin.",
+      "detail": [
+        "Applied match-49bdb9f5 exactly once as result-application-becbfc29; replay c14n-fnv1a64-v1:b5cc3ccccd2e25ee.",
+        "Freebuff Fixture 4: loss +2 = 2 WP WP 0 + 2 = 2.",
+        "Freebuff Fixture 2: win +5 = 5 WP WP 0 + 5 = 5.",
+        "freebuff-fixture-4-cd6e30c5: loss versus higher rank 1; -1 RP, monthly -1.",
+        "freebuff-fixture-2-bcdff567: win-pin-submission versus lower/unranked rank 3; +2 RP, monthly 2."
+      ],
+      "dice": [],
+      "preStateHash": "c14n-fnv1a64-v1:88d9bc7877c1dc0a",
+      "postStateHash": "c14n-fnv1a64-v1:1a11f20c552d50ba"
+    }
+  ]
+}

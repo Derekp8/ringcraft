@@ -1,0 +1,100 @@
+{
+  "schema": "m13-feud-heat-chain-v1",
+  "capturedPolicy": "asw91-campaign-policy-v1",
+  "derivation": {
+    "name": "M13 Feud Heat Chain",
+    "seed": 1991,
+    "startDate": "1991-01-01",
+    "rosterSeedBase": 300,
+    "rosterSize": 8,
+    "playerEntrantId": "t1",
+    "playerDivision": "tag",
+    "champions": {
+      "world-heavyweight": null,
+      "international": null,
+      "television": null,
+      "world-tag": null,
+      "american-tag": null
+    },
+    "bookingPolicy": "feuds",
+    "feud": {
+      "entrantIds": [
+        "t1",
+        "t2"
+      ],
+      "label": "championship tag grudge",
+      "initialHeat": 60
+    },
+    "feudMatch": {
+      "timeLimitMinutes": 6
+    }
+  },
+  "evidence": {
+    "initialCampaignHash": "c14n-fnv1a64-v1:350962659885a5f5",
+    "feudedCampaignHash": "c14n-fnv1a64-v1:52f76339e3d11986",
+    "scheduledCampaignHash": "c14n-fnv1a64-v1:f69a7375f07f4730",
+    "committedCampaignHash": "c14n-fnv1a64-v1:974e889bb29737aa",
+    "feb1CampaignHash": "c14n-fnv1a64-v1:06a5a644ef4c426b",
+    "mar1CampaignHash": "c14n-fnv1a64-v1:207121c86c8982b9",
+    "feud": {
+      "id": "feud-302eaae0",
+      "entrantIds": [
+        "t1",
+        "t2"
+      ],
+      "label": "championship tag grudge",
+      "initialHeat": 60
+    },
+    "startFeudEvent": {
+      "preStateHash": "c14n-fnv1a64-v1:350962659885a5f5",
+      "postStateHash": "c14n-fnv1a64-v1:52f76339e3d11986"
+    },
+    "startFeudDetail": [
+      "Feud championship tag grudge started between t1 and t2 at heat 60."
+    ],
+    "feudMatch": {
+      "matchId": "match-05308b4f",
+      "date": "1991-01-01",
+      "timeLimitMinutes": 6,
+      "method": "time-limit-draw",
+      "winnerEntrantId": null,
+      "finalMatchHash": "c14n-fnv1a64-v1:6ab6b17466e0a491"
+    },
+    "heatMovement": {
+      "feudId": "feud-302eaae0",
+      "matchId": "match-05308b4f",
+      "delta": 4,
+      "from": 60,
+      "to": 64,
+      "reason": "draw"
+    },
+    "heatLine": "Feud championship tag grudge (t1 vs t2): heat 60 → 64 (+4); 1 feud match(es).",
+    "febAdvanceEvent": {
+      "preStateHash": "c14n-fnv1a64-v1:974e889bb29737aa",
+      "postStateHash": "c14n-fnv1a64-v1:06a5a644ef4c426b"
+    },
+    "matchedMonthNoDecay": {
+      "heat": 64,
+      "movementCount": 1
+    },
+    "decayMovement": {
+      "feudId": "feud-302eaae0",
+      "delta": -5,
+      "from": 64,
+      "to": 59,
+      "reason": "monthly-decay"
+    },
+    "decayLine": "Feud championship tag grudge cooled 64 → 59 (no match in 1991-02).",
+    "marAdvanceEvent": {
+      "preStateHash": "c14n-fnv1a64-v1:06a5a644ef4c426b",
+      "postStateHash": "c14n-fnv1a64-v1:207121c86c8982b9"
+    },
+    "finalFeud": {
+      "heat": 59,
+      "status": "active",
+      "matchCount": 1,
+      "lastMatchDate": "1991-01-01"
+    }
+  },
+  "fixtureHash": "c14n-fnv1a64-v1:9d6510b827550cb5"
+}

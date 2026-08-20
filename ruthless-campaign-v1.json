@@ -1,0 +1,19 @@
+{
+  "schema": "m10-ruthless-campaign-v1",
+  "capturedPolicy": "asw91-ai-policy-v1",
+  "derivation": {
+    "rosterSeedBase": 4300,
+    "rosterSize": 6,
+    "playerIndex": 4,
+    "campaignSeed": 2003,
+    "name": "Ruthless Career",
+    "startDate": "1991-01-01",
+    "difficulty": "ruthless",
+    "advanceDays": 31
+  },
+  "evidence": {
+    "committedCampaignHash": "c14n-fnv1a64-v1:8eef4a9e466cf392",
+    "finalCampaignHash": "c14n-fnv1a64-v1:57d08699c66d7f5a",
+    "matchFinalHash": "c14n-fnv1a64-v1:cf00f3d238a1b8f5"
+  }
+}

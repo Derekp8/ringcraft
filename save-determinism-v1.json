@@ -1,0 +1,475 @@
+{
+  "schema": "asw91-save-determinism-fixture-v1",
+  "policy": "asw91-save-manager-v1",
+  "campaigns": [
+    {
+      "key": "alpha",
+      "campaignId": "campaign-18475e61",
+      "name": "Save Determinism Alpha",
+      "currentDate": "1991-01-01",
+      "campaignJson": "{\n  \"schemaVersion\": \"asw91-campaign-v1\",\n  \"rulesetVersion\": \"1.1.0-m4-candidate\",\n  \"campaignRulesetVersion\": \"1.2.0-m5-candidate\",\n  \"dataPackVersion\": \"classic-1991-m5-v1\",\n  \"dataHash\": \"0d895191\",\n  \"campaignId\": \"campaign-18475e61\",\n  \"name\": \"Save Determinism Alpha\",\n  \"seed\": 11,\n  \"rng\": {\n    \"algorithm\": \"xorshift32-v1\",\n    \"initialSeed\": 11,\n    \"state\": 305599086,\n    \"scriptedRolls\": [],\n    \"scriptedIndex\": 0\n  },\n  \"createdAt\": \"1991-01-01\",\n  \"updatedAt\": \"1991-01-01\",\n  \"startDate\": \"1991-01-01\",\n  \"currentDate\": \"1991-01-01\",\n  \"playerEntrantId\": \"determinism-wrestler-0-0aef8d4f\",\n  \"playerDivision\": \"singles\",\n  \"vacancyMethod\": \"ranked-contenders\",\n  \"roster\": {\n    \"determinism-wrestler-0-0aef8d4f\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-0-0aef8d4f\",\n      \"name\": \"Determinism Wrestler 0\",\n      \"epithet\": \"D\",\n      \"side\": \"fan-favorite\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 74,\n      \"weight\": 236,\n      \"attributes\": {\n        \"pow\": 54,\n        \"agi\": 54,\n        \"qui\": 54,\n        \"tec\": 53,\n        \"end\": 53\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 21,\n        \"currentAge\": 21,\n        \"previousExperience\": [],\n        \"debutRoll\": 82,\n        \"debutTotal\": 103,\n        \"debutResult\": \"win-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 11,\n        \"physicalPointTotal\": 268,\n        \"baseAttributes\": {\n          \"pow\": 54,\n          \"agi\": 54,\n          \"qui\": 54,\n          \"tec\": 53,\n          \"end\": 53\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-1-6ad9a28a\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-1-6ad9a28a\",\n      \"name\": \"Determinism Wrestler 1\",\n      \"epithet\": \"D\",\n      \"side\": \"rulebreaker\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 76,\n      \"weight\": 253,\n      \"attributes\": {\n        \"pow\": 51,\n        \"agi\": 51,\n        \"qui\": 51,\n        \"tec\": 51,\n        \"end\": 51\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 18,\n        \"currentAge\": 18,\n        \"previousExperience\": [],\n        \"debutRoll\": 23,\n        \"debutTotal\": 44,\n        \"debutResult\": \"loss-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 12,\n        \"physicalPointTotal\": 255,\n        \"baseAttributes\": {\n          \"pow\": 51,\n          \"agi\": 51,\n          \"qui\": 51,\n          \"tec\": 51,\n          \"end\": 51\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-2-1ef553ed\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-2-1ef553ed\",\n      \"name\": \"Determinism Wrestler 2\",\n      \"epithet\": \"D\",\n      \"side\": \"fan-favorite\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 75,\n      \"weight\": 234,\n      \"attributes\": {\n        \"pow\": 53,\n        \"agi\": 53,\n        \"qui\": 53,\n        \"tec\": 52,\n        \"end\": 52\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 22,\n        \"currentAge\": 22,\n        \"previousExperience\": [],\n        \"debutRoll\": 37,\n        \"debutTotal\": 58,\n        \"debutResult\": \"loss-dq\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 13,\n        \"physicalPointTotal\": 263,\n        \"baseAttributes\": {\n          \"pow\": 53,\n          \"agi\": 53,\n          \"qui\": 53,\n          \"tec\": 52,\n          \"end\": 52\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-3-fcf2137a\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-3-fcf2137a\",\n      \"name\": \"Determinism Wrestler 3\",\n      \"epithet\": \"D\",\n      \"side\": \"rulebreaker\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 81,\n      \"weight\": 297,\n      \"attributes\": {\n        \"pow\": 50,\n        \"agi\": 49,\n        \"qui\": 49,\n        \"tec\": 49,\n        \"end\": 49\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 28,\n        \"currentAge\": 28,\n        \"previousExperience\": [],\n        \"debutRoll\": 97,\n        \"debutTotal\": 115,\n        \"debutResult\": \"win-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 14,\n        \"physicalPointTotal\": 246,\n        \"baseAttributes\": {\n          \"pow\": 50,\n          \"agi\": 49,\n          \"qui\": 49,\n          \"tec\": 49,\n          \"end\": 49\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    }\n  },\n  \"teams\": {},\n  \"rankings\": {\n    \"singles\": {\n      \"id\": \"ranking-92a30106\",\n      \"month\": \"1991-01\",\n      \"division\": \"singles\",\n      \"championId\": \"determinism-wrestler-0-0aef8d4f\",\n      \"entries\": [\n        {\n          \"entrantId\": \"determinism-wrestler-1-6ad9a28a\",\n          \"rank\": 1,\n          \"priorRank\": 1,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 9,\n          \"totalPoints\": 9,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        },\n        {\n          \"entrantId\": \"determinism-wrestler-2-1ef553ed\",\n          \"rank\": 2,\n          \"priorRank\": 2,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 8,\n          \"totalPoints\": 8,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        },\n        {\n          \"entrantId\": \"determinism-wrestler-3-fcf2137a\",\n          \"rank\": 3,\n          \"priorRank\": 3,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 7,\n          \"totalPoints\": 7,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        }\n      ],\n      \"finalizedAt\": \"1991-01-01\",\n      \"formula\": \"Initial table: total WP, stable ID; championship guaranteed placements applied.\"\n    },\n    \"tag\": {\n      \"id\": \"ranking-fa76a937\",\n      \"month\": \"1991-01\",\n      \"division\": \"tag\",\n      \"championId\": null,\n      \"entries\": [],\n      \"finalizedAt\": \"1991-01-01\",\n      \"formula\": \"Initial table: total WP, stable ID; championship guaranteed placements applied.\"\n    }\n  },\n  \"rankingHistory\": [],\n  \"monthlyRatingPoints\": {\n    \"singles\": {},\n    \"tag\": {}\n  },\n  \"titles\": {\n    \"world-heavyweight\": {\n      \"id\": \"world-heavyweight\",\n      \"name\": \"World Heavyweight\",\n      \"division\": \"singles\",\n      \"hierarchy\": 3,\n      \"holderId\": \"determinism-wrestler-0-0aef8d4f\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 2,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-0-0aef8d4f\",\n          \"detail\": \"Initial holder determinism-wrestler-0-0aef8d4f.\"\n        }\n      ]\n    },\n    \"international\": {\n      \"id\": \"international\",\n      \"name\": \"International\",\n      \"division\": \"singles\",\n      \"hierarchy\": 2,\n      \"holderId\": \"determinism-wrestler-1-6ad9a28a\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 3,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-1-6ad9a28a\",\n          \"detail\": \"Initial holder determinism-wrestler-1-6ad9a28a.\"\n        }\n      ]\n    },\n    \"television\": {\n      \"id\": \"television\",\n      \"name\": \"Television\",\n      \"division\": \"singles\",\n      \"hierarchy\": 1,\n      \"holderId\": \"determinism-wrestler-2-1ef553ed\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 1,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-2-1ef553ed\",\n          \"detail\": \"Initial holder determinism-wrestler-2-1ef553ed.\"\n        }\n      ]\n    },\n    \"world-tag\": {\n      \"id\": \"world-tag\",\n      \"name\": \"World Tag\",\n      \"division\": \"tag\",\n      \"hierarchy\": 2,\n      \"holderId\": null,\n      \"status\": \"vacant\",\n      \"wonDate\": null,\n      \"lastDefenseDate\": null,\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 0,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": null,\n          \"detail\": \"Created vacant.\"\n        }\n      ]\n    },\n    \"american-tag\": {\n      \"id\": \"american-tag\",\n      \"name\": \"American Tag\",\n      \"division\": \"tag\",\n      \"hierarchy\": 1,\n      \"holderId\": null,\n      \"status\": \"vacant\",\n      \"wonDate\": null,\n      \"lastDefenseDate\": null,\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 0,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": null,\n          \"detail\": \"Created vacant.\"\n        }\n      ]\n    }\n  },\n  \"schedule\": [],\n  \"titleShotOffers\": [],\n  \"vacancies\": [],\n  \"injuries\": [],\n  \"matchHistory\": [],\n  \"appliedMatchIds\": [],\n  \"activeMatchId\": null,\n  \"activeMatch\": null,\n  \"events\": [\n    {\n      \"sequence\": 1,\n      \"id\": \"career-event-39163653\",\n      \"date\": \"1991-01-01\",\n      \"type\": \"campaign-start\",\n      \"input\": {\n        \"config\": {\n          \"name\": \"Save Determinism Alpha\",\n          \"seed\": 11,\n          \"startDate\": \"1991-01-01\",\n          \"roster\": [\n            \"determinism-wrestler-0-0aef8d4f\",\n            \"determinism-wrestler-1-6ad9a28a\",\n            \"determinism-wrestler-2-1ef553ed\",\n            \"determinism-wrestler-3-fcf2137a\"\n          ],\n          \"playerEntrantId\": \"determinism-wrestler-0-0aef8d4f\",\n          \"playerDivision\": \"singles\"\n        }\n      },\n      \"summary\": \"Started Save Determinism Alpha.\",\n      \"detail\": [\n        \"Campaign campaign-18475e61 began on 1991-01-01; rules 1.2.0-m5-candidate; data 0d895191.\",\n        \"World Heavyweight: ceil(D6 4 / 2) = 2 required defenses for 1991-01.\",\n        \"International: ceil(D6 6 / 2) = 3 required defenses for 1991-01.\",\n        \"Television: ceil(D6 1 / 2) = 1 required defenses for 1991-01.\",\n        \"World Tag: vacant, no defense roll.\",\n        \"American Tag: vacant, no defense roll.\"\n      ],\n      \"dice\": [\n        {\n          \"label\": \"World Heavyweight monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 4\n        },\n        {\n          \"label\": \"International monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 6\n        },\n        {\n          \"label\": \"Television monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 1\n        }\n      ],\n      \"preStateHash\": \"c14n-fnv1a64-v1:632f2966815c588e\",\n      \"postStateHash\": \"c14n-fnv1a64-v1:e8a253f0608a3005\"\n    }\n  ]\n}"
+    },
+    {
+      "key": "bravo",
+      "campaignId": "campaign-efcbec10",
+      "name": "Save Determinism Bravo",
+      "currentDate": "1991-01-01",
+      "campaignJson": "{\n  \"schemaVersion\": \"asw91-campaign-v1\",\n  \"rulesetVersion\": \"1.1.0-m4-candidate\",\n  \"campaignRulesetVersion\": \"1.2.0-m5-candidate\",\n  \"dataPackVersion\": \"classic-1991-m5-v1\",\n  \"dataHash\": \"0d895191\",\n  \"campaignId\": \"campaign-efcbec10\",\n  \"name\": \"Save Determinism Bravo\",\n  \"seed\": 22,\n  \"rng\": {\n    \"algorithm\": \"xorshift32-v1\",\n    \"initialSeed\": 22,\n    \"state\": 3010405202,\n    \"scriptedRolls\": [],\n    \"scriptedIndex\": 0\n  },\n  \"createdAt\": \"1991-01-01\",\n  \"updatedAt\": \"1991-01-01\",\n  \"startDate\": \"1991-01-01\",\n  \"currentDate\": \"1991-01-01\",\n  \"playerEntrantId\": \"determinism-wrestler-0-ff7bd7c8\",\n  \"playerDivision\": \"singles\",\n  \"vacancyMethod\": \"ranked-contenders\",\n  \"roster\": {\n    \"determinism-wrestler-0-ff7bd7c8\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-0-ff7bd7c8\",\n      \"name\": \"Determinism Wrestler 0\",\n      \"epithet\": \"D\",\n      \"side\": \"fan-favorite\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 67,\n      \"weight\": 211,\n      \"attributes\": {\n        \"pow\": 50,\n        \"agi\": 50,\n        \"qui\": 49,\n        \"tec\": 49,\n        \"end\": 49\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 24,\n        \"currentAge\": 24,\n        \"previousExperience\": [],\n        \"debutRoll\": 24,\n        \"debutTotal\": 42,\n        \"debutResult\": \"loss-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 22,\n        \"physicalPointTotal\": 247,\n        \"baseAttributes\": {\n          \"pow\": 50,\n          \"agi\": 50,\n          \"qui\": 49,\n          \"tec\": 49,\n          \"end\": 49\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-1-f8b299de\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-1-f8b299de\",\n      \"name\": \"Determinism Wrestler 1\",\n      \"epithet\": \"D\",\n      \"side\": \"rulebreaker\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 84,\n      \"weight\": 329,\n      \"attributes\": {\n        \"pow\": 52,\n        \"agi\": 52,\n        \"qui\": 51,\n        \"tec\": 51,\n        \"end\": 51\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 27,\n        \"currentAge\": 27,\n        \"previousExperience\": [],\n        \"debutRoll\": 13,\n        \"debutTotal\": 34,\n        \"debutResult\": \"loss-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 23,\n        \"physicalPointTotal\": 257,\n        \"baseAttributes\": {\n          \"pow\": 52,\n          \"agi\": 52,\n          \"qui\": 51,\n          \"tec\": 51,\n          \"end\": 51\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-2-acf4eb29\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-2-acf4eb29\",\n      \"name\": \"Determinism Wrestler 2\",\n      \"epithet\": \"D\",\n      \"side\": \"fan-favorite\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 79,\n      \"weight\": 305,\n      \"attributes\": {\n        \"pow\": 52,\n        \"agi\": 52,\n        \"qui\": 52,\n        \"tec\": 52,\n        \"end\": 51\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 25,\n        \"currentAge\": 25,\n        \"previousExperience\": [],\n        \"debutRoll\": 19,\n        \"debutTotal\": 40,\n        \"debutResult\": \"loss-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 24,\n        \"physicalPointTotal\": 259,\n        \"baseAttributes\": {\n          \"pow\": 52,\n          \"agi\": 52,\n          \"qui\": 52,\n          \"tec\": 52,\n          \"end\": 51\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-3-ef055f69\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-3-ef055f69\",\n      \"name\": \"Determinism Wrestler 3\",\n      \"epithet\": \"D\",\n      \"side\": \"rulebreaker\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 72,\n      \"weight\": 237,\n      \"attributes\": {\n        \"pow\": 53,\n        \"agi\": 53,\n        \"qui\": 53,\n        \"tec\": 53,\n        \"end\": 53\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 21,\n        \"currentAge\": 21,\n        \"previousExperience\": [],\n        \"debutRoll\": 46,\n        \"debutTotal\": 67,\n        \"debutResult\": \"loss-dq\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 25,\n        \"physicalPointTotal\": 265,\n        \"baseAttributes\": {\n          \"pow\": 53,\n          \"agi\": 53,\n          \"qui\": 53,\n          \"tec\": 53,\n          \"end\": 53\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    }\n  },\n  \"teams\": {},\n  \"rankings\": {\n    \"singles\": {\n      \"id\": \"ranking-7638fe44\",\n      \"month\": \"1991-01\",\n      \"division\": \"singles\",\n      \"championId\": \"determinism-wrestler-0-ff7bd7c8\",\n      \"entries\": [\n        {\n          \"entrantId\": \"determinism-wrestler-1-f8b299de\",\n          \"rank\": 1,\n          \"priorRank\": 1,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 9,\n          \"totalPoints\": 9,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        },\n        {\n          \"entrantId\": \"determinism-wrestler-2-acf4eb29\",\n          \"rank\": 2,\n          \"priorRank\": 2,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 8,\n          \"totalPoints\": 8,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        },\n        {\n          \"entrantId\": \"determinism-wrestler-3-ef055f69\",\n          \"rank\": 3,\n          \"priorRank\": 3,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 7,\n          \"totalPoints\": 7,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        }\n      ],\n      \"finalizedAt\": \"1991-01-01\",\n      \"formula\": \"Initial table: total WP, stable ID; championship guaranteed placements applied.\"\n    },\n    \"tag\": {\n      \"id\": \"ranking-c53e5433\",\n      \"month\": \"1991-01\",\n      \"division\": \"tag\",\n      \"championId\": null,\n      \"entries\": [],\n      \"finalizedAt\": \"1991-01-01\",\n      \"formula\": \"Initial table: total WP, stable ID; championship guaranteed placements applied.\"\n    }\n  },\n  \"rankingHistory\": [],\n  \"monthlyRatingPoints\": {\n    \"singles\": {},\n    \"tag\": {}\n  },\n  \"titles\": {\n    \"world-heavyweight\": {\n      \"id\": \"world-heavyweight\",\n      \"name\": \"World Heavyweight\",\n      \"division\": \"singles\",\n      \"hierarchy\": 3,\n      \"holderId\": \"determinism-wrestler-0-ff7bd7c8\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 2,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-0-ff7bd7c8\",\n          \"detail\": \"Initial holder determinism-wrestler-0-ff7bd7c8.\"\n        }\n      ]\n    },\n    \"international\": {\n      \"id\": \"international\",\n      \"name\": \"International\",\n      \"division\": \"singles\",\n      \"hierarchy\": 2,\n      \"holderId\": \"determinism-wrestler-1-f8b299de\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 1,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-1-f8b299de\",\n          \"detail\": \"Initial holder determinism-wrestler-1-f8b299de.\"\n        }\n      ]\n    },\n    \"television\": {\n      \"id\": \"television\",\n      \"name\": \"Television\",\n      \"division\": \"singles\",\n      \"hierarchy\": 1,\n      \"holderId\": \"determinism-wrestler-2-acf4eb29\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 2,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-2-acf4eb29\",\n          \"detail\": \"Initial holder determinism-wrestler-2-acf4eb29.\"\n        }\n      ]\n    },\n    \"world-tag\": {\n      \"id\": \"world-tag\",\n      \"name\": \"World Tag\",\n      \"division\": \"tag\",\n      \"hierarchy\": 2,\n      \"holderId\": null,\n      \"status\": \"vacant\",\n      \"wonDate\": null,\n      \"lastDefenseDate\": null,\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 0,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": null,\n          \"detail\": \"Created vacant.\"\n        }\n      ]\n    },\n    \"american-tag\": {\n      \"id\": \"american-tag\",\n      \"name\": \"American Tag\",\n      \"division\": \"tag\",\n      \"hierarchy\": 1,\n      \"holderId\": null,\n      \"status\": \"vacant\",\n      \"wonDate\": null,\n      \"lastDefenseDate\": null,\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 0,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": null,\n          \"detail\": \"Created vacant.\"\n        }\n      ]\n    }\n  },\n  \"schedule\": [],\n  \"titleShotOffers\": [],\n  \"vacancies\": [],\n  \"injuries\": [],\n  \"matchHistory\": [],\n  \"appliedMatchIds\": [],\n  \"activeMatchId\": null,\n  \"activeMatch\": null,\n  \"events\": [\n    {\n      \"sequence\": 1,\n      \"id\": \"career-event-08ee8f5b\",\n      \"date\": \"1991-01-01\",\n      \"type\": \"campaign-start\",\n      \"input\": {\n        \"config\": {\n          \"name\": \"Save Determinism Bravo\",\n          \"seed\": 22,\n          \"startDate\": \"1991-01-01\",\n          \"roster\": [\n            \"determinism-wrestler-0-ff7bd7c8\",\n            \"determinism-wrestler-1-f8b299de\",\n            \"determinism-wrestler-2-acf4eb29\",\n            \"determinism-wrestler-3-ef055f69\"\n          ],\n          \"playerEntrantId\": \"determinism-wrestler-0-ff7bd7c8\",\n          \"playerDivision\": \"singles\"\n        }\n      },\n      \"summary\": \"Started Save Determinism Bravo.\",\n      \"detail\": [\n        \"Campaign campaign-efcbec10 began on 1991-01-01; rules 1.2.0-m5-candidate; data 0d895191.\",\n        \"World Heavyweight: ceil(D6 4 / 2) = 2 required defenses for 1991-01.\",\n        \"International: ceil(D6 2 / 2) = 1 required defenses for 1991-01.\",\n        \"Television: ceil(D6 3 / 2) = 2 required defenses for 1991-01.\",\n        \"World Tag: vacant, no defense roll.\",\n        \"American Tag: vacant, no defense roll.\"\n      ],\n      \"dice\": [\n        {\n          \"label\": \"World Heavyweight monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 4\n        },\n        {\n          \"label\": \"International monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 2\n        },\n        {\n          \"label\": \"Television monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 3\n        }\n      ],\n      \"preStateHash\": \"c14n-fnv1a64-v1:a36f30ee23c44709\",\n      \"postStateHash\": \"c14n-fnv1a64-v1:9d9835423333603f\"\n    }\n  ]\n}"
+    },
+    {
+      "key": "charlie",
+      "campaignId": "campaign-a0cee4f9",
+      "name": "Save Determinism Charlie",
+      "currentDate": "1991-01-01",
+      "campaignJson": "{\n  \"schemaVersion\": \"asw91-campaign-v1\",\n  \"rulesetVersion\": \"1.1.0-m4-candidate\",\n  \"campaignRulesetVersion\": \"1.2.0-m5-candidate\",\n  \"dataPackVersion\": \"classic-1991-m5-v1\",\n  \"dataHash\": \"0d895191\",\n  \"campaignId\": \"campaign-a0cee4f9\",\n  \"name\": \"Save Determinism Charlie\",\n  \"seed\": 33,\n  \"rng\": {\n    \"algorithm\": \"xorshift32-v1\",\n    \"initialSeed\": 33,\n    \"state\": 240172397,\n    \"scriptedRolls\": [],\n    \"scriptedIndex\": 0\n  },\n  \"createdAt\": \"1991-01-01\",\n  \"updatedAt\": \"1991-01-01\",\n  \"startDate\": \"1991-01-01\",\n  \"currentDate\": \"1991-01-01\",\n  \"playerEntrantId\": \"determinism-wrestler-0-3b97244f\",\n  \"playerDivision\": \"singles\",\n  \"vacancyMethod\": \"ranked-contenders\",\n  \"roster\": {\n    \"determinism-wrestler-0-3b97244f\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-0-3b97244f\",\n      \"name\": \"Determinism Wrestler 0\",\n      \"epithet\": \"D\",\n      \"side\": \"fan-favorite\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 77,\n      \"weight\": 297,\n      \"attributes\": {\n        \"pow\": 52,\n        \"agi\": 52,\n        \"qui\": 52,\n        \"tec\": 52,\n        \"end\": 51\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 16,\n        \"currentAge\": 16,\n        \"previousExperience\": [],\n        \"debutRoll\": 54,\n        \"debutTotal\": 75,\n        \"debutResult\": \"double-dq\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 33,\n        \"physicalPointTotal\": 259,\n        \"baseAttributes\": {\n          \"pow\": 52,\n          \"agi\": 52,\n          \"qui\": 52,\n          \"tec\": 52,\n          \"end\": 51\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-1-672b7355\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-1-672b7355\",\n      \"name\": \"Determinism Wrestler 1\",\n      \"epithet\": \"D\",\n      \"side\": \"rulebreaker\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 83,\n      \"weight\": 316,\n      \"attributes\": {\n        \"pow\": 51,\n        \"agi\": 51,\n        \"qui\": 51,\n        \"tec\": 51,\n        \"end\": 50\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 23,\n        \"currentAge\": 23,\n        \"previousExperience\": [],\n        \"debutRoll\": 18,\n        \"debutTotal\": 39,\n        \"debutResult\": \"loss-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 34,\n        \"physicalPointTotal\": 254,\n        \"baseAttributes\": {\n          \"pow\": 51,\n          \"agi\": 51,\n          \"qui\": 51,\n          \"tec\": 51,\n          \"end\": 50\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-2-7ea372fd\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-2-7ea372fd\",\n      \"name\": \"Determinism Wrestler 2\",\n      \"epithet\": \"D\",\n      \"side\": \"fan-favorite\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 74,\n      \"weight\": 250,\n      \"attributes\": {\n        \"pow\": 52,\n        \"agi\": 52,\n        \"qui\": 52,\n        \"tec\": 51,\n        \"end\": 51\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 18,\n        \"currentAge\": 18,\n        \"previousExperience\": [],\n        \"debutRoll\": 81,\n        \"debutTotal\": 102,\n        \"debutResult\": \"win-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 35,\n        \"physicalPointTotal\": 258,\n        \"baseAttributes\": {\n          \"pow\": 52,\n          \"agi\": 52,\n          \"qui\": 52,\n          \"tec\": 51,\n          \"end\": 51\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-3-aa4590b0\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-3-aa4590b0\",\n      \"name\": \"Determinism Wrestler 3\",\n      \"epithet\": \"D\",\n      \"side\": \"rulebreaker\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 74,\n      \"weight\": 243,\n      \"attributes\": {\n        \"pow\": 51,\n        \"agi\": 51,\n        \"qui\": 51,\n        \"tec\": 50,\n        \"end\": 50\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 22,\n        \"currentAge\": 22,\n        \"previousExperience\": [],\n        \"debutRoll\": 40,\n        \"debutTotal\": 60,\n        \"debutResult\": \"loss-dq\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 36,\n        \"physicalPointTotal\": 253,\n        \"baseAttributes\": {\n          \"pow\": 51,\n          \"agi\": 51,\n          \"qui\": 51,\n          \"tec\": 50,\n          \"end\": 50\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    }\n  },\n  \"teams\": {},\n  \"rankings\": {\n    \"singles\": {\n      \"id\": \"ranking-25a04155\",\n      \"month\": \"1991-01\",\n      \"division\": \"singles\",\n      \"championId\": \"determinism-wrestler-0-3b97244f\",\n      \"entries\": [\n        {\n          \"entrantId\": \"determinism-wrestler-1-672b7355\",\n          \"rank\": 1,\n          \"priorRank\": 1,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 9,\n          \"totalPoints\": 9,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        },\n        {\n          \"entrantId\": \"determinism-wrestler-2-7ea372fd\",\n          \"rank\": 2,\n          \"priorRank\": 2,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 8,\n          \"totalPoints\": 8,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        },\n        {\n          \"entrantId\": \"determinism-wrestler-3-aa4590b0\",\n          \"rank\": 3,\n          \"priorRank\": 3,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 7,\n          \"totalPoints\": 7,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        }\n      ],\n      \"finalizedAt\": \"1991-01-01\",\n      \"formula\": \"Initial table: total WP, stable ID; championship guaranteed placements applied.\"\n    },\n    \"tag\": {\n      \"id\": \"ranking-1ab31691\",\n      \"month\": \"1991-01\",\n      \"division\": \"tag\",\n      \"championId\": null,\n      \"entries\": [],\n      \"finalizedAt\": \"1991-01-01\",\n      \"formula\": \"Initial table: total WP, stable ID; championship guaranteed placements applied.\"\n    }\n  },\n  \"rankingHistory\": [],\n  \"monthlyRatingPoints\": {\n    \"singles\": {},\n    \"tag\": {}\n  },\n  \"titles\": {\n    \"world-heavyweight\": {\n      \"id\": \"world-heavyweight\",\n      \"name\": \"World Heavyweight\",\n      \"division\": \"singles\",\n      \"hierarchy\": 3,\n      \"holderId\": \"determinism-wrestler-0-3b97244f\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 2,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-0-3b97244f\",\n          \"detail\": \"Initial holder determinism-wrestler-0-3b97244f.\"\n        }\n      ]\n    },\n    \"international\": {\n      \"id\": \"international\",\n      \"name\": \"International\",\n      \"division\": \"singles\",\n      \"hierarchy\": 2,\n      \"holderId\": \"determinism-wrestler-1-672b7355\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 1,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-1-672b7355\",\n          \"detail\": \"Initial holder determinism-wrestler-1-672b7355.\"\n        }\n      ]\n    },\n    \"television\": {\n      \"id\": \"television\",\n      \"name\": \"Television\",\n      \"division\": \"singles\",\n      \"hierarchy\": 1,\n      \"holderId\": \"determinism-wrestler-2-7ea372fd\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 3,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-2-7ea372fd\",\n          \"detail\": \"Initial holder determinism-wrestler-2-7ea372fd.\"\n        }\n      ]\n    },\n    \"world-tag\": {\n      \"id\": \"world-tag\",\n      \"name\": \"World Tag\",\n      \"division\": \"tag\",\n      \"hierarchy\": 2,\n      \"holderId\": null,\n      \"status\": \"vacant\",\n      \"wonDate\": null,\n      \"lastDefenseDate\": null,\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 0,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": null,\n          \"detail\": \"Created vacant.\"\n        }\n      ]\n    },\n    \"american-tag\": {\n      \"id\": \"american-tag\",\n      \"name\": \"American Tag\",\n      \"division\": \"tag\",\n      \"hierarchy\": 1,\n      \"holderId\": null,\n      \"status\": \"vacant\",\n      \"wonDate\": null,\n      \"lastDefenseDate\": null,\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 0,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": null,\n          \"detail\": \"Created vacant.\"\n        }\n      ]\n    }\n  },\n  \"schedule\": [],\n  \"titleShotOffers\": [],\n  \"vacancies\": [],\n  \"injuries\": [],\n  \"matchHistory\": [],\n  \"appliedMatchIds\": [],\n  \"activeMatchId\": null,\n  \"activeMatch\": null,\n  \"events\": [\n    {\n      \"sequence\": 1,\n      \"id\": \"career-event-edb96bca\",\n      \"date\": \"1991-01-01\",\n      \"type\": \"campaign-start\",\n      \"input\": {\n        \"config\": {\n          \"name\": \"Save Determinism Charlie\",\n          \"seed\": 33,\n          \"startDate\": \"1991-01-01\",\n          \"roster\": [\n            \"determinism-wrestler-0-3b97244f\",\n            \"determinism-wrestler-1-672b7355\",\n            \"determinism-wrestler-2-7ea372fd\",\n            \"determinism-wrestler-3-aa4590b0\"\n          ],\n          \"playerEntrantId\": \"determinism-wrestler-0-3b97244f\",\n          \"playerDivision\": \"singles\"\n        }\n      },\n      \"summary\": \"Started Save Determinism Charlie.\",\n      \"detail\": [\n        \"Campaign campaign-a0cee4f9 began on 1991-01-01; rules 1.2.0-m5-candidate; data 0d895191.\",\n        \"World Heavyweight: ceil(D6 4 / 2) = 2 required defenses for 1991-01.\",\n        \"International: ceil(D6 2 / 2) = 1 required defenses for 1991-01.\",\n        \"Television: ceil(D6 6 / 2) = 3 required defenses for 1991-01.\",\n        \"World Tag: vacant, no defense roll.\",\n        \"American Tag: vacant, no defense roll.\"\n      ],\n      \"dice\": [\n        {\n          \"label\": \"World Heavyweight monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 4\n        },\n        {\n          \"label\": \"International monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 2\n        },\n        {\n          \"label\": \"Television monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 6\n        }\n      ],\n      \"preStateHash\": \"c14n-fnv1a64-v1:5d1ab46225520775\",\n      \"postStateHash\": \"c14n-fnv1a64-v1:101cff1add8720d0\"\n    }\n  ]\n}"
+    },
+    {
+      "key": "delta",
+      "campaignId": "campaign-87bfbfb2",
+      "name": "Save Determinism Delta",
+      "currentDate": "1991-01-01",
+      "campaignJson": "{\n  \"schemaVersion\": \"asw91-campaign-v1\",\n  \"rulesetVersion\": \"1.1.0-m4-candidate\",\n  \"campaignRulesetVersion\": \"1.2.0-m5-candidate\",\n  \"dataPackVersion\": \"classic-1991-m5-v1\",\n  \"dataHash\": \"0d895191\",\n  \"campaignId\": \"campaign-87bfbfb2\",\n  \"name\": \"Save Determinism Delta\",\n  \"seed\": 44,\n  \"rng\": {\n    \"algorithm\": \"xorshift32-v1\",\n    \"initialSeed\": 44,\n    \"state\": 1724827269,\n    \"scriptedRolls\": [],\n    \"scriptedIndex\": 0\n  },\n  \"createdAt\": \"1991-01-01\",\n  \"updatedAt\": \"1991-01-01\",\n  \"startDate\": \"1991-01-01\",\n  \"currentDate\": \"1991-01-01\",\n  \"playerEntrantId\": \"determinism-wrestler-0-c60b731d\",\n  \"playerDivision\": \"singles\",\n  \"vacancyMethod\": \"ranked-contenders\",\n  \"roster\": {\n    \"determinism-wrestler-0-c60b731d\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-0-c60b731d\",\n      \"name\": \"Determinism Wrestler 0\",\n      \"epithet\": \"D\",\n      \"side\": \"fan-favorite\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 73,\n      \"weight\": 222,\n      \"attributes\": {\n        \"pow\": 51,\n        \"agi\": 51,\n        \"qui\": 51,\n        \"tec\": 51,\n        \"end\": 50\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 23,\n        \"currentAge\": 23,\n        \"previousExperience\": [],\n        \"debutRoll\": 39,\n        \"debutTotal\": 60,\n        \"debutResult\": \"loss-dq\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 44,\n        \"physicalPointTotal\": 254,\n        \"baseAttributes\": {\n          \"pow\": 51,\n          \"agi\": 51,\n          \"qui\": 51,\n          \"tec\": 51,\n          \"end\": 50\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-1-3f5bf798\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-1-3f5bf798\",\n      \"name\": \"Determinism Wrestler 1\",\n      \"epithet\": \"D\",\n      \"side\": \"rulebreaker\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 78,\n      \"weight\": 275,\n      \"attributes\": {\n        \"pow\": 52,\n        \"agi\": 51,\n        \"qui\": 51,\n        \"tec\": 51,\n        \"end\": 51\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 22,\n        \"currentAge\": 22,\n        \"previousExperience\": [],\n        \"debutRoll\": 50,\n        \"debutTotal\": 71,\n        \"debutResult\": \"double-dq\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 45,\n        \"physicalPointTotal\": 256,\n        \"baseAttributes\": {\n          \"pow\": 52,\n          \"agi\": 51,\n          \"qui\": 51,\n          \"tec\": 51,\n          \"end\": 51\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-2-0595423e\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-2-0595423e\",\n      \"name\": \"Determinism Wrestler 2\",\n      \"epithet\": \"D\",\n      \"side\": \"fan-favorite\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 78,\n      \"weight\": 255,\n      \"attributes\": {\n        \"pow\": 54,\n        \"agi\": 54,\n        \"qui\": 54,\n        \"tec\": 54,\n        \"end\": 53\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 22,\n        \"currentAge\": 22,\n        \"previousExperience\": [],\n        \"debutRoll\": 24,\n        \"debutTotal\": 45,\n        \"debutResult\": \"loss-pin-submission\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 46,\n        \"physicalPointTotal\": 269,\n        \"baseAttributes\": {\n          \"pow\": 54,\n          \"agi\": 54,\n          \"qui\": 54,\n          \"tec\": 54,\n          \"end\": 53\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    },\n    \"determinism-wrestler-3-952fcf20\": {\n      \"schemaVersion\": \"asw91-wrestler-v1\",\n      \"rulesetVersion\": \"1.1.0-m4-candidate\",\n      \"id\": \"determinism-wrestler-3-952fcf20\",\n      \"name\": \"Determinism Wrestler 3\",\n      \"epithet\": \"D\",\n      \"side\": \"rulebreaker\",\n      \"affiliation\": \"Determinism Roster\",\n      \"heightInches\": 73,\n      \"weight\": 249,\n      \"attributes\": {\n        \"pow\": 53,\n        \"agi\": 52,\n        \"qui\": 52,\n        \"tec\": 52,\n        \"end\": 52\n      },\n      \"maneuverLevels\": {\n        \"the-rack\": 1,\n        \"bear-hug\": 1,\n        \"piledriver\": 1,\n        \"shoulder-breaker\": 1,\n        \"sleeper\": 1,\n        \"headbutt-flying\": 1,\n        \"neck-vise\": 1\n      },\n      \"customManeuvers\": {},\n      \"skills\": {\n        \"breakHold\": 0,\n        \"distractReferee\": 0,\n        \"dodge\": 0,\n        \"escapePin\": 0,\n        \"illegalPin\": 0,\n        \"irishWhip\": 0,\n        \"pinInterference\": 0,\n        \"tagTeam\": 0,\n        \"charm\": 0\n      },\n      \"drawbacks\": [],\n      \"history\": {\n        \"debutAge\": 21,\n        \"currentAge\": 21,\n        \"previousExperience\": [],\n        \"debutRoll\": 71,\n        \"debutTotal\": 92,\n        \"debutResult\": \"win-dq\",\n        \"priorTitles\": []\n      },\n      \"fame\": 0,\n      \"careerWp\": 0,\n      \"creation\": {\n        \"seed\": 47,\n        \"physicalPointTotal\": 261,\n        \"baseAttributes\": {\n          \"pow\": 53,\n          \"agi\": 52,\n          \"qui\": 52,\n          \"tec\": 52,\n          \"end\": 52\n        },\n        \"baseSkillPoints\": 150,\n        \"priorTitlePoints\": 0,\n        \"drawbackPoints\": 0,\n        \"spentSkillPoints\": 150\n      }\n    }\n  },\n  \"teams\": {},\n  \"rankings\": {\n    \"singles\": {\n      \"id\": \"ranking-d1b62e7d\",\n      \"month\": \"1991-01\",\n      \"division\": \"singles\",\n      \"championId\": \"determinism-wrestler-0-c60b731d\",\n      \"entries\": [\n        {\n          \"entrantId\": \"determinism-wrestler-1-3f5bf798\",\n          \"rank\": 1,\n          \"priorRank\": 1,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 9,\n          \"totalPoints\": 9,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        },\n        {\n          \"entrantId\": \"determinism-wrestler-2-0595423e\",\n          \"rank\": 2,\n          \"priorRank\": 2,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 8,\n          \"totalPoints\": 8,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        },\n        {\n          \"entrantId\": \"determinism-wrestler-3-952fcf20\",\n          \"rank\": 3,\n          \"priorRank\": 3,\n          \"matchPoints\": 0,\n          \"priorRankBonus\": 7,\n          \"totalPoints\": 7,\n          \"totalWp\": 0,\n          \"tiebreakRolls\": []\n        }\n      ],\n      \"finalizedAt\": \"1991-01-01\",\n      \"formula\": \"Initial table: total WP, stable ID; championship guaranteed placements applied.\"\n    },\n    \"tag\": {\n      \"id\": \"ranking-9d51717d\",\n      \"month\": \"1991-01\",\n      \"division\": \"tag\",\n      \"championId\": null,\n      \"entries\": [],\n      \"finalizedAt\": \"1991-01-01\",\n      \"formula\": \"Initial table: total WP, stable ID; championship guaranteed placements applied.\"\n    }\n  },\n  \"rankingHistory\": [],\n  \"monthlyRatingPoints\": {\n    \"singles\": {},\n    \"tag\": {}\n  },\n  \"titles\": {\n    \"world-heavyweight\": {\n      \"id\": \"world-heavyweight\",\n      \"name\": \"World Heavyweight\",\n      \"division\": \"singles\",\n      \"hierarchy\": 3,\n      \"holderId\": \"determinism-wrestler-0-c60b731d\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 1,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-0-c60b731d\",\n          \"detail\": \"Initial holder determinism-wrestler-0-c60b731d.\"\n        }\n      ]\n    },\n    \"international\": {\n      \"id\": \"international\",\n      \"name\": \"International\",\n      \"division\": \"singles\",\n      \"hierarchy\": 2,\n      \"holderId\": \"determinism-wrestler-1-3f5bf798\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 2,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-1-3f5bf798\",\n          \"detail\": \"Initial holder determinism-wrestler-1-3f5bf798.\"\n        }\n      ]\n    },\n    \"television\": {\n      \"id\": \"television\",\n      \"name\": \"Television\",\n      \"division\": \"singles\",\n      \"hierarchy\": 1,\n      \"holderId\": \"determinism-wrestler-2-0595423e\",\n      \"status\": \"active\",\n      \"wonDate\": \"1991-01-01\",\n      \"lastDefenseDate\": \"1991-01-01\",\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 2,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": \"determinism-wrestler-2-0595423e\",\n          \"detail\": \"Initial holder determinism-wrestler-2-0595423e.\"\n        }\n      ]\n    },\n    \"world-tag\": {\n      \"id\": \"world-tag\",\n      \"name\": \"World Tag\",\n      \"division\": \"tag\",\n      \"hierarchy\": 2,\n      \"holderId\": null,\n      \"status\": \"vacant\",\n      \"wonDate\": null,\n      \"lastDefenseDate\": null,\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 0,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": null,\n          \"detail\": \"Created vacant.\"\n        }\n      ]\n    },\n    \"american-tag\": {\n      \"id\": \"american-tag\",\n      \"name\": \"American Tag\",\n      \"division\": \"tag\",\n      \"hierarchy\": 1,\n      \"holderId\": null,\n      \"status\": \"vacant\",\n      \"wonDate\": null,\n      \"lastDefenseDate\": null,\n      \"obligationMonth\": \"1991-01\",\n      \"requiredDefenses\": 0,\n      \"completedDefenses\": 0,\n      \"shotsReceived\": {},\n      \"history\": [\n        {\n          \"date\": \"1991-01-01\",\n          \"type\": \"created\",\n          \"entrantId\": null,\n          \"detail\": \"Created vacant.\"\n        }\n      ]\n    }\n  },\n  \"schedule\": [],\n  \"titleShotOffers\": [],\n  \"vacancies\": [],\n  \"injuries\": [],\n  \"matchHistory\": [],\n  \"appliedMatchIds\": [],\n  \"activeMatchId\": null,\n  \"activeMatch\": null,\n  \"events\": [\n    {\n      \"sequence\": 1,\n      \"id\": \"career-event-d07d0ddf\",\n      \"date\": \"1991-01-01\",\n      \"type\": \"campaign-start\",\n      \"input\": {\n        \"config\": {\n          \"name\": \"Save Determinism Delta\",\n          \"seed\": 44,\n          \"startDate\": \"1991-01-01\",\n          \"roster\": [\n            \"determinism-wrestler-0-c60b731d\",\n            \"determinism-wrestler-1-3f5bf798\",\n            \"determinism-wrestler-2-0595423e\",\n            \"determinism-wrestler-3-952fcf20\"\n          ],\n          \"playerEntrantId\": \"determinism-wrestler-0-c60b731d\",\n          \"playerDivision\": \"singles\"\n        }\n      },\n      \"summary\": \"Started Save Determinism Delta.\",\n      \"detail\": [\n        \"Campaign campaign-87bfbfb2 began on 1991-01-01; rules 1.2.0-m5-candidate; data 0d895191.\",\n        \"World Heavyweight: ceil(D6 1 / 2) = 1 required defenses for 1991-01.\",\n        \"International: ceil(D6 3 / 2) = 2 required defenses for 1991-01.\",\n        \"Television: ceil(D6 4 / 2) = 2 required defenses for 1991-01.\",\n        \"World Tag: vacant, no defense roll.\",\n        \"American Tag: vacant, no defense roll.\"\n      ],\n      \"dice\": [\n        {\n          \"label\": \"World Heavyweight monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 1\n        },\n        {\n          \"label\": \"International monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 3\n        },\n        {\n          \"label\": \"Television monthly defense requirement\",\n          \"sides\": 6,\n          \"result\": 4\n        }\n      ],\n      \"preStateHash\": \"c14n-fnv1a64-v1:fd27101bb225bc23\",\n      \"postStateHash\": \"c14n-fnv1a64-v1:3f17d7451b9560ba\"\n    }\n  ]\n}"
+    }
+  ],
+  "bundleMerge": {
+    "initialSaves": [
+      {
+        "key": "asw91-campaign-save-save-a1",
+        "saveId": "save-a1",
+        "name": "Alpha Draft",
+        "createdAt": "2026-01-01T00:00:00.000Z",
+        "updatedAt": "2026-01-10T00:00:00.000Z",
+        "campaignKey": "alpha"
+      },
+      {
+        "key": "asw91-campaign-save-save-b1",
+        "saveId": "save-b1",
+        "name": "Bravo Draft",
+        "createdAt": "2026-01-01T00:00:00.000Z",
+        "updatedAt": "2026-01-15T00:00:00.000Z",
+        "campaignKey": "bravo"
+      }
+    ],
+    "bundleEntries": [
+      {
+        "entry": "save",
+        "key": "asw91-campaign-save-incoming-a2",
+        "campaignKey": "alpha",
+        "saveId": "incoming-a2",
+        "name": "Alpha Reshuffle",
+        "createdAt": "2026-01-02T00:00:00.000Z",
+        "updatedAt": "2026-01-20T00:00:00.000Z"
+      },
+      {
+        "entry": "save",
+        "key": "asw91-campaign-save-incoming-b2",
+        "campaignKey": "bravo",
+        "saveId": "incoming-b2",
+        "name": "Bravo Reshuffle",
+        "createdAt": "2026-01-02T00:00:00.000Z",
+        "updatedAt": "2026-01-05T00:00:00.000Z"
+      },
+      {
+        "entry": "save",
+        "key": "asw91-campaign-save-incoming-c1",
+        "campaignKey": "charlie",
+        "saveId": "incoming-c1",
+        "name": "Charlie Premiere",
+        "createdAt": "2026-01-03T00:00:00.000Z",
+        "updatedAt": "2026-01-12T00:00:00.000Z"
+      },
+      {
+        "entry": "save",
+        "key": "asw91-campaign-save-incoming-d1",
+        "campaignKey": "delta",
+        "saveId": "incoming-d1",
+        "name": "Delta Premiere",
+        "createdAt": "2026-01-03T00:00:00.000Z",
+        "updatedAt": "2026-01-13T00:00:00.000Z"
+      },
+      {
+        "entry": "save",
+        "key": "asw91-campaign-save-incoming-d2",
+        "campaignKey": "delta",
+        "saveId": "incoming-d2",
+        "name": "Delta Refinement",
+        "createdAt": "2026-01-04T00:00:00.000Z",
+        "updatedAt": "2026-01-14T00:00:00.000Z"
+      },
+      {
+        "entry": "null"
+      },
+      {
+        "entry": "bad-key",
+        "key": "not-a-save-key"
+      }
+    ],
+    "observation": {
+      "plan": {
+        "rows": [
+          {
+            "key": "asw91-campaign-save-incoming-a2",
+            "outcome": "merged",
+            "incomingUpdatedAt": "2026-01-20T00:00:00.000Z",
+            "existingName": "Alpha Draft",
+            "existingUpdatedAt": "2026-01-10T00:00:00.000Z",
+            "reason": "Newer snapshot will update \"Alpha Draft\" in place (2026-01-20T00:00:00.000Z > 2026-01-10T00:00:00.000Z)."
+          },
+          {
+            "key": "asw91-campaign-save-incoming-b2",
+            "outcome": "keptLocal",
+            "incomingUpdatedAt": "2026-01-05T00:00:00.000Z",
+            "existingName": "Bravo Draft",
+            "existingUpdatedAt": "2026-01-15T00:00:00.000Z",
+            "reason": "Kept \"Bravo Draft\" - the incoming snapshot is not newer (2026-01-05T00:00:00.000Z)."
+          },
+          {
+            "key": "asw91-campaign-save-incoming-c1",
+            "outcome": "imported",
+            "incomingUpdatedAt": "2026-01-12T00:00:00.000Z",
+            "existingName": null,
+            "existingUpdatedAt": null,
+            "reason": "New save - will add \"Charlie Premiere\" (1991-01-01)."
+          },
+          {
+            "key": "asw91-campaign-save-incoming-d1",
+            "outcome": "imported",
+            "incomingUpdatedAt": "2026-01-13T00:00:00.000Z",
+            "existingName": null,
+            "existingUpdatedAt": null,
+            "reason": "New save - will add \"Delta Premiere\" (1991-01-01)."
+          },
+          {
+            "key": "asw91-campaign-save-incoming-d2",
+            "outcome": "merged",
+            "incomingUpdatedAt": "2026-01-14T00:00:00.000Z",
+            "existingName": "Delta Premiere",
+            "existingUpdatedAt": "2026-01-13T00:00:00.000Z",
+            "reason": "Newer snapshot will update \"Delta Premiere\" in place (2026-01-14T00:00:00.000Z > 2026-01-13T00:00:00.000Z)."
+          },
+          {
+            "key": "",
+            "outcome": "skipped",
+            "incomingUpdatedAt": "",
+            "existingName": null,
+            "existingUpdatedAt": null,
+            "reason": "Not a save entry."
+          },
+          {
+            "key": "not-a-save-key",
+            "outcome": "skipped",
+            "incomingUpdatedAt": "",
+            "existingName": null,
+            "existingUpdatedAt": null,
+            "reason": "Not a save entry."
+          }
+        ],
+        "totals": {
+          "imported": 2,
+          "merged": 2,
+          "keptLocal": 1,
+          "skipped": 2
+        }
+      },
+      "applyTotals": {
+        "imported": 2,
+        "merged": 2,
+        "keptLocal": 1,
+        "skipped": 2
+      },
+      "finalSaves": [
+        {
+          "key": "asw91-campaign-save-incoming-c1",
+          "name": "Charlie Premiere",
+          "campaignId": "campaign-a0cee4f9",
+          "updatedAt": "2026-01-12T00:00:00.000Z",
+          "campaignHash": "c14n-fnv1a64-v1:101cff1add8720d0"
+        },
+        {
+          "key": "asw91-campaign-save-incoming-d1",
+          "name": "Delta Premiere",
+          "campaignId": "campaign-87bfbfb2",
+          "updatedAt": "2026-01-14T00:00:00.000Z",
+          "campaignHash": "c14n-fnv1a64-v1:3f17d7451b9560ba"
+        },
+        {
+          "key": "asw91-campaign-save-save-a1",
+          "name": "Alpha Draft",
+          "campaignId": "campaign-18475e61",
+          "updatedAt": "2026-01-20T00:00:00.000Z",
+          "campaignHash": "c14n-fnv1a64-v1:e8a253f0608a3005"
+        },
+        {
+          "key": "asw91-campaign-save-save-b1",
+          "name": "Bravo Draft",
+          "campaignId": "campaign-efcbec10",
+          "updatedAt": "2026-01-15T00:00:00.000Z",
+          "campaignHash": "c14n-fnv1a64-v1:9d9835423333603f"
+        }
+      ]
+    },
+    "observationHash": "c14n-fnv1a64-v1:37009bcbbf5695bb"
+  },
+  "autosaveRing": {
+    "writes": [
+      {
+        "savedAt": "2026-01-01T00:00:00.000Z",
+        "campaignKey": "alpha",
+        "maxSnapshots": 4
+      },
+      {
+        "savedAt": "2026-01-08T00:00:00.000Z",
+        "campaignKey": "bravo",
+        "maxSnapshots": 4
+      },
+      {
+        "savedAt": "2026-01-08T00:00:00.000Z",
+        "campaignKey": "charlie",
+        "maxSnapshots": 4
+      },
+      {
+        "savedAt": "2026-01-15T00:00:00.000Z",
+        "campaignKey": "alpha",
+        "maxSnapshots": 4
+      },
+      {
+        "savedAt": "2026-01-22T00:00:00.000Z",
+        "campaignKey": "bravo",
+        "maxSnapshots": 4
+      }
+    ],
+    "deleteKey": "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000002",
+    "promoteKey": "asw91-project-ringcraft-autosave-v1-2026-01-15T00:00:00.000Z-000004",
+    "capPruneSteps": [
+      {
+        "cap": 3
+      },
+      {
+        "cap": 2
+      },
+      {
+        "cap": 1
+      }
+    ],
+    "observation": {
+      "writes": [
+        {
+          "savedAt": "2026-01-01T00:00:00.000Z",
+          "maxSnapshots": 4,
+          "meta": {
+            "key": "asw91-project-ringcraft-autosave-v1-2026-01-01T00:00:00.000Z-000001",
+            "campaignId": "campaign-18475e61",
+            "campaignHash": "c14n-fnv1a64-v1:e8a253f0608a3005"
+          },
+          "ringAfter": [
+            "asw91-project-ringcraft-autosave-v1-2026-01-01T00:00:00.000Z-000001"
+          ],
+          "pruned": 0
+        },
+        {
+          "savedAt": "2026-01-08T00:00:00.000Z",
+          "maxSnapshots": 4,
+          "meta": {
+            "key": "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000002",
+            "campaignId": "campaign-efcbec10",
+            "campaignHash": "c14n-fnv1a64-v1:9d9835423333603f"
+          },
+          "ringAfter": [
+            "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000002",
+            "asw91-project-ringcraft-autosave-v1-2026-01-01T00:00:00.000Z-000001"
+          ],
+          "pruned": 0
+        },
+        {
+          "savedAt": "2026-01-08T00:00:00.000Z",
+          "maxSnapshots": 4,
+          "meta": {
+            "key": "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000003",
+            "campaignId": "campaign-a0cee4f9",
+            "campaignHash": "c14n-fnv1a64-v1:101cff1add8720d0"
+          },
+          "ringAfter": [
+            "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000003",
+            "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000002",
+            "asw91-project-ringcraft-autosave-v1-2026-01-01T00:00:00.000Z-000001"
+          ],
+          "pruned": 0
+        },
+        {
+          "savedAt": "2026-01-15T00:00:00.000Z",
+          "maxSnapshots": 4,
+          "meta": {
+            "key": "asw91-project-ringcraft-autosave-v1-2026-01-15T00:00:00.000Z-000004",
+            "campaignId": "campaign-18475e61",
+            "campaignHash": "c14n-fnv1a64-v1:e8a253f0608a3005"
+          },
+          "ringAfter": [
+            "asw91-project-ringcraft-autosave-v1-2026-01-15T00:00:00.000Z-000004",
+            "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000003",
+            "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000002",
+            "asw91-project-ringcraft-autosave-v1-2026-01-01T00:00:00.000Z-000001"
+          ],
+          "pruned": 0
+        },
+        {
+          "savedAt": "2026-01-22T00:00:00.000Z",
+          "maxSnapshots": 4,
+          "meta": {
+            "key": "asw91-project-ringcraft-autosave-v1-2026-01-22T00:00:00.000Z-000005",
+            "campaignId": "campaign-efcbec10",
+            "campaignHash": "c14n-fnv1a64-v1:9d9835423333603f"
+          },
+          "ringAfter": [
+            "asw91-project-ringcraft-autosave-v1-2026-01-22T00:00:00.000Z-000005",
+            "asw91-project-ringcraft-autosave-v1-2026-01-15T00:00:00.000Z-000004",
+            "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000003",
+            "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000002"
+          ],
+          "pruned": 1
+        }
+      ],
+      "delete": {
+        "key": "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000002",
+        "ringAfter": [
+          "asw91-project-ringcraft-autosave-v1-2026-01-22T00:00:00.000Z-000005",
+          "asw91-project-ringcraft-autosave-v1-2026-01-15T00:00:00.000Z-000004",
+          "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000003"
+        ]
+      },
+      "promote": {
+        "key": "asw91-project-ringcraft-autosave-v1-2026-01-15T00:00:00.000Z-000004",
+        "name": "Save Determinism Alpha - 1991-01-01",
+        "campaignId": "campaign-18475e61",
+        "campaignHash": "c14n-fnv1a64-v1:e8a253f0608a3005",
+        "namedSavesAfter": 1
+      },
+      "capPrunes": [
+        {
+          "cap": 3,
+          "removed": 0,
+          "ringAfter": [
+            "asw91-project-ringcraft-autosave-v1-2026-01-22T00:00:00.000Z-000005",
+            "asw91-project-ringcraft-autosave-v1-2026-01-15T00:00:00.000Z-000004",
+            "asw91-project-ringcraft-autosave-v1-2026-01-08T00:00:00.000Z-000003"
+          ]
+        },
+        {
+          "cap": 2,
+          "removed": 1,
+          "ringAfter": [
+            "asw91-project-ringcraft-autosave-v1-2026-01-22T00:00:00.000Z-000005",
+            "asw91-project-ringcraft-autosave-v1-2026-01-15T00:00:00.000Z-000004"
+          ]
+        },
+        {
+          "cap": 1,
+          "removed": 1,
+          "ringAfter": [
+            "asw91-project-ringcraft-autosave-v1-2026-01-22T00:00:00.000Z-000005"
+          ]
+        }
+      ]
+    },
+    "observationHash": "c14n-fnv1a64-v1:551bb8f0cd77ae7c"
+  },
+  "remoteSync": {
+    "localSave": {
+      "key": "asw91-campaign-save-local-a1",
+      "saveId": "local-a1",
+      "name": "Alpha Draft",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "updatedAt": "2026-01-10T00:00:00.000Z",
+      "campaignKey": "alpha"
+    },
+    "localSecondSave": {
+      "key": "asw91-campaign-save-local-b2",
+      "saveId": "local-b2",
+      "name": "Bravo Second",
+      "createdAt": "2026-01-02T00:00:00.000Z",
+      "updatedAt": "2026-01-18T00:00:00.000Z",
+      "campaignKey": "bravo"
+    },
+    "concurrentBundle": {
+      "exportedAt": "2026-01-31T00:00:00.000Z",
+      "entries": [
+        {
+          "entry": "save",
+          "key": "asw91-campaign-save-remote-a2",
+          "campaignKey": "alpha",
+          "saveId": "remote-a2",
+          "name": "Alpha Reshuffle",
+          "createdAt": "2026-01-02T00:00:00.000Z",
+          "updatedAt": "2026-01-20T00:00:00.000Z"
+        },
+        {
+          "entry": "save",
+          "key": "asw91-campaign-save-remote-c1",
+          "campaignKey": "charlie",
+          "saveId": "remote-c1",
+          "name": "Charlie Premiere",
+          "createdAt": "2026-01-03T00:00:00.000Z",
+          "updatedAt": "2026-01-12T00:00:00.000Z"
+        }
+      ]
+    },
+    "observation": {
+      "steps": [
+        {
+          "op": "sync",
+          "status": "pushed",
+          "message": "Pushed local saves to the remote endpoint.",
+          "serverRevisionAfter": "1",
+          "localFingerprintAfter": "52d10d77",
+          "remoteFingerprintAfter": "52d10d77"
+        },
+        {
+          "op": "putForce",
+          "status": "server-advanced",
+          "message": null,
+          "serverRevisionAfter": "2",
+          "localFingerprintAfter": "52d10d77",
+          "remoteFingerprintAfter": "88d150e0"
+        },
+        {
+          "op": "sync",
+          "status": "conflict",
+          "message": "Save conflict: local and remote both changed since the last sync. Choose force push (keep local) or force pull (take remote).",
+          "serverRevisionAfter": "2",
+          "localFingerprintAfter": "8a614401",
+          "remoteFingerprintAfter": "88d150e0"
+        },
+        {
+          "op": "forcePull",
+          "status": "pulled",
+          "message": "Pulled remote saves into local storage.",
+          "serverRevisionAfter": "2",
+          "localFingerprintAfter": "88d150e0",
+          "remoteFingerprintAfter": "88d150e0"
+        }
+      ],
+      "syncMeta": {
+        "lastSyncedFingerprint": "88d150e0",
+        "lastRemoteRevision": "2"
+      },
+      "finalServerSaves": [
+        {
+          "key": "asw91-campaign-save-remote-a2",
+          "name": "Alpha Reshuffle",
+          "campaignId": "campaign-18475e61",
+          "updatedAt": "2026-01-20T00:00:00.000Z",
+          "campaignHash": "c14n-fnv1a64-v1:e8a253f0608a3005"
+        },
+        {
+          "key": "asw91-campaign-save-remote-c1",
+          "name": "Charlie Premiere",
+          "campaignId": "campaign-a0cee4f9",
+          "updatedAt": "2026-01-12T00:00:00.000Z",
+          "campaignHash": "c14n-fnv1a64-v1:101cff1add8720d0"
+        }
+      ]
+    },
+    "observationHash": "c14n-fnv1a64-v1:e786ba10b5f8453e"
+  },
+  "fixtureHash": "c14n-fnv1a64-v1:bf53d640d63921b9",
+  "generatedAt": "2026-08-16T21:02:30.119Z"
+}

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "asw91-match-variety-replay-v1",
+  "label": "ladder-retrieval-seed-1",
+  "variety": "ladder",
+  "seed": 1,
+  "matchConfig": {
+    "seed": 1,
+    "timeLimitMinutes": 15,
+    "mode": "singles",
+    "titleModifier": 0,
+    "playerRecoveryPolicy": "lowest-percent",
+    "aiRecoveryPolicy": "lowest-percent",
+    "scenarioId": null,
+    "variety": "ladder",
+    "roster": {
+      "variety-wrestler-0-57bf311d": {
+        "id": "variety-wrestler-0-57bf311d",
+        "teamId": "player",
+        "name": "Variety Wrestler 0",
+        "epithet": "Seed 2",
+        "side": "fan-favorite",
+        "weight": 225,
+        "heightInches": 74,
+        "attributes": {
+          "pow": 70,
+          "agi": 60,
+          "qui": 55,
+          "tec": 65,
+          "end": 70
+        },
+        "maneuverLevels": {
+          "punch": 2,
+          "body-slam": 2,
+          "drop-kick": 2,
+          "forearm-smash": 2,
+          "headlock": 2,
+          "sleeper": 1
+        },
+        "customManeuvers": {},
+        "skills": {
+          "breakHold": 1,
+          "distractReferee": 1,
+          "dodge": 1,
+          "escapePin": 1,
+          "illegalPin": 0,
+          "irishWhip": 1,
+          "pinInterference": 0,
+          "tagTeam": 1,
+          "charm": 3
+        },
+        "drawbacks": [],
+        "fame": 0,
+        "age": 24,
+        "careerWp": 0,
+        "sourceRecordId": "variety-wrestler-0-57bf311d"
+      },
+      "variety-wrestler-1-c7b744fd": {
+        "id": "variety-wrestler-1-c7b744fd",
+        "teamId": "ai",
+        "name": "Variety Wrestler 1",
+        "epithet": "Seed 3",
+        "side": "rulebreaker",
+        "weight": 256,
+        "heightInches": 75,
+        "attributes": {
+          "pow": 72,
+          "agi": 62,
+          "qui": 50,
+          "tec": 66,
+          "end": 72
+        },
+        "maneuverLevels": {
+          "punch": 2,
+          "body-slam": 2,
+          "drop-kick": 2,
+          "forearm-smash": 2,
+          "headlock": 2,
+          "sleeper": 1
+        },
+        "customManeuvers": {},
+        "skills": {
+          "breakHold": 1,
+          "distractReferee": 1,
+          "dodge": 1,
+          "escapePin": 1,
+          "illegalPin": 0,
+          "irishWhip": 1,
+          "pinInterference": 0,
+          "tagTeam": 1,
+          "charm": 3
+        },
+        "drawbacks": [],
+        "fame": 0,
+        "age": 21,
+        "careerWp": 0,
+        "sourceRecordId": "variety-wrestler-1-c7b744fd"
+      }
+    },
+    "teamMembers": {
+      "player": [
+        "variety-wrestler-0-57bf311d"
+      ],
+      "ai": [
+        "variety-wrestler-1-c7b744fd"
+      ]
+    }
+  },
+  "inputLog": [
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": true
+    }
+  ],
+  "expectedWinMethod": "retrieval",
+  "expectedWinnerId": "variety-wrestler-1-c7b744fd",
+  "expectedFinalMatchHash": "c14n-fnv1a64-v1:8f2ce90bd43dbb95"
+}

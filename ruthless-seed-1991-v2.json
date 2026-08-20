@@ -1,0 +1,192 @@
+{
+  "replayVersion": 2,
+  "rulesetVersion": "1.1.0-m4-candidate",
+  "dataHash": "cfab0bde",
+  "config": {
+    "seed": 1991,
+    "timeLimitMinutes": 10,
+    "mode": "singles",
+    "titleModifier": 0,
+    "playerRecoveryPolicy": "lowest-percent",
+    "aiRecoveryPolicy": "lowest-percent",
+    "scenarioId": null,
+    "aiDifficulty": "ruthless",
+    "roster": {
+      "player-a": {
+        "id": "player-a",
+        "teamId": "player",
+        "name": "Atlas King",
+        "epithet": "The Iron Standard",
+        "side": "fan-favorite",
+        "weight": 245,
+        "attributes": {
+          "pow": 62,
+          "agi": 50,
+          "qui": 61,
+          "tec": 55,
+          "end": 60
+        },
+        "maneuverLevels": {
+          "arm-bar": 2,
+          "headlock": 2,
+          "bear-hug": 1,
+          "body-slam": 2,
+          "clothesline": 1,
+          "powerslam": 1,
+          "throw-out-of-ring": 1
+        },
+        "skills": {
+          "breakHold": 2,
+          "distractReferee": 0,
+          "dodge": 2,
+          "escapePin": 1,
+          "illegalPin": 0,
+          "irishWhip": 2,
+          "pinInterference": 0,
+          "tagTeam": 2,
+          "charm": 4
+        },
+        "drawbacks": [
+          {
+            "type": "egotist",
+            "damageThreshold": 20,
+            "rollThreshold": 9
+          }
+        ],
+        "fame": 8,
+        "sourceRecordId": "player-a"
+      },
+      "ai-a": {
+        "id": "ai-a",
+        "teamId": "ai",
+        "name": "Duke Vane",
+        "epithet": "The Velvet Vice",
+        "side": "rulebreaker",
+        "weight": 268,
+        "attributes": {
+          "pow": 55,
+          "agi": 60,
+          "qui": 55,
+          "tec": 55,
+          "end": 55
+        },
+        "maneuverLevels": {
+          "headlock": 1,
+          "bear-hug": 1,
+          "body-slam": 2,
+          "clothesline": 2,
+          "eye-gouge": 2,
+          "choke-with-ropes": 1,
+          "throw-out-of-ring": 2
+        },
+        "skills": {
+          "breakHold": 1,
+          "distractReferee": 2,
+          "dodge": 2,
+          "escapePin": 1,
+          "illegalPin": 2,
+          "irishWhip": 2,
+          "pinInterference": 2,
+          "tagTeam": 2,
+          "charm": 0
+        },
+        "drawbacks": [
+          {
+            "type": "old-injury",
+            "damageThreshold": 25,
+            "rollThreshold": 9
+          }
+        ],
+        "fame": 2,
+        "sourceRecordId": "ai-a"
+      }
+    },
+    "teamMembers": {
+      "player": [
+        "player-a"
+      ],
+      "ai": [
+        "ai-a"
+      ]
+    }
+  },
+  "inputs": [
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "endurance",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    }
+  ],
+  "expectedStateHash": "c14n-fnv1a64-v1:43945f1cc482e0cd"
+}

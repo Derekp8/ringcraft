@@ -1,0 +1,4633 @@
+{
+  "schema": "asw91-playtest-balance-report-v1",
+  "policy": "asw91-ai-policy-v1",
+  "ruleset": "classic-1991-vertical-slice",
+  "timeLimitMinutes": 8,
+  "batches": [
+    {
+      "label": "underdog-novice",
+      "rosterKey": "m10-underdog",
+      "variety": "standard",
+      "difficulty": "novice",
+      "playerSide": "v1",
+      "seedBase": 0,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 23,
+          "finalHash": "c14n-fnv1a64-v1:cbdc93e8bbec9c61"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:53196508a032a84b"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:a30f61eaa73f51ee"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:d9da313128b5097a"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:ed3ebfa955afeb5c"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:319ec01cc0b0c952"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:9cf3d7031e791d2e"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:e673f42e7e8c64b5"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:c326ccf02a77eca2"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 45,
+          "finalHash": "c14n-fnv1a64-v1:6f3b4ede135e8a1a"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:d301c87b470d4741"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:15fa045b9ebbb3ed"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:50e92c0423cc3f70"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:bb2fed1469776c23"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 43,
+          "finalHash": "c14n-fnv1a64-v1:1468c93d4f82e5d9"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:b724ad26eb720de6"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:676b62be175e2878"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:3d61ce71de77ab34"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:6ba4b7b53bdd1910"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "ai",
+          "method": "disqualification",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:6cfb39b5ec396f50"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:9f8970940bba9080"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:d93a74c042ffd5c7"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:a88887c5423d5736"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:601e8fa7cf414f29"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:8fa27a7b9e17baab"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:c3a36c358c3b3d3f"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:a7af3995b37194b8"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:122dc09a630d3f08"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:e3abc8bbfc51d8f8"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:814432cb192b9826"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:ca1dc81039426853"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:62e18e1501182ba2"
+        }
+      ]
+    },
+    {
+      "label": "underdog-standard",
+      "rosterKey": "m10-underdog",
+      "variety": "standard",
+      "difficulty": "standard",
+      "playerSide": "v1",
+      "seedBase": 1000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:f004fd92ea023c6d"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:34e1114e394fce4c"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:efb6bd61dd7743ab"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:7dc28af30970e45c"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:c94d2c502a71ecfb"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:711bdb060bf310a3"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:61c859f5bfe2c5df"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:3dec93da079b4451"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:e7ae386303ef38a0"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:bd893fd98bb34966"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:faaf74bb66a0ec28"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:326d8551c182e192"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:23f478d427d7be9f"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:571e2156789e1bcd"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:8bb77efcc9c3f341"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:969ceb59f9962838"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 54,
+          "finalHash": "c14n-fnv1a64-v1:4b7c25016f1029a6"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:f121cc6ef1fb5e1d"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 49,
+          "finalHash": "c14n-fnv1a64-v1:ca9e58a9c8006ac8"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:ccb3c93c1d55240d"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:4fad80fc242971b6"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:4396ad9bc8a40fad"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:596276b2b1714e0f"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 45,
+          "finalHash": "c14n-fnv1a64-v1:9e21c0abed89f545"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:ffcc98cb497fb621"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:6ef5545f31502459"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:b914a7901d2ab645"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:4b1ca17da75a1c79"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:126510b3d8dc35a1"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:b18415cd9623b505"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:94df7c902883bfda"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:d09ce8c0ca56f2ce"
+        }
+      ]
+    },
+    {
+      "label": "underdog-veteran",
+      "rosterKey": "m10-underdog",
+      "variety": "standard",
+      "difficulty": "veteran",
+      "playerSide": "v1",
+      "seedBase": 2000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:89292937708208b8"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:b65aec0560eddb1a"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:c1dfeadbe378b233"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:bd74e530fe21f1ab"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:64fee4166cab4172"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:b29a4e91002ae3dd"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:61cc1a6a7cd6f6f0"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:3c40f9bcd600216d"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 8,
+          "ticks": 79,
+          "finalHash": "c14n-fnv1a64-v1:de32bc87affd3ee5"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 53,
+          "finalHash": "c14n-fnv1a64-v1:a96d4c91bbec03a2"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 8,
+          "ticks": 79,
+          "finalHash": "c14n-fnv1a64-v1:d09f2f311b8ea178"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:fc986fb4ac384621"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:14f505bc0aa3da48"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:47e98f5b55b55dd7"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 43,
+          "finalHash": "c14n-fnv1a64-v1:5374255b0a0b3270"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:1c8562830a5a5294"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:8e5480ec3e902d9d"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:0c9c550a8f07623f"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:0b7f8718b6fcf1c8"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:a0439e34319935df"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:b50dec3f6da40927"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 35,
+          "finalHash": "c14n-fnv1a64-v1:5efe1c885de9f755"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:1e874caf8849b5d0"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 56,
+          "finalHash": "c14n-fnv1a64-v1:3b758ee1178f6cf3"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:00be02a1e6c89a9c"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:1769fd16a4e54f3f"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:1fbdcc9fe509b740"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 65,
+          "finalHash": "c14n-fnv1a64-v1:4f917c45d0d2bc74"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:db0e6ff28cd8704a"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:8aa22a21bef1e187"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:89e0a506602e0a2e"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:ad7b61f14f4d5270"
+        }
+      ]
+    },
+    {
+      "label": "underdog-ruthless",
+      "rosterKey": "m10-underdog",
+      "variety": "standard",
+      "difficulty": "ruthless",
+      "playerSide": "v1",
+      "seedBase": 3000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:8d8444a223d47d77"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:7427c4f6e7e2caf0"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:3e2ca24fdd31a201"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:6c28e0aaad3418a1"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 58,
+          "finalHash": "c14n-fnv1a64-v1:bf180dbd1078de70"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 23,
+          "finalHash": "c14n-fnv1a64-v1:c79212724da92fc9"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:be0fa2154296d8d4"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:ff9d41a1354a34d1"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:1c36a4eb0646d201"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:f2866704c81a53ab"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:b4ffe08a7d0074eb"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 28,
+          "finalHash": "c14n-fnv1a64-v1:a90c747b6b51220a"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:92f18f4c4487a293"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:3bc98d294a98580b"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:5d8b4f1601f7db70"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:d3a200e5e9a79f43"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:70988a9ba3b2b651"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:40909d80d7485545"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:45d4fc29d8ac8366"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:4ef7120e653ca357"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:a4568740dd55d7f0"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:d991ed9a88153880"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 23,
+          "finalHash": "c14n-fnv1a64-v1:999e14cd20139be5"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:2e7d54512f2c382c"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:78cbe23702cc8d17"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 34,
+          "finalHash": "c14n-fnv1a64-v1:45c9a771c27074a5"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:f667443a5f58d9ba"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:66b4a80fdab4ee21"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:f058ded96eb3f6c9"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:829b1aee09a86c8c"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:83d5483644c88ce5"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:dee010d7496fb1e5"
+        }
+      ]
+    },
+    {
+      "label": "equal-standard",
+      "rosterKey": "equal-singles",
+      "variety": "standard",
+      "difficulty": "standard",
+      "playerSide": "v1",
+      "seedBase": 4000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:93f7a1966895303d"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:1436716f145c965d"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:a0fd3a236e563f54"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:ade5bae2df34d920"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:f3ba545c0c0063ed"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "ai",
+          "method": "submission",
+          "minutes": 4,
+          "ticks": 38,
+          "finalHash": "c14n-fnv1a64-v1:c247ac16a66fb71d"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:dad26e5c70a1048e"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:424ef4e8583facf1"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:8d287ac83a76f09d"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:795596178c0e2c93"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:e73c6332e54884ee"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:ed232caecf3c734d"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:961981e55d7c6260"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:55140cedcb8c0702"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:96cbb6c4a81bba51"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:c0a1047718fba0eb"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:6b42d1d6c59a0b49"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:94a1985527443e85"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:162a94f7095ddf0e"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:4dcba36ffe9245b0"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:2a09e262bd8eda5e"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:89fbc2f181e507c8"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:6fc92e4da2ae5964"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:85779e989206e643"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:522c9d187408246c"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:65a72284a4b51c2d"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:1818bdcc33a8f86a"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:3bf202f4b36e506a"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:098ef12f3ac111f1"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:992ee3f0d7323569"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:5a71d994cf799b5b"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:ea84c961634a0921"
+        }
+      ]
+    },
+    {
+      "label": "equal-ruthless",
+      "rosterKey": "equal-singles",
+      "variety": "standard",
+      "difficulty": "ruthless",
+      "playerSide": "v1",
+      "seedBase": 5000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:695e350849393b93"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:838c7cde9d08b31a"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 14,
+          "finalHash": "c14n-fnv1a64-v1:7a5523330b0069ca"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:0b63b127fce571cb"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:ad71d3fe7b7a4470"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:872ce7edd384e7aa"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:751fb71f73ec2519"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:9139fa78201545cb"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:9da5356fcc002e13"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:2d44d7222422fa8e"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:f7d13caacca9c4a4"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:465d7028e6987724"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:f26767efff5a0cd0"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:36c84865360be77f"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:5d4b6b7d3206fac2"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:b059aaa77b7ab11c"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 8,
+          "ticks": 73,
+          "finalHash": "c14n-fnv1a64-v1:817c0bef86313b91"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:a083d8b1f842e747"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:7979736d4809720b"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:26a40f85b77db9e2"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:4924a4a6c4f01948"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:e7a92a4eaa7c97da"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:10755ff990c73f15"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:3d8223ef1fb30e31"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:381976bf6f8dbe22"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:fd6283243abbd7cf"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:3c7d9c58be34545b"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:312ce6dac7ff9e1d"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:67f631245d7aa534"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:43f944038049e2b2"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:59d46f959f9a7bc2"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:84d1a2713e7eb2d8"
+        }
+      ]
+    },
+    {
+      "label": "underdog-cage-standard",
+      "rosterKey": "dominant-singles",
+      "variety": "cage",
+      "difficulty": "standard",
+      "playerSide": "v1",
+      "seedBase": 6000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:9e4021c93d01177f"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:bef4e0d7a0297385"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:9f89bb2f5800774e"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:f39451f7b9dd3b81"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:6ff4cf8410e8f8b2"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:9a6d894846d62c44"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:01abf88601d20df3"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 6,
+          "ticks": 56,
+          "finalHash": "c14n-fnv1a64-v1:0bb6e94d348dc114"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:2529d3ae43583850"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:b74f84c9341f47ce"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:64f7b3e347137235"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 5,
+          "ticks": 49,
+          "finalHash": "c14n-fnv1a64-v1:dc544cacd10c9ec1"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:585e7dbe490f44db"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:2a832a86a1e6b108"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:e5e41243a97b5afb"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:d5f9af0cd9c72d6e"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:79b64ce9842569b5"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:4ee19c8eecf1e4aa"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:060715943a4281f5"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:ce2bab79d7e551f8"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:c5779292d93e1d50"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:3e3451b6eeb00590"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:e53196c8d3c19a77"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:5f727104749cbcab"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:c6b476e6eec53283"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:2e9189223d08e74d"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:cedf313609f71def"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:e6058231d010f125"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:35ba8ff36950f096"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:a9194c89053c32ff"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:7f4273207cfcb35f"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:7a6961288e80b996"
+        }
+      ]
+    },
+    {
+      "label": "underdog-cage-ruthless",
+      "rosterKey": "dominant-singles",
+      "variety": "cage",
+      "difficulty": "ruthless",
+      "playerSide": "v1",
+      "seedBase": 7000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:f7ee54f25da76091"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:27ec738015d9766a"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:9c0939556065be7a"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:6ae0fe9acbfe1383"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:9d3e2841263ab1ad"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:42e434393cf1ea07"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:e8b36113e61f5f37"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 6,
+          "ticks": 56,
+          "finalHash": "c14n-fnv1a64-v1:05891b80e51fcc4d"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:de496e752b8a092b"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:996cdf994f79a268"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:b704cbe7dac01b6b"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:89a0521d4322ce06"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:20db253a08e53144"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:fc0de82ea6902482"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:c5a9b1237455302b"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:d09c00f6917a7a2c"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:432678897e1d7276"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:2116be8e93916c8d"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:622f84889b171fc9"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:5b279df90061c47a"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:59f561debe9c8e31"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:a7f651fd5c24263e"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:38d7087233967f20"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:3c2278f3c60d807f"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:12a22066a8156237"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:628f0d1bf76476cb"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:c8a54859833d244e"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:8c9c9ba8f3066b45"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:b9c581f34eb6dce2"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:f4ded50095db76d4"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:495175fff4885979"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "escape",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:c21980d9599f46ce"
+        }
+      ]
+    },
+    {
+      "label": "underdog-ladder-standard",
+      "rosterKey": "dominant-singles",
+      "variety": "ladder",
+      "difficulty": "standard",
+      "playerSide": "v1",
+      "seedBase": 8000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:e64215997e71b058"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 5,
+          "ticks": 49,
+          "finalHash": "c14n-fnv1a64-v1:67f57ab25940de0c"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:6dd68e50bea61e77"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:de36ca7de519891f"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:9502c1135eeb3185"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:ed1377880177d2fd"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:f8d04804e59c1807"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:b8111c1095ee5d33"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:18610e6e1d40b8ba"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:6cb4b31803fae66e"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:28754b7909c327f1"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:36a1bbbb3daaef44"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:1a8880a1a38d5626"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:94cd53ebf72eebd1"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:dca25c08cb1fff27"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:1fa33f57977d532b"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:e200e24ae5999e01"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:27720d7d8b6c9db1"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:b1a1eb06f409470d"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:e02014da89e9ff11"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:c81e04083c33979c"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 5,
+          "ticks": 49,
+          "finalHash": "c14n-fnv1a64-v1:e322b6e4bb276714"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:8620f9a8e510cf2c"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:755a8e54eff4d9af"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:a12f620d2bd06c96"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:9584a04de2aeb126"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:d15ce53d1b4d9229"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:b07dbb411c46e7c9"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 56,
+          "finalHash": "c14n-fnv1a64-v1:40d44ef48450cf46"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:7fe164850728fae0"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:3c37294be2765555"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:fcd6ebc73792779c"
+        }
+      ]
+    },
+    {
+      "label": "underdog-ladder-ruthless",
+      "rosterKey": "dominant-singles",
+      "variety": "ladder",
+      "difficulty": "ruthless",
+      "playerSide": "v1",
+      "seedBase": 9000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:5d438db1c70e0cfc"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:da201896cdd1e3b0"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:144b4a429f78249c"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:28310f1a330fd015"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:835de702bfdc2c1c"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 59,
+          "finalHash": "c14n-fnv1a64-v1:83a29fe7e9e6b2c8"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:793975d2fe611caf"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:1a7d4fddbce12344"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:2d6249229b30292c"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:167cbfbe66e5aed5"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:2dd7516038899a5a"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 5,
+          "ticks": 49,
+          "finalHash": "c14n-fnv1a64-v1:35a4bfe28410223e"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:d8de3187782fcefb"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:efb751b65a02d8c8"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:9a1361eb23deef2c"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 5,
+          "ticks": 49,
+          "finalHash": "c14n-fnv1a64-v1:d43e29fbc2965a23"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:5a0783cfd6749530"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:9e089046f2d2cf6b"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:fbd7d03cfc51138a"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:803159db06c55212"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:d403f8171a7af8b6"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 22,
+          "finalHash": "c14n-fnv1a64-v1:6af413330442e51d"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:4f2784a431c47a85"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:00c6b7a2a35bed90"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:e510f7db7df5d130"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:05ab1e5ba5cfee47"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:246b4709c925e8e8"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:d16f4018974c41c5"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:494b7782c4d160ac"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:c5722f9309159529"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:a59dbf735c77c723"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "retrieval",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:dd97925905134962"
+        }
+      ]
+    },
+    {
+      "label": "tag-standard",
+      "rosterKey": "standard-tag",
+      "variety": "standard",
+      "difficulty": "standard",
+      "playerSide": "v1",
+      "seedBase": 10000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 60,
+          "finalHash": "c14n-fnv1a64-v1:18ffa35d30f74750"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:f8c78a01f47868d4"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:aa76e551ce74a428"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:0a7f645dacae16c0"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 64,
+          "finalHash": "c14n-fnv1a64-v1:fa31957fa571dc9d"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:1cbc3e3928a5dd2e"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:d1d1b7e68be70490"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:9645afff10a52079"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:3e05a30095eb530c"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:46ab6b4f76e22a63"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:bb4ca09a765822ef"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:e4f12074f93dff38"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:9930e18cc4deddc5"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:2bc6642787b84c53"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 68,
+          "finalHash": "c14n-fnv1a64-v1:faf79e9fc42c0006"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:e2df4ae2b4ec7d11"
+        }
+      ]
+    },
+    {
+      "label": "h2h-novice-standard",
+      "rosterKey": "h2h-equal",
+      "variety": "standard",
+      "difficulty": "standard",
+      "playerSide": "novice",
+      "seedBase": 11000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:6fa16edc11a88058"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:ed01dca762c2587d"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 12,
+          "finalHash": "c14n-fnv1a64-v1:f2d0636bcd44020f"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 8,
+          "ticks": 79,
+          "finalHash": "c14n-fnv1a64-v1:d053dea4b0ceeba3"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:972485b1f3e5df81"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:9d62b5b0034b378e"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 48,
+          "finalHash": "c14n-fnv1a64-v1:2797db671821b3f3"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 18,
+          "finalHash": "c14n-fnv1a64-v1:59f644d43859ca84"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:c2b08acffbc2b81e"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:b58bce8c599c0991"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 58,
+          "finalHash": "c14n-fnv1a64-v1:897dc3cec09d3768"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:4e5436bd3a15e215"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:e20ea95234a66648"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:048ad624f120afa3"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 48,
+          "finalHash": "c14n-fnv1a64-v1:4d0ebfdbf4f5eaf3"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:b816d302067aedef"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:58c197247b318158"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 43,
+          "finalHash": "c14n-fnv1a64-v1:f99d0a17da540ac7"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:defc555f5adce172"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:04e313d531cae2fe"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:c7af3559c741f63d"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:1170df9b38bd13ff"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:7b917f0f94f4d86f"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:6a9f6b24b8e5d57a"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 23,
+          "finalHash": "c14n-fnv1a64-v1:b02dd8348cfdb7f3"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:5b4956034e0912ea"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:1a661347482582b6"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:d88776ffed60f945"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 23,
+          "finalHash": "c14n-fnv1a64-v1:6df7f72247759076"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 56,
+          "finalHash": "c14n-fnv1a64-v1:db8c8390cd0dac82"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 35,
+          "finalHash": "c14n-fnv1a64-v1:f9a76d4173b4ab57"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:e0303ed9067e8f4e"
+        }
+      ]
+    },
+    {
+      "label": "h2h-novice-veteran",
+      "rosterKey": "h2h-equal",
+      "variety": "standard",
+      "difficulty": "veteran",
+      "playerSide": "novice",
+      "seedBase": 12000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 12,
+          "finalHash": "c14n-fnv1a64-v1:dfa473243bd32edb"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 65,
+          "finalHash": "c14n-fnv1a64-v1:cfa06e405aa34430"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:ef4c4ef6bb4e5adf"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:6a57dd5b7fc85cc1"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:4a84099480fcbcb1"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "ai",
+          "method": "submission",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:0476cc9cebcf6b42"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 55,
+          "finalHash": "c14n-fnv1a64-v1:068d759057393059"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 45,
+          "finalHash": "c14n-fnv1a64-v1:0f86410b52463b71"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 42,
+          "finalHash": "c14n-fnv1a64-v1:241eee483d4f64c5"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 12,
+          "finalHash": "c14n-fnv1a64-v1:fd14a0c391a07339"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:d18b534c35758069"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:562d505eda057cd7"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 18,
+          "finalHash": "c14n-fnv1a64-v1:a1175fa8f747b6ff"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:4abbffc45a4257bb"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 22,
+          "finalHash": "c14n-fnv1a64-v1:e9a673a4d5a99b16"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:ef82a6107e29c43b"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 23,
+          "finalHash": "c14n-fnv1a64-v1:a0b3287f038eb683"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:12526fbdaeb54cf8"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:894ce6d2a07d63ab"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:4d540496c078c483"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:f77553a8300c9abb"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:f34d400bac8e2a04"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "ai",
+          "method": "submission",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:807fa465140e7c5c"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 45,
+          "finalHash": "c14n-fnv1a64-v1:db48889411e15566"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 68,
+          "finalHash": "c14n-fnv1a64-v1:10da9262d180a2cf"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:9a4362796446f83d"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:582a9dfeb1ce4850"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:243ff462f32be511"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:f9d7692a09256c45"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 63,
+          "finalHash": "c14n-fnv1a64-v1:e08d592d4362a3ee"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 49,
+          "finalHash": "c14n-fnv1a64-v1:5090e634b1f25554"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:9b9a30e2b115e012"
+        }
+      ]
+    },
+    {
+      "label": "h2h-novice-ruthless",
+      "rosterKey": "h2h-equal",
+      "variety": "standard",
+      "difficulty": "ruthless",
+      "playerSide": "novice",
+      "seedBase": 13000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:6ae1f4e301a587b5"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 69,
+          "finalHash": "c14n-fnv1a64-v1:8b799211d6e24979"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:89a06ddb6c512243"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:3197b6d0ca3a209f"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 55,
+          "finalHash": "c14n-fnv1a64-v1:90dbc08ce95de7c6"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:64452e6dfe9ec208"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 18,
+          "finalHash": "c14n-fnv1a64-v1:45266ef1bd7e768f"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 53,
+          "finalHash": "c14n-fnv1a64-v1:363dae34cca5f458"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:294c0ead25bb7e48"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 65,
+          "finalHash": "c14n-fnv1a64-v1:8a636ffb15342568"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 63,
+          "finalHash": "c14n-fnv1a64-v1:4ab30818d6c3c56e"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 62,
+          "finalHash": "c14n-fnv1a64-v1:0084e4dfa2b43b6c"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "ai",
+          "method": "submission",
+          "minutes": 4,
+          "ticks": 35,
+          "finalHash": "c14n-fnv1a64-v1:35b47bdb9b9f29ed"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:703a15ea6345c964"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:766bbcaf6c62d228"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "ai",
+          "method": "submission",
+          "minutes": 5,
+          "ticks": 43,
+          "finalHash": "c14n-fnv1a64-v1:33dd4340d2187c6e"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:413b808bb32501ee"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:b2de1e2d3a11a940"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:9322af4f75c73496"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:881e196ce7cba1f2"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:453e240bf1bde55e"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 18,
+          "finalHash": "c14n-fnv1a64-v1:0637dae30b50a34c"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:e3c5c464a76970f1"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:b3eca762ec543165"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 42,
+          "finalHash": "c14n-fnv1a64-v1:229d438dd597c3c0"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 56,
+          "finalHash": "c14n-fnv1a64-v1:13b824a5979ad939"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 52,
+          "finalHash": "c14n-fnv1a64-v1:f79de48b3357b774"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 45,
+          "finalHash": "c14n-fnv1a64-v1:2ee95cb7ce6c6363"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:11ef4a66dd721b1b"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "ai",
+          "method": "submission",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:aaf04d03c5024ee2"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "player",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 12,
+          "finalHash": "c14n-fnv1a64-v1:c393516ac19f1cad"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:f61385d40b028e01"
+        }
+      ]
+    },
+    {
+      "label": "h2h-standard-veteran",
+      "rosterKey": "h2h-equal",
+      "variety": "standard",
+      "difficulty": "veteran",
+      "playerSide": "standard",
+      "seedBase": 14000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 18,
+          "finalHash": "c14n-fnv1a64-v1:bf009b0c50c9134e"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 28,
+          "finalHash": "c14n-fnv1a64-v1:493ac1b0982c4e9e"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:383f3d8d412e4fa5"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:e42312c9afc29c3b"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:24b8dfb2e47597f2"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:075148925a792e2d"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:43e6178c5fbb6b89"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:548ee80ebdf4b72a"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:9d97924b3046d964"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:4eebbefb00bce310"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 23,
+          "finalHash": "c14n-fnv1a64-v1:9f262d8a656a8855"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:37ac15e4f99537fe"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:165a5e94acc90505"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:e9b068ded66cebd7"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:3cbe13db063bfe1f"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:c46bf61d8d570a91"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:5a230801b24d3423"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "ai",
+          "method": "submission",
+          "minutes": 2,
+          "ticks": 18,
+          "finalHash": "c14n-fnv1a64-v1:4ffe7aeb2586eafa"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:fa4afd64bf28f7a8"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 28,
+          "finalHash": "c14n-fnv1a64-v1:3fc83cc9b65b56a6"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:4650ab975be2fac4"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:439cf6c6f270749b"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:c537e80c22f284b7"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:3343267664b1f793"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:5494da772bbffba4"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:62ab382af8cec661"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:302143179a3b528b"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:9ad42fcba9237a50"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:869ade8bb59c55b4"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 33,
+          "finalHash": "c14n-fnv1a64-v1:f59be56bb17f77d8"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:14cd82a3fa06d320"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:ed9468362fb0099e"
+        }
+      ]
+    },
+    {
+      "label": "h2h-standard-ruthless",
+      "rosterKey": "h2h-equal",
+      "variety": "standard",
+      "difficulty": "ruthless",
+      "playerSide": "standard",
+      "seedBase": 15000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:da0a06934fa4101b"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:2b63fdbed674061c"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:598e9fe74e49be59"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:92d5407c178d2fb1"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 18,
+          "finalHash": "c14n-fnv1a64-v1:41ebac535f36e8c5"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 46,
+          "finalHash": "c14n-fnv1a64-v1:46eea293294ed635"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:b600c3644d30ebcc"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 5,
+          "finalHash": "c14n-fnv1a64-v1:d51c962fd04ceb08"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:51d91c3353fdef4a"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 26,
+          "finalHash": "c14n-fnv1a64-v1:21099c720fbb420c"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 55,
+          "finalHash": "c14n-fnv1a64-v1:57db12e3624d9e22"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:c9c06767262b32fa"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 12,
+          "finalHash": "c14n-fnv1a64-v1:7ccc4c3815b7d3ef"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:db54d90a4fc0e4eb"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 55,
+          "finalHash": "c14n-fnv1a64-v1:4db11b7e36a18be0"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 12,
+          "finalHash": "c14n-fnv1a64-v1:a45b731269fb73a9"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 12,
+          "finalHash": "c14n-fnv1a64-v1:e801ad8fad8fa52b"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:eb34e7c5eb0ded55"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:d49cf412c35ad0c3"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 28,
+          "finalHash": "c14n-fnv1a64-v1:f3c7fe8162e2f976"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:4d2fa859999cb77e"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 8,
+          "ticks": 76,
+          "finalHash": "c14n-fnv1a64-v1:0c09605d7961b910"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:66b6a655f3d27f75"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:4cae9f5422ad9ffc"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 8,
+          "finalHash": "c14n-fnv1a64-v1:208aa38b5db19671"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:72f716af5762a421"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:2321065bdd5ee677"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:98d007b723cc526e"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 39,
+          "finalHash": "c14n-fnv1a64-v1:c2d69351d90be537"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:e7f43a5b696d1c15"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 13,
+          "finalHash": "c14n-fnv1a64-v1:d3023862af1f3010"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:d9eae7ed1926b828"
+        }
+      ]
+    },
+    {
+      "label": "h2h-veteran-ruthless",
+      "rosterKey": "h2h-equal",
+      "variety": "standard",
+      "difficulty": "ruthless",
+      "playerSide": "veteran",
+      "seedBase": 16000,
+      "timeLimitMinutes": 8,
+      "matches": [
+        {
+          "seed": 0,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 49,
+          "finalHash": "c14n-fnv1a64-v1:163a66ba0a617b4f"
+        },
+        {
+          "seed": 1,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 18,
+          "finalHash": "c14n-fnv1a64-v1:8d2a59eb5741ec9e"
+        },
+        {
+          "seed": 2,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 43,
+          "finalHash": "c14n-fnv1a64-v1:8f2c88d2ae00854f"
+        },
+        {
+          "seed": 3,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:d781b44e543e9d29"
+        },
+        {
+          "seed": 4,
+          "winnerTeam": null,
+          "method": "time-limit-draw",
+          "minutes": 8,
+          "ticks": 80,
+          "finalHash": "c14n-fnv1a64-v1:f50169f506dcb7ce"
+        },
+        {
+          "seed": 5,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:3e0f4b594690547c"
+        },
+        {
+          "seed": 6,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 45,
+          "finalHash": "c14n-fnv1a64-v1:fb1ba3031be2f322"
+        },
+        {
+          "seed": 7,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 32,
+          "finalHash": "c14n-fnv1a64-v1:c6467f2d281413ac"
+        },
+        {
+          "seed": 8,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 25,
+          "finalHash": "c14n-fnv1a64-v1:c35544bae69bbe88"
+        },
+        {
+          "seed": 9,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 6,
+          "finalHash": "c14n-fnv1a64-v1:c4d43013433623fe"
+        },
+        {
+          "seed": 10,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:c0de942dfcd84cac"
+        },
+        {
+          "seed": 11,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 58,
+          "finalHash": "c14n-fnv1a64-v1:ef2f893e34db8942"
+        },
+        {
+          "seed": 12,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:97109d0c43d96035"
+        },
+        {
+          "seed": 13,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 19,
+          "finalHash": "c14n-fnv1a64-v1:5f777d7313b0e44a"
+        },
+        {
+          "seed": 14,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 63,
+          "finalHash": "c14n-fnv1a64-v1:0e7c3c8bdbf34562"
+        },
+        {
+          "seed": 15,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 3,
+          "finalHash": "c14n-fnv1a64-v1:88b06acb1fa385c4"
+        },
+        {
+          "seed": 16,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:946e2a89d2f9b715"
+        },
+        {
+          "seed": 17,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 6,
+          "ticks": 53,
+          "finalHash": "c14n-fnv1a64-v1:ea36375b06b235f2"
+        },
+        {
+          "seed": 18,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 23,
+          "finalHash": "c14n-fnv1a64-v1:394dc38c7211c71d"
+        },
+        {
+          "seed": 19,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:329a5536930deffc"
+        },
+        {
+          "seed": 20,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 36,
+          "finalHash": "c14n-fnv1a64-v1:c409d085f217bf67"
+        },
+        {
+          "seed": 21,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 45,
+          "finalHash": "c14n-fnv1a64-v1:07c2ff007ea7040f"
+        },
+        {
+          "seed": 22,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:2341aad59b58cf06"
+        },
+        {
+          "seed": 23,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:386916d3e09cb80d"
+        },
+        {
+          "seed": 24,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 3,
+          "ticks": 29,
+          "finalHash": "c14n-fnv1a64-v1:96bbf2d3381abd3d"
+        },
+        {
+          "seed": 25,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 7,
+          "ticks": 68,
+          "finalHash": "c14n-fnv1a64-v1:9d93c330524c6a1b"
+        },
+        {
+          "seed": 26,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 15,
+          "finalHash": "c14n-fnv1a64-v1:6fbad0f23e30144a"
+        },
+        {
+          "seed": 27,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 16,
+          "finalHash": "c14n-fnv1a64-v1:0af3d361c0a0a0dd"
+        },
+        {
+          "seed": 28,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 4,
+          "ticks": 38,
+          "finalHash": "c14n-fnv1a64-v1:fccb7cf81eada809"
+        },
+        {
+          "seed": 29,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 5,
+          "ticks": 45,
+          "finalHash": "c14n-fnv1a64-v1:2ce5ebc1c953fa79"
+        },
+        {
+          "seed": 30,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 1,
+          "ticks": 9,
+          "finalHash": "c14n-fnv1a64-v1:ace31027a20caabc"
+        },
+        {
+          "seed": 31,
+          "winnerTeam": "ai",
+          "method": "pin",
+          "minutes": 2,
+          "ticks": 12,
+          "finalHash": "c14n-fnv1a64-v1:31df79b44b6695e5"
+        }
+      ]
+    }
+  ],
+  "analytics": {
+    "winShare": {
+      "byDifficulty": {
+        "novice": 0.0625,
+        "standard": 0.0967741935483871,
+        "veteran": 0.03125,
+        "ruthless": 0.06451612903225806
+      },
+      "byBatch": {
+        "underdog-novice": 0.0625,
+        "underdog-standard": 0.0967741935483871,
+        "underdog-veteran": 0.03125,
+        "underdog-ruthless": 0.06451612903225806,
+        "equal-standard": 1,
+        "equal-ruthless": 1,
+        "underdog-cage-standard": 0,
+        "underdog-cage-ruthless": 0,
+        "underdog-ladder-standard": 0,
+        "underdog-ladder-ruthless": 0,
+        "tag-standard": 0.4444444444444444,
+        "h2h-novice-standard": 0.4482758620689655,
+        "h2h-novice-veteran": 0.5517241379310345,
+        "h2h-novice-ruthless": 0.6666666666666666,
+        "h2h-standard-veteran": 1,
+        "h2h-standard-ruthless": 1,
+        "h2h-veteran-ruthless": 1
+      }
+    },
+    "winShareCI": {
+      "byDifficulty": {
+        "novice": {
+          "lower": 0.017310203195157234,
+          "upper": 0.2014746724800358
+        },
+        "standard": {
+          "lower": 0.03346403609464399,
+          "upper": 0.2490028999817704
+        },
+        "veteran": {
+          "lower": 0.005537717362550945,
+          "upper": 0.15744607800372734
+        },
+        "ruthless": {
+          "lower": 0.017874407775063147,
+          "upper": 0.20718988318746434
+        }
+      },
+      "byBatch": {
+        "underdog-novice": {
+          "lower": 0.017310203195157234,
+          "upper": 0.2014746724800358
+        },
+        "underdog-standard": {
+          "lower": 0.03346403609464399,
+          "upper": 0.2490028999817704
+        },
+        "underdog-veteran": {
+          "lower": 0.005537717362550945,
+          "upper": 0.15744607800372734
+        },
+        "underdog-ruthless": {
+          "lower": 0.017874407775063147,
+          "upper": 0.20718988318746434
+        },
+        "equal-standard": {
+          "lower": 0.20654329147389294,
+          "upper": 1
+        },
+        "equal-ruthless": {
+          "lower": 0.34237195288961925,
+          "upper": 1
+        },
+        "underdog-cage-standard": {
+          "lower": 0,
+          "upper": 0.1071827150573635
+        },
+        "underdog-cage-ruthless": {
+          "lower": 0,
+          "upper": 0.12064720365810762
+        },
+        "underdog-ladder-standard": {
+          "lower": 0,
+          "upper": 0.1071827150573635
+        },
+        "underdog-ladder-ruthless": {
+          "lower": 0,
+          "upper": 0.11025900073475385
+        },
+        "tag-standard": {
+          "lower": 0.188775429471914,
+          "upper": 0.7333526542559703
+        },
+        "h2h-novice-standard": {
+          "lower": 0.2841291114874579,
+          "upper": 0.6245233293193238
+        },
+        "h2h-novice-veteran": {
+          "lower": 0.37547667068067625,
+          "upper": 0.715870888512542
+        },
+        "h2h-novice-ruthless": {
+          "lower": 0.48779725813830266,
+          "upper": 0.807697044731538
+        },
+        "h2h-standard-veteran": {
+          "lower": 0.8156763396284354,
+          "upper": 1
+        },
+        "h2h-standard-ruthless": {
+          "lower": 0.889740999265246,
+          "upper": 0.9999999999999999
+        },
+        "h2h-veteran-ruthless": {
+          "lower": 0.889740999265246,
+          "upper": 0.9999999999999999
+        }
+      }
+    },
+    "matchLength": {
+      "byVariety": {
+        "standard": {
+          "meanMinutes": 4.269230769230769,
+          "medianMinutes": 3,
+          "minMinutes": 1,
+          "maxMinutes": 8,
+          "meanTicks": 39.99038461538461,
+          "drawRate": 0.33653846153846156
+        },
+        "cage": {
+          "meanMinutes": 2.546875,
+          "medianMinutes": 2,
+          "minMinutes": 1,
+          "maxMinutes": 8,
+          "meanTicks": 22.9375,
+          "drawRate": 0.0625
+        },
+        "ladder": {
+          "meanMinutes": 2.546875,
+          "medianMinutes": 2,
+          "minMinutes": 1,
+          "maxMinutes": 8,
+          "meanTicks": 22.640625,
+          "drawRate": 0.015625
+        }
+      }
+    },
+    "finishMethods": {
+      "byVariety": {
+        "standard": {
+          "pin": 136,
+          "disqualification": 1,
+          "time-limit-draw": 70,
+          "submission": 1
+        },
+        "cage": {
+          "escape": 52,
+          "pin": 8,
+          "time-limit-draw": 4
+        },
+        "ladder": {
+          "retrieval": 55,
+          "pin": 8,
+          "time-limit-draw": 1
+        }
+      }
+    },
+    "headToHead": {
+      "byPair": {
+        "h2h-novice-standard": {
+          "higher": "standard",
+          "lower": "novice",
+          "higherShare": 0.4482758620689655,
+          "lowerShare": 0.5517241379310345,
+          "drawRate": 0.09375
+        },
+        "h2h-novice-veteran": {
+          "higher": "veteran",
+          "lower": "novice",
+          "higherShare": 0.5517241379310345,
+          "lowerShare": 0.4482758620689655,
+          "drawRate": 0.09375
+        },
+        "h2h-novice-ruthless": {
+          "higher": "ruthless",
+          "lower": "novice",
+          "higherShare": 0.6666666666666666,
+          "lowerShare": 0.3333333333333333,
+          "drawRate": 0.0625
+        },
+        "h2h-standard-veteran": {
+          "higher": "veteran",
+          "lower": "standard",
+          "higherShare": 1,
+          "lowerShare": 0,
+          "drawRate": 0.46875
+        },
+        "h2h-standard-ruthless": {
+          "higher": "ruthless",
+          "lower": "standard",
+          "higherShare": 1,
+          "lowerShare": 0,
+          "drawRate": 0.03125
+        },
+        "h2h-veteran-ruthless": {
+          "higher": "ruthless",
+          "lower": "veteran",
+          "higherShare": 1,
+          "lowerShare": 0,
+          "drawRate": 0.03125
+        }
+      }
+    }
+  },
+  "reportHash": "c14n-fnv1a64-v1:ea2a8361db1e93e9"
+}
