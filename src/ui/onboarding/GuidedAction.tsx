@@ -30,7 +30,7 @@ export const GuidedAction: React.FC<GuidedActionProps> = ({
   isAllowed = true,
   onBlockedAttempt,
 }) => {
-  const { state, showStep, isDismissed } = useOnboarding();
+  const { state, showStep } = useOnboarding();
 
   // Determine if action should be blocked
   const isBlocked = disableDuringOnboarding && !state.isDismissed && state.currentPhase !== 'complete' && !isAllowed;

@@ -4,8 +4,8 @@
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
-import { ONBOARDING_STEPS, getPhaseSteps, getStepById } from '../onboarding/steps';
-import type { OnboardingState, OnboardingPhase } from '../onboarding/types';
+import { ONBOARDING_STEPS, getPhaseSteps, getStepById } from '../src/ui/onboarding/steps';
+import type { OnboardingState, OnboardingPhase } from '../src/ui/onboarding/types';
 
 describe('Onboarding System', () => {
   describe('Steps', () => {

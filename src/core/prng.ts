@@ -5,7 +5,8 @@ export type RandomUint32Source = (values: Uint32Array) => Uint32Array;
 function defaultRandomUint32Source(values: Uint32Array): Uint32Array {
   const cryptoApi = globalThis.crypto;
   if (!cryptoApi?.getRandomValues) throw new Error("Secure random seed generation is unavailable on this platform.");
-  return cryptoApi.getRandomValues(values);
+  cryptoApi.getRandomValues(values as Uint32Array<ArrayBuffer>);
+  return values;
 }
 
 /** Uses platform entropy only to choose a replayable non-zero 32-bit starting seed. */

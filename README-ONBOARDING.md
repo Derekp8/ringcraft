@@ -56,7 +56,7 @@ src/ui/onboarding/
 ├── OnboardingProgressIndicator.css    # Progress styling
 ├── OnboardingHints.tsx                # Context-aware hints
 ├── OnboardingHints.css                # Hints styling
-├── useOnboardingPhaseGuard.ts         # Feature access control
+├── useOnboardingPhaseGuard.tsx        # Feature access control
 ├── useOnboardingAnalytics.ts          # Event tracking
 ├── index.ts                           # Public exports
 ├── advanced.ts                        # Advanced feature exports
@@ -403,7 +403,7 @@ ringcraft/
 │   │       ├── OnboardingProgressIndicator.css
 │   │       ├── OnboardingHints.tsx
 │   │       ├── OnboardingHints.css
-│   │       ├── useOnboardingPhaseGuard.ts
+│   │       ├── useOnboardingPhaseGuard.tsx
 │   │       ├── useOnboardingAnalytics.ts
 │   │       ├── index.ts
 │   │       ├── advanced.ts
