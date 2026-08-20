@@ -1,0 +1,33 @@
+#!/bin/sh
+# Pre-commit typecheck gate: fail the commit on build-only type errors before
+# they land, mirroring the fast-fail typecheck step that `npm run check` runs
+# first locally and every CI workflow runs. Zero dependencies — a plain git
+# hook, no husky/lint-staged, so the clean-room `npm ci` never runs an install
+# lifecycle.
+#
+# The solution tsconfig.json is a project-references shell (files: []), so a
+# bare `tsc --noEmit` checks nothing; `npm run typecheck` runs the per-project
+# emit-free passes and the build-mode `tsc -b` pass that follows the references
+# exactly like `npm run build`.
+#
+# Fast path: when no .ts/.tsx file is staged (docs/PNG/JSON-only commits), the
+# whole-project pass is skipped.
+#
+# Install once per clone:  git config core.hooksPath .githooks
+set -e
+
+# Hooks run from the repository top level, which for this repo is the user home
+# dir (the project lives in a subdirectory). The tracked package.json knows
+# where the project is — depth-agnostic, unlike a find -maxdepth guess.
+ROOT="$(git rev-parse --show-toplevel)"
+PKG="$(git -C "$ROOT" ls-files '*package.json' | head -1)"
+PROJ="$(dirname "${PKG:-package.json}")"
+cd "$ROOT/$PROJ" 2>/dev/null || cd "$ROOT"
+
+if ! git diff --cached --name-only --diff-filter=ACM | grep -qE '\.tsx?$'; then
+  echo "typecheck: no staged TypeScript changes — skipping."
+  exit 0
+fi
+
+echo "typecheck: running npm run typecheck (per-project --noEmit + tsc -b)..."
+npm run typecheck

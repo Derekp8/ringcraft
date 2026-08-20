@@ -1,0 +1,66 @@
+# Visual QA byte-pinning stability gate
+#
+# Runs the visual QA gate twice and asserts every ringcraft-*.png capture
+# reproduces across the two runs and matches its HANDOFF-MANIFEST.json
+# critical_file_sha256 pin. The gate boots its own vite server and portable
+# Chromium (@sparticuz/chromium — no system browser installed on the runner),
+# so each invocation is self-contained.
+#
+# scripts/check-visual-qa-stability.mjs applies the documented ±2/255
+# sub-pixel AA-jitter tolerance: the software rasterizer genuinely flips the
+# coverage of 1px antialiased element borders by ±1 unit between runs (see the
+# check's header for the empirical evidence), so a capture that differs only by
+# AA jitter passes while any real drift — a capture differing beyond tolerance,
+# a changed pin, or a drifted run-to-run baseline — fails the job. The pins are
+# canonical-Linux renders, so on this Linux runner the run-2-vs-pin comparison
+# is strict.
+#
+# This mirrors the repo-root canonical workflow (user home dir); here the
+# project is the repository root, so no working-directory hop is needed.
+
+name: visual-qa-stability
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: visual-qa-stability
+  cancel-in-progress: false
+
+jobs:
+  double-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # The gate imports playwright-core, vite, tar-fs and the portable
+      # Chromium package at runtime, so a plain install is all the runner needs.
+      - name: Install dependencies
+        run: npm ci
+
+      # Fast fail before the expensive double run: the solution tsconfig.json
+      # is a project-references shell (files: []), so a bare tsc --noEmit
+      # checks nothing. npm run typecheck runs the per-project emit-free pass
+      # and the build-mode tsc -b pass that follows the references exactly like
+      # npm run build, so build-only type errors abort here instead of after
+      # both visual QA runs.
+      - name: Typecheck (tsc --noEmit per project + tsc -b build mode)
+        run: npm run typecheck
+
+      # Runs visual-qa.mjs twice and asserts the two runs' PNG bytes match
+      # (within the documented ±2/255 AA-jitter tolerance) and that run 2
+      # matches the manifest's 21 screenshot pins.
+      - name: Assert stable captures across two runs
+        run: node scripts/check-visual-qa-stability.mjs

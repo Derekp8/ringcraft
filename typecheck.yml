@@ -1,0 +1,60 @@
+# TypeScript build-mode typecheck gate
+#
+# The solution tsconfig.json is a project-references shell (`files: []`), so a
+# bare `tsc --noEmit` from the repo root typechecks zero files and is always
+# green — build-only type errors (e.g. the frozen-tuple `as [string, string]`
+# failure in scripts/m13-title-shot-chain.ts that the clean-room gate caught
+# at `tsc -b`) slip straight past it. This workflow runs both meaningful
+# passes on every push/PR:
+#
+#   1. `tsc --noEmit -p` per referenced project (tsconfig.app.json checks
+#      src + tests; tsconfig.node.json checks vite.config.ts) — the fast,
+#      emit-free typecheck;
+#   2. `tsc -b` (build mode) — follows the project references the way
+#      `npm run build` does, catching build-only errors before the expensive
+#      M9 archive gate ever starts.
+#
+# A fresh ubuntu checkout is LF, matching the manifest pins' LF-blob
+# convention, so this gate is deterministic on the runner.
+
+name: typecheck
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: typecheck
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # The check imports only TypeScript itself, but the projects resolve
+      # against the installed dependency graph, so a plain install is needed.
+      - name: Install dependencies
+        run: npm ci
+
+      # Emit-free typecheck of every referenced project (the fast pass).
+      - name: Typecheck with tsc --noEmit (per project)
+        run: |
+          npx tsc --noEmit -p tsconfig.app.json
+          npx tsc --noEmit -p tsconfig.node.json
+
+      # Build-mode typecheck: follows the project references exactly like
+      # `npm run build`, so build-only type errors fail here, before the
+      # archive gate.
+      - name: Typecheck with tsc -b (build mode)
+        run: npx tsc -b

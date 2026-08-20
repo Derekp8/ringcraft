@@ -1,0 +1,105 @@
+name: m9-cleanroom
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # The build/verify wrappers SSR-load their TypeScript via Vite, which is
+      # a runtime dependency, so a plain install is all the runner needs.
+      - name: Install dependencies
+        run: npm ci
+
+      # Fast fail before the expensive gate: the solution tsconfig.json is a
+      # project-references shell (files: []), so a bare tsc --noEmit checks
+      # nothing. npm run typecheck runs the per-project emit-free pass and the
+      # build-mode pass (tsc -b) that follows the references exactly like
+      # npm run build does inside the clean room, so build-only type errors
+      # (e.g. the frozen tuple cast in scripts/m13-title-shot-chain.ts) fail
+      # here instead of after the archive is built and extracted.
+      - name: Typecheck (tsc --noEmit per project + tsc -b build mode)
+        run: npm run typecheck
+
+      # Fast fail before the expensive gate: every critical_file_sha256 pin
+      # must equal the pinned file's committed LF git blob. A fresh ubuntu
+      # checkout is LF, so this must pass before the archive is even built.
+      - name: Verify manifest pins against LF git blobs
+        run: node scripts/check-manifest-pins.mjs
+
+      # Builds output/m9/asw91-project-ringcraft-m9-private-handoff-1.2.0.zip
+      # and writes output/m9/m9-build.json from the committed (LF) tree.
+      - name: Build the M9 handoff archive
+        run: node scripts/build-m9-handoff.mjs
+
+      # The evidence doc pins the canonical archive identity for "this
+      # revision". A freshly built archive must reproduce that SHA-256 exactly
+      # (the build is deterministic except for the documented caveats), so a
+      # mismatch fails the gate with both hashes and the doc line that drifted.
+      - name: Assert archive SHA-256 matches the pinned docs identity
+        run: |
+          node -e "
+            const fs = require('fs');
+            const b = require('./output/m9/m9-build.json');
+            const doc = fs.readFileSync('docs/m9-handoff-evidence.md', 'utf8');
+            const identityLine = doc.split('\n').find((line) => line.startsWith('- Archive identity'));
+            if (!identityLine) {
+              console.error('docs/m9-handoff-evidence.md has no \"- Archive identity\" line to pin against.');
+              process.exit(1);
+            }
+            const match = identityLine.match(/SHA-256 \\`([0-9a-f]{64})\\`/);
+            if (!match) {
+              console.error('Archive identity line does not carry a full 64-hex SHA-256 pin.');
+              console.error('line:', identityLine);
+              process.exit(1);
+            }
+            const pinned = match[1];
+            console.log('pinned docs identity:', pinned);
+            console.log('built archive       :', b.sha256);
+            if (pinned !== b.sha256) {
+              console.error('FAIL: built archive does not match the pinned docs identity.');
+              console.error('Update docs/m9-handoff-evidence.md (and the paired evidence docs) to the');
+              console.error('new identity before landing, or rebuild deterministically.');
+              process.exit(1);
+            }
+            console.log('archive identity matches the pinned docs record.');
+          "
+
+      # Imports the archive into a fresh clean-room extraction and runs the
+      # full canonical Linux gate inside it: npm ci, npm run check,
+      # npm run fixtures:verify, and visual-qa.mjs with the portable
+      # Chromium (@sparticuz/chromium — no system browser installed on the
+      # runner). On Linux this records canonicalLinuxBrowserVerified: true in
+      # output/m9/m9-verification.json, mirroring the WSL2 host gate.
+      - name: Run the clean-room verifier
+        run: node scripts/verify-m9-handoff.mjs
+
+      - name: Print archive identity and verification summary
+        run: |
+          node -e "
+            const b = require('./output/m9/m9-build.json');
+            const v = require('./output/m9/m9-verification.json');
+            console.log('archive:', b.sha256, '(' + b.bytes + ' bytes, ' + b.files.length + ' files)');
+            console.log('verified:', v.verified, '| canonicalLinuxBrowserVerified:', v.canonicalLinuxBrowserVerified);
+          "
+
+      - name: Upload archive and machine-readable records
+        uses: actions/upload-artifact@v4
+        with:
+          name: m9-cleanroom-evidence
+          path: |
+            output/m9/asw91-project-ringcraft-m9-private-handoff-1.2.0.zip
+            output/m9/m9-build.json
+            output/m9/m9-verification.json
+          if-no-files-found: error
+          retention-days: 90
