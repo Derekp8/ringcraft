@@ -1,0 +1,4 @@
+# Git attributes: force LF for files whose content must not be CRLF-converted.
+# The pre-commit hook is a POSIX sh script — a CRLF checkout would corrupt the
+# shebang (`#!/bin/sh\r`) and break every hook invocation.
+.githooks/pre-commit text eol=lf
