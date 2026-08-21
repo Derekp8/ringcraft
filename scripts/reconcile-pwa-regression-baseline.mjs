@@ -1,3 +1,4 @@
+// One-time trigger: reconcile the hardened save-import test baseline on this branch.
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 
