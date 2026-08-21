@@ -3,13 +3,6 @@ import { strictManualCampaignCompatibility } from "../core";
 import type { StrictManualCompatibility } from "../core";
 import { readLatestAutosave } from "./save-manager";
 
-const SETUP_EXTENSION_CONTROLS = [
-  "Enable contracts and finance extension",
-  "Enable contract negotiation extension",
-  "Enable curve-fair renewals",
-  "Enable feuds and booking extension",
-] as const;
-
 function inputByLabel(label: string): HTMLInputElement | HTMLSelectElement | null {
   const control = [...document.querySelectorAll<HTMLInputElement | HTMLSelectElement>("input[aria-label], select[aria-label]")]
     .find((candidate) => candidate.getAttribute("aria-label") === label);
@@ -27,13 +20,20 @@ function setCheckboxOff(input: HTMLInputElement): void {
   if (input.checked) input.click();
 }
 
+function headingTexts(): string[] {
+  return [...document.querySelectorAll("h1, h2, h3")]
+    .map((heading) => heading.textContent?.trim().toLowerCase() ?? "");
+}
+
 function newCareerSetupVisible(): boolean {
-  return [...document.querySelectorAll("h1, h2, h3")].some((heading) => heading.textContent?.trim() === "New Career");
+  const headings = headingTexts();
+  return headings.includes("new career") || headings.includes("start or continue a career");
 }
 
 function careerSurfaceVisible(): boolean {
-  return [...document.querySelectorAll("button")].some((button) => button.textContent?.trim() === "Career") &&
-    ([...document.querySelectorAll("h1, h2, h3")].some((heading) => /Career|New Career|Career match in progress/.test(heading.textContent ?? "")));
+  const careerNavVisible = [...document.querySelectorAll("button")]
+    .some((button) => button.textContent?.trim() === "Career");
+  return careerNavVisible && headingTexts().some((heading) => heading.includes("career"));
 }
 
 function latestCompatibility(): StrictManualCompatibility | null {
