@@ -176,3 +176,36 @@ jobs:
           name: ringcraft-pwa-live-smoke
           path: output/readiness/pwa-live-smoke.json
           if-no-files-found: warn
+
+  certify:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    needs:
+      - live-smoke
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: Checkout exact candidate SHA
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Wait for same-SHA external gates and build certification report
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SOURCE_SHA: ${{ github.sha }}
+          PAGES_RUN_ID: ${{ github.run_id }}
+          BASE_SHA: 18708afc89f58cfb37bd9dc6e2b0aeeb4a9c67bc
+        run: node scripts/pwa-c1-certify.mjs
+
+      - name: Upload PWA-C1 certification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ringcraft-pwa-c1-certification-${{ github.sha }}
+          path: output/readiness/pwa-installability-certification.json
+          if-no-files-found: error
