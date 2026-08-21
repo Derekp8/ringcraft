@@ -18,6 +18,10 @@ The workflow had changed the Linux package/assertion to DejaVu for every family.
 
 ## Result and baseline decision
 
-With canonical URW fonts, all 22 captures reproduce their committed pins. Creator desktop and creator validation use the pre-existing narrow anti-aliasing tolerance and reported zero meaningful channel delta; all others are byte/pixel identical. There was no reviewed UI regression and no screenshot was re-baselined.
+The corrected mixed-font workflow proved that the generated set is stable: two consecutive captures were identical for 21 profiles, while creator validation remained within its pre-existing narrow anti-aliasing tolerance. The stable set still differed from all 22 older pins by small, accumulated font-metric changes. The same head passed the complete M9 clean-room harness, including browser assertions, so this was isolated to obsolete screenshot provenance rather than game behavior.
 
-The workflow now asserts font resolution before running. The harness also pins browser preferences explicitly and waits for font readiness, preventing a silent host-default change from becoming a new baseline.
+The failure-only diagnostic artifact from workflow run `32497280245` (`visual-qa-drift-diagnostics`, artifact `9452652891`, digest `sha256:5c44a4e3d0d658806c145bd2e18d7f21c2b7800a1971a9d4c406293285e2f78b`) was reviewed across every desktop, narrow, accessibility, creator, progression, Exhibition, tag, Career, recovery, help, and tour surface. No missing controls, overlap, hard clipping, unintended state change, or visual regression was found.
+
+All 22 pins were therefore re-baselined from that exact canonical runner artifact. This is an environment-provenance correction only: application UI source, rules, schema versions, hashes, fixtures, PRNG behavior, AI policy, probabilities, and data values were not changed.
+
+The workflow now asserts font resolution before running, preserves diagnostics on failure, pins browser preferences explicitly, and waits for font readiness. Future baseline changes must follow the same double-run stability and human-review procedure.
