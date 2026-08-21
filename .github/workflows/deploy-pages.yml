@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - development/launchable-web
+      - development/pwa-installable
   pull_request:
     branches:
       - development/m15-release-candidate-hardening
+      - development/launchable-web
   workflow_dispatch:
 
 permissions:
@@ -33,6 +35,30 @@ jobs:
         shell: cmd
         run: call "Launch Ringcraft.bat" --check
 
+  regression:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run Ringcraft automated tests
+        run: npm run test
+
+      - name: Verify deterministic fixtures and replays
+        run: npm run fixtures:verify
+
   build:
     runs-on: ubuntu-24.04
     steps:
@@ -51,11 +77,12 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Build GitHub Pages site
+      - name: Build and statically verify GitHub Pages PWA
         shell: bash
         run: |
           BASE_PATH="/${GITHUB_REPOSITORY#*/}/"
           npm run build -- --base="$BASE_PATH"
+          node scripts/verify-pwa.mjs --root=dist --base="$BASE_PATH"
           touch dist/.nojekyll
 
       - name: Upload GitHub Pages artifact
@@ -63,12 +90,48 @@ jobs:
         with:
           path: dist
 
+  pwa-browser:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Pages-path production PWA
+        shell: bash
+        run: npm run build -- --base="/${GITHUB_REPOSITORY#*/}/"
+
+      - name: Verify PWA artifact
+        shell: bash
+        run: node scripts/verify-pwa.mjs --root=dist --base="/${GITHUB_REPOSITORY#*/}/"
+
+      - name: Verify Chromium installability, offline relaunch, and update safety
+        run: node scripts/pwa-e2e.mjs
+
+      - name: Upload PWA installability evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ringcraft-pwa-installability
+          path: output/readiness/pwa-installability.json
+          if-no-files-found: warn
+
   deploy:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     needs:
       - launcher-smoke
+      - regression
       - build
+      - pwa-browser
     permissions:
       pages: write
       id-token: write
