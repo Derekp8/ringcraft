@@ -6,12 +6,14 @@ on:
       - development/pwa-installable
     paths:
       - scripts/reconcile-pwa-regression-baseline.mjs
+      - scripts/run-pwa-regression-reconciliation.mjs
       - .github/workflows/reconcile-pwa-regression.yml
   pull_request:
     branches:
       - development/launchable-web
     paths:
       - scripts/reconcile-pwa-regression-baseline.mjs
+      - scripts/run-pwa-regression-reconciliation.mjs
       - .github/workflows/reconcile-pwa-regression.yml
   workflow_dispatch:
 
@@ -34,7 +36,7 @@ jobs:
           node-version: 24
 
       - name: Reconcile stale tests and manifest pins
-        run: node scripts/reconcile-pwa-regression-baseline.mjs
+        run: node scripts/run-pwa-regression-reconciliation.mjs
 
       - name: Commit reconciled evidence
         shell: bash
