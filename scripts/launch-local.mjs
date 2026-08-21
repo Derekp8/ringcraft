@@ -5,6 +5,7 @@ const host = "127.0.0.1";
 const port = 5173;
 const url = `http://localhost:${port}/`;
 const viteEntry = "node_modules/vite/bin/vite.js";
+const checkOnly = process.argv.includes("--check");
 
 function fail(message) {
   console.error(`\n${message}`);
@@ -48,10 +49,20 @@ async function waitForServer(child, timeoutMs = 30_000) {
   throw new Error(`Ringcraft did not become available at ${url} within ${timeoutMs / 1000} seconds.`);
 }
 
+async function stopServer(server) {
+  if (server.exitCode !== null) return;
+  server.kill("SIGTERM");
+  const forced = setTimeout(() => {
+    if (server.exitCode === null) server.kill("SIGKILL");
+  }, 5000);
+  await new Promise((resolve) => server.once("exit", resolve));
+  clearTimeout(forced);
+}
+
 try {
   if (await ringcraftIsRunning()) {
     console.log(`Ringcraft is already running at ${url}`);
-    openBrowser();
+    if (!checkOnly) openBrowser();
     process.exit(0);
   }
 
@@ -61,7 +72,7 @@ try {
   }
 
   console.log(`Starting Project Ringcraft at ${url}`);
-  console.log("Keep this window open while playing. Close it or press Ctrl+C to stop the local server.\n");
+  if (!checkOnly) console.log("Keep this window open while playing. Close it or press Ctrl+C to stop the local server.\n");
 
   const server = spawn(process.execPath, [viteEntry, "--host", host, "--port", String(port), "--strictPort"], {
     stdio: "inherit",
@@ -76,8 +87,14 @@ try {
   process.once("exit", stop);
 
   await waitForServer(server);
-  openBrowser();
 
+  if (checkOnly) {
+    console.log(`Launcher smoke check passed: ${url}`);
+    await stopServer(server);
+    process.exit(0);
+  }
+
+  openBrowser();
   const exitCode = await new Promise((resolve) => server.once("exit", (code) => resolve(code ?? 0)));
   if (exitCode !== 0) fail(`Ringcraft development server stopped with code ${exitCode}.`);
 } catch (error) {
