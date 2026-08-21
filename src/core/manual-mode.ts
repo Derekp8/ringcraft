@@ -7,6 +7,13 @@ export interface StrictManualViolation {
   detail: string;
 }
 
+export interface StrictManualCompatibility {
+  profileId: typeof STRICT_MANUAL_PROFILE_ID;
+  compatible: boolean;
+  label: "Strict Manual compatible" | "Extensions active";
+  violations: StrictManualViolation[];
+}
+
 function violation(field: string, detail: string): StrictManualViolation {
   return { field, detail };
 }
@@ -47,7 +54,23 @@ export function strictManualCampaignStateViolations(state: CampaignState): Stric
   if (state.negotiationPolicy || state.negotiation) violations.push(violation("negotiationPolicy", "Negotiation extension state is present."));
   if (state.renewalStrategy && state.renewalStrategy !== "expiring-salary") violations.push(violation("renewalStrategy", "Curve-fair renewal strategy is enabled."));
   if (state.bookingPolicy || state.booking) violations.push(violation("bookingPolicy", "Feud/booking extension state is present."));
+  if (state.schedule.some((row) => row.variety && row.variety !== "standard")) {
+    violations.push(violation("schedule.variety", "A scheduled cage/ladder match uses the match-variety extension."));
+  }
+  if (state.activeMatch?.config.variety && state.activeMatch.config.variety !== "standard") {
+    violations.push(violation("activeMatch.config.variety", "The active match uses a non-standard match variety."));
+  }
   return violations;
+}
+
+export function strictManualCampaignCompatibility(state: CampaignState): StrictManualCompatibility {
+  const violations = strictManualCampaignStateViolations(state);
+  return {
+    profileId: STRICT_MANUAL_PROFILE_ID,
+    compatible: violations.length === 0,
+    label: violations.length === 0 ? "Strict Manual compatible" : "Extensions active",
+    violations,
+  };
 }
 
 export function strictManualMatchSetupViolations(setup: MatchSetup): StrictManualViolation[] {

@@ -1,22 +1,13 @@
-# Visual QA byte-pinning stability gate
+# Visual QA stability gate
 #
-# Runs the visual QA gate twice and asserts every ringcraft-*.png capture
-# reproduces across the two runs and matches its HANDOFF-MANIFEST.json
-# critical_file_sha256 pin. The gate boots its own vite server and portable
-# Chromium (@sparticuz/chromium — no system browser installed on the runner),
-# so each invocation is self-contained.
+# Two different evidence claims are enforced deliberately:
+# 1. committed reviewed screenshot blobs must still match HANDOFF-MANIFEST.json;
+# 2. the hosted Linux renderer must reproduce itself across two consecutive
+#    visual-QA runs within the harness's documented AA tolerance.
 #
-# scripts/check-visual-qa-stability.mjs applies the documented ±2/255
-# sub-pixel AA-jitter tolerance: the software rasterizer genuinely flips the
-# coverage of 1px antialiased element borders by ±1 unit between runs (see the
-# check's header for the empirical evidence), so a capture that differs only by
-# AA jitter passes while any real drift — a capture differing beyond tolerance,
-# a changed pin, or a drifted run-to-run baseline — fails the job. The pins are
-# canonical-Linux renders, so on this Linux runner the run-2-vs-pin comparison
-# is strict.
-#
-# This mirrors the repo-root canonical workflow (user home dir); here the
-# project is the repository root, so no working-directory hop is needed.
+# The reviewed captures were not produced by this hosted runner environment.
+# Cross-OS/font-rasterizer layout differences are therefore reported by the
+# review evidence, not hidden by re-pinning screenshots to whatever CI renders.
 
 name: visual-qa-stability
 
@@ -47,9 +38,6 @@ jobs:
         with:
           node-version: 24
 
-      # Match the application's declared font stacks instead of relying on the
-      # hosted runner's fallback set. Inter is the body/UI face; Nimbus Sans
-      # Narrow is the reviewed Linux substitute for the Arial Narrow headings.
       - name: Install canonical QA fonts
         run: |
           sudo apt-get update
@@ -57,22 +45,11 @@ jobs:
           fc-match Inter | grep -q "Inter"
           fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
 
-      # The gate imports playwright-core, vite, tar-fs and the portable
-      # Chromium package at runtime, so a plain install is all the runner needs.
       - name: Install dependencies
         run: npm ci
 
-      # Fast fail before the expensive double run: the solution tsconfig.json
-      # is a project-references shell (files: []), so a bare tsc --noEmit
-      # checks nothing. npm run typecheck runs the per-project emit-free pass
-      # and the build-mode tsc -b pass that follows the references exactly like
-      # npm run build, so build-only type errors abort here instead of after
-      # both visual QA runs.
       - name: Typecheck (tsc --noEmit per project + tsc -b build mode)
         run: npm run typecheck
 
-      # Runs visual-qa.mjs twice and asserts the two runs' PNG bytes match
-      # (within the documented ±2/255 AA-jitter tolerance) and that run 2
-      # matches the manifest's 22 screenshot pins.
-      - name: Assert stable captures across two runs
-        run: node scripts/check-visual-qa-stability.mjs
+      - name: Verify reviewed pins and hosted-runner visual stability
+        run: node scripts/check-visual-qa-ci-stability.mjs

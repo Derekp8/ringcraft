@@ -1,24 +1,33 @@
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
+import { isAbsolute, relative, resolve } from "node:path";
 
 /**
- * Verifies every `critical_file_sha256` pin in HANDOFF-MANIFEST.json against
- * the committed git blob (LF representation) of the pinned path.
+ * Verify HANDOFF-MANIFEST critical-file SHA-256 pins in one of two explicit
+ * integrity domains:
  *
- * Pins are the SHA-256 of the file's canonical bytes as committed to git — the
- * LF representation the clean-room export produces. A pin computed from any
- * other representation (e.g. a CRLF working-tree checkout on Windows) is a
- * "mixed-representation" pin: it matches the on-disk file but fails the
- * clean-room `npm run check`'s 45/45 pin verification. This check compares
- * against the blobs directly, so it is independent of the checkout's line
- * endings and fails the moment any pin drifts from the committed representation.
+ *   repository (default) — compare against committed Git blob bytes. This is
+ *   line-ending independent and remains the authoritative checkout check.
  *
- * Run from the repository root: `node scripts/check-manifest-pins.mjs`.
- * Exits 0 only when every pinned path is tracked in HEAD and its pin equals
- * the sha256 of its HEAD blob.
+ *   filesystem — compare against the bytes actually present under --root.
+ *   This is the authoritative clean-room/archive check and deliberately does
+ *   not require a .git database in the extracted package.
+ *
+ * Usage:
+ *   node scripts/check-manifest-pins.mjs --repository
+ *   node scripts/check-manifest-pins.mjs --filesystem [--root /path/to/root]
  */
-const manifest = JSON.parse(readFileSync("HANDOFF-MANIFEST.json", "utf8"));
+const args = process.argv.slice(2);
+const requestedRepository = args.includes("--repository");
+const requestedFilesystem = args.includes("--filesystem");
+if (requestedRepository && requestedFilesystem) throw new Error("Choose exactly one manifest verification mode.");
+const mode = requestedFilesystem ? "filesystem" : "repository";
+const rootIndex = args.indexOf("--root");
+if (rootIndex >= 0 && !args[rootIndex + 1]) throw new Error("--root requires a directory path.");
+const root = resolve(rootIndex >= 0 ? args[rootIndex + 1] : process.cwd());
+const manifestPath = resolve(root, "HANDOFF-MANIFEST.json");
+const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 const pins = manifest.critical_file_sha256 ?? {};
 const entries = Object.entries(pins);
 if (entries.length === 0) {
@@ -26,37 +35,60 @@ if (entries.length === 0) {
   process.exit(1);
 }
 
-// `git ls-tree -r HEAD` prints paths relative to the current directory, which
-// matches the manifest's repository-relative keys when run from the project
-// root (the only supported cwd, locally and in CI).
-const tree = execFileSync("git", ["ls-tree", "-r", "HEAD"], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
-const blobByPath = new Map();
-for (const line of tree.split("\n")) {
-  const match = line.match(/^[0-9]+ blob ([0-9a-f]{40})\t(.*)$/);
-  if (match) blobByPath.set(match[2], match[1]);
+const sha256 = (buffer) => createHash("sha256").update(buffer).digest("hex");
+const failures = [];
+let matched = 0;
+
+function safeFilesystemPath(path) {
+  if (isAbsolute(path)) throw new Error(`Pinned path must be repository-relative: ${path}`);
+  const candidate = resolve(root, path);
+  const rel = relative(root, candidate);
+  if (rel === ".." || rel.startsWith(`..${process.platform === "win32" ? "\\" : "/"}`) || isAbsolute(rel)) {
+    throw new Error(`Pinned path escapes verification root: ${path}`);
+  }
+  return candidate;
 }
 
-const sha256 = (buffer) => createHash("sha256").update(buffer).digest("hex");
-let matched = 0;
-const failures = [];
-for (const [path, expected] of entries) {
-  const blobSha = blobByPath.get(path);
-  if (!blobSha) {
-    failures.push(`${path}: not tracked in HEAD — a pinned path must exist as a committed blob to verify its LF representation`);
-    continue;
+if (mode === "repository") {
+  if (!existsSync(resolve(root, ".git"))) {
+    console.error(`check-manifest-pins: repository mode requires .git at ${root}. Use --filesystem for an extracted clean-room archive.`);
+    process.exit(1);
   }
-  const blob = execFileSync("git", ["cat-file", "blob", blobSha], { encoding: null, maxBuffer: 256 * 1024 * 1024 });
-  const actual = sha256(blob);
-  if (actual === expected) {
-    matched += 1;
-  } else {
-    failures.push(`${path}: pin ${expected.slice(0, 12)}… ≠ LF-blob ${actual.slice(0, 12)}… (mixed-representation or stale pin — refresh from the git blob, not the working tree)`);
+  const tree = execFileSync("git", ["-C", root, "ls-tree", "-r", "HEAD"], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+  const blobByPath = new Map();
+  for (const line of tree.split("\n")) {
+    const match = line.match(/^[0-9]+ blob ([0-9a-f]{40})\t(.*)$/);
+    if (match) blobByPath.set(match[2], match[1]);
+  }
+  for (const [path, expected] of entries) {
+    const blobSha = blobByPath.get(path);
+    if (!blobSha) {
+      failures.push(`${path}: not tracked in HEAD — a repository pin must resolve to a committed blob`);
+      continue;
+    }
+    const blob = execFileSync("git", ["-C", root, "cat-file", "blob", blobSha], { encoding: null, maxBuffer: 256 * 1024 * 1024 });
+    const actual = sha256(blob);
+    if (actual === expected) matched += 1;
+    else failures.push(`${path}: pin ${String(expected).slice(0, 12)}… ≠ LF-blob ${actual.slice(0, 12)}…`);
+  }
+} else {
+  for (const [path, expected] of entries) {
+    let filePath;
+    try { filePath = safeFilesystemPath(path); }
+    catch (error) { failures.push(String(error)); continue; }
+    if (!existsSync(filePath)) {
+      failures.push(`${path}: missing from extracted filesystem`);
+      continue;
+    }
+    const actual = sha256(readFileSync(filePath));
+    if (actual === expected) matched += 1;
+    else failures.push(`${path}: pin ${String(expected).slice(0, 12)}… ≠ filesystem ${actual.slice(0, 12)}…`);
   }
 }
 
 if (failures.length > 0) {
   for (const failure of failures) console.error(`FAIL ${failure}`);
-  console.error(`check-manifest-pins: ${matched}/${entries.length} pins match their LF blobs; ${failures.length} drifted.`);
+  console.error(`check-manifest-pins: ${matched}/${entries.length} pins match in ${mode} mode; ${failures.length} failed.`);
   process.exit(1);
 }
-console.log(`check-manifest-pins: OK — all ${matched} pinned files match their LF git-blob sha256.`);
+console.log(`check-manifest-pins: OK — all ${matched} pinned files match in ${mode} mode.`);
