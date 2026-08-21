@@ -1,5 +1,7 @@
 # M6 Onboarding Implementation Checklist
 
+> Historical integration scaffold: the onboarding work described below is implemented in the current UI and automated suites. It is retained as design history, not current status. Use `docs/m6-implementation-audit.md` and `docs/release-readiness-audit.md` for implementation state; use `docs/human-playtest-checklist.md` and `docs/human-accessibility-checklist.md` for the remaining unsigned acceptance work.
+
 Use this checklist to track progress on integrating the onboarding system into your Career UI.
 
 ## Phase 1: Setup ✅ COMPLETE
