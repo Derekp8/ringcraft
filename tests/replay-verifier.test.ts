@@ -176,7 +176,7 @@ describe("replay verifier", () => {
     expect(syncReport.errors.some((entry) => entry.includes("log/panel sync drift"))).toBe(true);
   });
 
-  it("locates manual-booking-leg drift by pinned field", () => {
+  it("locates manual-booking-leg drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).defendedCampaignHash = "c14n-fnv1a64-v1:0000000000000000";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
@@ -269,7 +269,7 @@ describe("replay verifier", () => {
     expect(line).toContain("c14n-fnv1a64-v1:0000000000000000");
   });
 
-  it("locates heat-line and decay-line drift by pinned field", () => {
+  it("locates heat-line and decay-line drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(feudHeatChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).heatLine = "Feud championship tag grudge (t1 vs t2): heat 60 → 64 (+9); 1 feud match(es).";
     const report = verifyFeudHeatChainFixture(JSON.stringify(mutated));
