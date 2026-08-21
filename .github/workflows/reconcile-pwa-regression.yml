@@ -46,4 +46,5 @@ jobs:
           git add tests/save-manager.test.ts tests/mock-save-sync-server.test.ts HANDOFF-MANIFEST.json
           git diff --cached --check
           git commit -m "chore: reconcile stale PWA regression evidence"
+          git pull --rebase origin development/pwa-installable
           git push origin HEAD:development/pwa-installable
