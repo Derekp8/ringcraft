@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - development/launchable-web
+  pull_request:
+    branches:
+      - development/m15-release-candidate-hardening
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ringcraft-pages
+  group: ringcraft-pages-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -61,6 +64,7 @@ jobs:
           path: dist
 
   deploy:
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
     needs:
       - launcher-smoke
