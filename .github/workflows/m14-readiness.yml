@@ -1,0 +1,64 @@
+name: m14-readiness
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: m14-readiness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fast-readiness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify M14 fast readiness
+        run: node scripts/check-m14-fast.mjs
+
+  release-readiness:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      FONTCONFIG_FILE: /etc/fonts/fonts.conf
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install canonical QA fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes fonts-inter fonts-urw-base35
+          fc-match Inter | grep -q "Inter"
+          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify M14 release readiness
+        run: node scripts/release-verify.mjs
+
+      - name: Upload readiness evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m14-readiness-evidence
+          path: output/readiness/*.json
+          if-no-files-found: warn
+          retention-days: 90

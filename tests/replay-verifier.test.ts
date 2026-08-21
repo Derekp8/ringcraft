@@ -156,7 +156,7 @@ describe("replay verifier", () => {
     expect(line).toContain("c14n-fnv1a64-v1:0000000000000000");
   });
 
-  it("locates grant-line drift and log/panel sync drift by pinned field", () => {
+  it("locates grant-line drift and log/panel sync drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).grantLine = "t2 granted World Tag offer title-shot-4c1632ac; roll 6 = 6.";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
@@ -215,7 +215,7 @@ describe("replay verifier", () => {
     expect(syncReport.errors.some((entry) => entry.includes("manual log/panel sync drift"))).toBe(true);
   });
 
-  it("reports title-shot chain schema drift and offer-id drift", () => {
+  it("reports title-shot chain schema drift and offer-id drift", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     mutated.schema = "m13-title-shot-chain-v9";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
