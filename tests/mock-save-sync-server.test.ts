@@ -35,7 +35,7 @@ function bundleWithOneSave(): CampaignSaveBundle {
   return {
     schema: MOCK_SAVE_BUNDLE_SCHEMA,
     exportedAt: "2099-01-01T00:00:00.000Z",
-    saves: [{ key: "asw91-campaign-save-demo", value: "{\"saveId\":\"demo\",\"campaignId\":\"campaign-demo\"}" }],
+    saves: [{ key: "asw91-campaign-save-demo", value: savePayload("demo", "Demo", "campaign-demo", "2099-01-01T00:00:00.000Z", "{\"demo\":1}") }],
   };
 }
 
@@ -222,14 +222,14 @@ describe("mock save-sync server (in-repo endpoint)", () => {
       key(index: number) { return [...this.map.keys()][index] ?? null; },
     };
     // Seed one named save so the local bundle is non-empty.
-    storage.setItem("asw91-campaign-save-demo", JSON.stringify({ saveId: "demo", name: "Demo", createdAt: "2099-01-01T00:00:00.000Z", updatedAt: "2099-01-01T00:00:00.000Z", campaignId: "campaign-demo", preview: { campaignName: "Demo", currentDate: "1991-01-01", playerDivision: "singles", playerLabel: "Demo", wins: 0, draws: 0, losses: 0, matches: 0, titlesHeld: [], wpBalance: 0 }, campaignJson: "{}" }));
+    storage.setItem("asw91-campaign-save-demo", savePayload("demo", "Demo", "campaign-demo", "2099-01-01T00:00:00.000Z", "{\"demo\":1}"));
 
     const backend = new RemoteBundleStorage({ endpoint: mock.endpoint, storage });
     expect((await backend.sync()).status).toBe("pushed");
     expect(mock.state.revision).toBe(1);
 
     // Both sides change: another local save, and the remote advances behind the gate's back.
-    storage.setItem("asw91-campaign-save-second", storage.getItem("asw91-campaign-save-demo")!);
+    storage.setItem("asw91-campaign-save-second", savePayload("second", "Second", "campaign-second", "2099-01-01T00:00:00.000Z", "{\"second\":1}"));
     expect(mock.state.bundle).not.toBeNull();
     await mock.putForce(mock.state.bundle!);
     const conflict = await backend.sync();
@@ -248,7 +248,7 @@ describe("mock save-sync server (in-repo endpoint)", () => {
     const t2 = "2099-01-02T00:00:00.000Z";
 
     // Baseline local bundle: campaign alpha at snapshot t1.
-    const alphaT1 = savePayload("alpha-v1", "Alpha", "campaign-alpha", t1, "{\"alpha\":1}");
+    const alphaT1 = savePayload("alpha", "Alpha", "campaign-alpha", t1, "{\"alpha\":1}");
     storage.setItem("asw91-campaign-save-alpha", alphaT1);
     const backend = new RemoteBundleStorage({ endpoint: mock.endpoint, storage });
 
@@ -267,8 +267,8 @@ describe("mock save-sync server (in-repo endpoint)", () => {
 
     // 2) A concurrent writer advances the server behind the app's back: a newer
     //    snapshot of campaign alpha under a different key, plus a new campaign beta.
-    const alphaRemote = savePayload("alpha-v2", "Alpha (device)", "campaign-alpha", t2, "{\"alpha\":2}");
-    const beta = savePayload("beta-v1", "Beta", "campaign-beta", t1, "{\"beta\":1}");
+    const alphaRemote = savePayload("alpha-remote", "Alpha (device)", "campaign-alpha", t2, "{\"alpha\":2}");
+    const beta = savePayload("beta", "Beta", "campaign-beta", t1, "{\"beta\":1}");
     await mock.putForce({
       schema: MOCK_SAVE_BUNDLE_SCHEMA,
       exportedAt: t2,
@@ -279,7 +279,7 @@ describe("mock save-sync server (in-repo endpoint)", () => {
     });
 
     // 3) Local also diverges (a new campaign gamma), so both sides changed.
-    const gamma = savePayload("gamma-v1", "Gamma", "campaign-gamma", t1, "{\"gamma\":1}");
+    const gamma = savePayload("gamma", "Gamma", "campaign-gamma", t1, "{\"gamma\":1}");
     storage.setItem("asw91-campaign-save-gamma", gamma);
 
     // 4) sync() reports the conflict and touches neither side.
