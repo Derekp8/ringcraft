@@ -35,10 +35,10 @@ export const AI_DIFFICULTIES: readonly AiDifficulty[] = ["novice", "standard", "
  * policy configuration above, not rules data (it is not part of `M5_DATA_HASH`).
  */
 export const AI_DIFFICULTY_HINTS: Readonly<Record<AiDifficulty, string>> = {
-  novice: "A forgiving opponent that intentionally makes strategic mistakes while following the same rules and dice as every other level.",
-  standard: "A competent opponent that consistently chooses strong legal actions without changing the rules or dice.",
-  veteran: "A stronger tactical opponent that considers the likely position after its next move.",
-  ruthless: "The toughest opponent, weighing its move and your likely reply before committing to a legal action.",
+  novice: "A forgiving opponent that intentionally chooses a suboptimal move — a strategic mistake — while following the same rules and dice as every other level.",
+  standard: "The deterministic baseline: a competent opponent that consistently chooses strong legal actions with zero randomness and without changing the rules or dice.",
+  veteran: "A stronger 1-ply tactical opponent that considers the likely position after its next move.",
+  ruthless: "The toughest 2-ply opponent, weighing its move and your likely reply before committing to a legal action.",
 };
 
 /**

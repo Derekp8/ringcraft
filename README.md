@@ -1,8 +1,8 @@
-# Project Ringcraft — M13 structural-repair candidate
+# Project Ringcraft — M13 verification-reconciled candidate
 
 Project Ringcraft is a deterministic, rules-first private adaptation of the 1991 *All Star Wrestling* tabletop system. Version **1.2.0** contains the M5 career core, M6 private polish, M7 playtest tooling, M8 accessibility hardening, the M9 private-handoff workflow, and opt-in M10–M13 extensions.
 
-This branch is a structural-repair candidate, not a verified handoff or public release. The August 20 GitHub uploads flattened most of the repository and also combined files from more than one verification snapshot. The canonical directory tree has been restored, TypeScript and the production build pass, but the deterministic evidence is not yet fully reconciled. Independent second-human table transcription, human accessibility review, and human playtest sign-off remain external QA gates.
+This branch follows the August 20 structural repair and reconciles the mixed verification snapshots that were uploaded together. The canonical directory tree, deterministic fixtures, replay documents, automated tests, and browser QA now agree with the current source. It is still a review candidate—not a public release. Independent second-human table transcription, human accessibility review, and human playtest sign-off remain external QA gates.
 
 ## Clean install and run
 
@@ -28,15 +28,15 @@ npm run fixtures:verify
 npm run visual:qa
 ```
 
-The restored tree currently discovers **460 tests across 28 files**. On the structural-repair branch, 447–448 tests pass and 12 deterministic assertions fail; one additional replay-verifier test can hit its five-second timeout under load. The failures are documented in `docs/repository-structure-repair.md` and must not be resolved by silently regenerating fixtures or changing game rules.
+The reconciled tree discovers **460 tests across 28 files**, all passing. `docs/repository-structure-repair.md` preserves the original structural-repair findings; `docs/verification-evidence-reconciliation.md` records the follow-up diagnosis and measured verification results.
 
-The following gates currently pass independently:
+The following gates pass on the reconciliation branch:
 
 - `npm ci` — 74 locked packages installed without changing `package-lock.json`.
 - `npm run typecheck` — both emit-free project checks and `tsc -b` pass.
 - `npm run build` — 45 modules compile into a production Vite bundle.
 
-`npm run fixtures:verify` re-derives the M5 campaign fixtures, the uploaded 1,058-decision M10 corpus, the M10 campaign, M11 match/playtest/trend fixtures, and save-manager fixture. Its final replay-document step correctly reports drift in the ruthless seed-1991 replay: the committed pin is `c14n-fnv1a64-v1:43945f1cc482e0cd`, while the uploaded code replays it as `c14n-fnv1a64-v1:95955a3dd0688411`. `npm run visual:qa` currently stops in the tag profile while waiting for the expected `Nova Hart` surface. Reviewed screenshots are retained unchanged when that gate fails.
+`npm run fixtures:verify` re-derives the M5 campaign fixtures, the 1,058-decision M10 corpus (`35dd5b20`), the M10 campaign, M11 match/playtest/trend fixtures, save-manager fixture, and all replay documents with zero drift. The current ruthless seed-1991 replay pins `c14n-fnv1a64-v1:03e0fea1cb9c5be1`; the tag replay remains `c14n-fnv1a64-v1:1b26c32a342f08c8`. `npm run visual:qa` passes all 22 reviewed browser captures.
 
 To regenerate the included deterministic examples:
 
@@ -119,7 +119,7 @@ The initial campaign schema is `asw91-campaign-v1`. No earlier campaign schema e
 - Four-step AI difficulty ladder (`asw91-ai-policy-v1`): `novice` (seeded mistake injection), `standard` (v1 greedy, byte-identical to the pre-M10 policy, zero RNG consumed), `veteran` (1-ply lookahead over a pure positional evaluation), and `ruthless` (2-ply modeling the opponent's response) within a fixed ≤ 40-clone node budget.
 - Difficulty is stored per match configuration (`aiDifficulty`) and per campaign, flows through scheduling, `createMatch`, saves, and replays, and is a visible labeled setting in Exhibition and Career setup plus a dashboard label — never a hidden modifier.
 - Bounded search dry-run helper `resolveDecisionOnce` (discarded clones, copied RNG) with search-scoped event hashing skipped so lookahead stays cheap; search clones never mutate live state or the dice stream.
-- The uploaded M10 corpus contains 1,058 decisions across all 12 decision kinds and replays internally with fixture hash `35dd5b20`. Several tests and historical handoff documents still pin the earlier 1,050-decision/`64e1f4af` identity; that snapshot mismatch remains unresolved.
+- The current M10 corpus contains 1,058 decisions across all 12 decision kinds and replays with fixture hash `35dd5b20`. Historical M9–M11 audit records retain their original older snapshot identities and are not current verification claims.
 
 ## M11 implemented scope
 

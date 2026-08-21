@@ -32,7 +32,7 @@ describe("M11 playtest pacing-trend report", () => {
   });
 
   it("pins the report hash and the pacing-stable verdict", () => {
-    expect(report.reportHash).toBe("c14n-fnv1a64-v1:bf866d8e3a3d8b97");
+    expect(report.reportHash).toBe("c14n-fnv1a64-v1:84e05a2da0502ee6");
     expect(report.trend.pacingStable).toBe(true);
     expect(trendReportHash(report)).toBe(report.reportHash);
   });

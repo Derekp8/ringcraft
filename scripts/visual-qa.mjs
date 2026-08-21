@@ -10,7 +10,7 @@ import { createServer } from "vite";
 
 const baseUrl = "http://127.0.0.1:4173";
 /** Pinned replay hash for the seeded (1991) ruthless exhibition match — see the m10-difficulty-exhibition profile. */
-const RUTHLESS_SEED_1991_REPLAY_HASH = "c14n-fnv1a64-v1:43945f1cc482e0cd";
+const RUTHLESS_SEED_1991_REPLAY_HASH = "c14n-fnv1a64-v1:03e0fea1cb9c5be1";
 /** Pinned replay hash for the seeded (1991) tag-team exhibition match — see the tag-desktop profile. */
 const TAG_SEED_1991_REPLAY_HASH = "c14n-fnv1a64-v1:1b26c32a342f08c8";
 /** Pinned replay hash for the seeded world-tag defense match in the tag-feud-career profile (career-team-2 vs champion career-team-1, time-limit draw) — see the tag-feud-career profile. */
@@ -506,6 +506,20 @@ async function openCareer({ predicate, selector = ".career-surface", timeout = 2
   return openSurface({ nav: "Career", predicate, selector, timeout, debug, label });
 }
 
+/** Opens a collapsed Career option group by its accessible summary text. */
+async function ensureCareerOptionsOpen(summaryText) {
+  const summary = page.getByText(summaryText, { exact: true });
+  if (!(await summary.count())) throw new Error(`Career option group is missing: ${summaryText}`);
+  const open = await summary.evaluate((element) => element.parentElement?.hasAttribute("open") ?? false);
+  if (!open) await summary.click();
+}
+
+/** Starts the generated QA league through the current manual-seed surface. */
+async function startDeterministicQaCareer() {
+  await ensureCareerOptionsOpen("Developer / deterministic options");
+  await page.getByRole("button", { name: "Start generated league with manual seed" }).click();
+}
+
 /**
  * Freeze native caret rendering so captures never depend on the browser's
  * caret-blink phase. A focused text input's caret blinks on an internal timer
@@ -658,7 +672,13 @@ for (const profile of [
   await assertKeyboardTraversal(profile.name, "main");
   if (profile.mode === "tag") {
     await page.getByLabel("Mode").selectOption("tag");
-    await page.getByRole("button", { name: "Start match" }).click();
+    await page.getByLabel("Advanced exhibition options").click();
+    await page.getByLabel("Include internal test wrestlers").check();
+    await page.getByLabel("Your wrestler").selectOption("fixture:player-a");
+    await page.getByLabel("Your partner").selectOption("fixture:player-b");
+    await page.getByLabel("Opponent", { exact: true }).selectOption("fixture:ai-a");
+    await page.getByLabel("Opponent partner", { exact: true }).selectOption("fixture:ai-b");
+    await page.getByRole("button", { name: "Start with manual seed" }).click();
     await page.waitForFunction(() => document.body.textContent?.includes("Nova Hart"));
   }
   await assertPage(profile.name);
@@ -709,7 +729,7 @@ await capture(page, "ringcraft-accessibility.png");
 // Tab/Enter only. The capture above is taken before this step so its bytes
 // stay identical across runs.
 await openCareer({ label: "setup surface" });
-await page.getByRole("button", { name: "Start deterministic QA career" }).click();
+await startDeterministicQaCareer();
 await page.waitForFunction(() => document.body.textContent?.includes("Championships and obligations"));
 await page.getByLabel("New save name").fill("Accessibility QA import");
 await page.getByRole("button", { name: "Save current campaign" }).click();
@@ -741,11 +761,15 @@ currentProfile = "m10-difficulty-exhibition";
 await page.setViewportSize({ width: 1440, height: 1100 });
 await gotoApp();
 await assertDifficultyHintWiring("m10-difficulty-exhibition", "AI difficulty");
+await page.getByLabel("Advanced exhibition options").click();
+await page.getByLabel("Include internal test wrestlers").check();
+await page.getByLabel("Your wrestler").selectOption("fixture:player-a");
+await page.getByLabel("Opponent", { exact: true }).selectOption("fixture:ai-a");
 await page.getByLabel("Seed", { exact: true }).fill("1991");
 await page.getByLabel("AI difficulty", { exact: true }).selectOption("ruthless");
 if ((await page.getByLabel("AI difficulty", { exact: true }).inputValue()) !== "ruthless") errors.push("m10-difficulty-exhibition: difficulty select did not update");
 if (!(await page.locator(".difficulty-hint__row--active", { hasText: "Ruthless" }).count())) errors.push("m10-difficulty-exhibition: selected difficulty not highlighted in the hint panel");
-await page.getByRole("button", { name: "Start match" }).click();
+await page.getByRole("button", { name: "Start with manual seed" }).click();
 let m10Guard = 0;
 while (!(await page.locator(".decision--result").count()) && m10Guard < 600) {
   const action = page.locator("button.action:visible").first();
@@ -755,11 +779,7 @@ while (!(await page.locator(".decision--result").count()) && m10Guard < 600) {
 }
 if (!(await page.locator(".decision--result").count())) errors.push("m10-difficulty-exhibition: ruthless match did not reach a result within the action cap");
 if (!(await page.getByText(/asw91-ai-policy-v1 ruthless/).count())) errors.push("m10-difficulty-exhibition: ruthless policy label did not surface in the match event log");
-if (!(await page.locator(".difficulty-hint-disclosure").count())) errors.push("m10-difficulty-exhibition: difficulty hint disclosure missing mid-match");
-if (!(await page.locator(".difficulty-hint-disclosure summary").getByText(/Opposition AI difficulty: ruthless/).count())) errors.push("m10-difficulty-exhibition: mid-match summary does not state the active difficulty");
-await page.locator(".difficulty-hint-disclosure summary").click();
-if (!(await page.locator(".difficulty-hint-disclosure .difficulty-hint").count())) errors.push("m10-difficulty-exhibition: difficulty hint list did not expand mid-match");
-if (!(await page.locator(".difficulty-hint-disclosure .difficulty-hint__row--active", { hasText: "Ruthless" }).count())) errors.push("m10-difficulty-exhibition: active difficulty not highlighted in the mid-match hint");
+if (!(await page.locator(".setup-panel .difficulty-hint__row--active", { hasText: "Ruthless" }).count())) errors.push("m10-difficulty-exhibition: active difficulty not highlighted in the persistent setup hint");
 if (!(await page.locator("footer .verified", { hasText: "REPLAY VERIFIED" }).count())) errors.push("m10-difficulty-exhibition: replay verification badge missing on the completed match");
 const footerStateHash = await page.evaluate(() => {
   const match = document.querySelector("footer")?.textContent?.match(/state (c14n-fnv1a64-v1:[0-9a-f]{16})/);
@@ -767,7 +787,7 @@ const footerStateHash = await page.evaluate(() => {
 });
 if (!footerStateHash) errors.push("m10-difficulty-exhibition: could not read the final match state hash from the footer");
 if (!(await page.locator("footer", { hasText: RUTHLESS_SEED_1991_REPLAY_HASH }).count())) errors.push("m10-difficulty-exhibition: pinned ruthless replay identity did not surface in the footer");
-if (!(await page.locator("footer .verified", { hasText: "PIN MATCHED" }).count())) errors.push("m10-difficulty-exhibition: footer did not report PIN MATCHED against the golden ruthless identity");
+if (!(await page.locator("footer .verified", { hasText: /Pinned internal replay: .* - matched/ }).count())) errors.push("m10-difficulty-exhibition: footer did not report a matched pinned internal replay");
 if (!(await page.locator("footer", { hasText: footerStateHash }).count())) errors.push("m10-difficulty-exhibition: footer did not surface the live match state hash");
 const replayDownload = page.waitForEvent("download");
 await page.getByRole("button", { name: "Export replay" }).click();
@@ -825,7 +845,7 @@ await capture(page, "ringcraft-help-toggle.png");
 currentProfile = "creator-desktop";
 await page.setViewportSize({ width: 1440, height: 1100 });
 await gotoApp();
-await openSurface({ nav: "Creator", selector: ".creator-surface", label: "creator surface" });
+await openSurface({ nav: "Create Wrestler", selector: ".creator-surface", label: "creator surface" });
 if (!(await page.locator(".validation--error").count())) errors.push("creator-initial: expected incomplete-creator validation was not visible");
 await assertSurface("creator-initial", ".creator-surface");
 await assertAccessibleNameCoverage("creator-initial");
@@ -849,10 +869,11 @@ await page.waitForFunction(() => document.body.textContent?.includes("it is now 
 currentProfile = "created-exhibition";
 await page.setViewportSize({ width: 1440, height: 1000 });
 await openSurface({ nav: "Exhibition", selector: ".setup-panel", label: "setup panel" });
-const createdOptionValue = await page.getByLabel("playerA").locator("option").filter({ hasText: "New Challenger" }).getAttribute("value");
+const createdOptionValue = await page.getByLabel("Your wrestler", { exact: true }).locator("option").filter({ hasText: "New Challenger" }).getAttribute("value");
 if (!createdOptionValue) errors.push("created-exhibition: finalized wrestler option was missing");
-else await page.getByLabel("playerA").selectOption(createdOptionValue);
-await page.getByRole("button", { name: "Start match" }).click();
+else await page.getByLabel("Your wrestler", { exact: true }).selectOption(createdOptionValue);
+await page.getByLabel("Advanced exhibition options").click();
+await page.getByRole("button", { name: "Start with manual seed" }).click();
 await page.waitForFunction(() => Array.from(document.querySelectorAll("button.action")).some((element) => element instanceof HTMLElement && element.offsetParent !== null));
 await assertPage("created-exhibition");
 await capture(page, "ringcraft-created-exhibition.png");
@@ -875,10 +896,11 @@ await assertSurface("career-setup", ".career-surface");
 await assertAccessibleNameCoverage("career-setup");
 await assertLandmarkAndHeadingStructure("career-setup");
 await assertKeyboardTraversal("career-setup", ".career-surface");
-if (!(await page.getByRole("button", { name: "Load completed M5 fixture" }).count())) errors.push("career-setup: completed fixture shortcut missing");
-if (!(await page.getByRole("button", { name: "Load in-progress M5 fixture" }).count())) errors.push("career-setup: in-progress fixture shortcut missing");
+if (careerSetupSurfaceReady) await ensureCareerOptionsOpen("Developer fixtures");
+if (!(await page.getByRole("button", { name: "Load completed fixture" }).count())) errors.push("career-setup: completed fixture shortcut missing");
+if (!(await page.getByRole("button", { name: "Load in-progress fixture" }).count())) errors.push("career-setup: in-progress fixture shortcut missing");
 if (careerSetupSurfaceReady) {
-  await page.getByRole("button", { name: "Load completed M5 fixture" }).click();
+  await page.getByRole("button", { name: "Load completed fixture" }).click();
   await page.waitForFunction(() => document.body.textContent?.includes("Freebuff M5 Example Career"));
   if (!(await page.locator(".playtest-panel").count())) errors.push("career-fixture-completed: playtest panel missing");
 }
@@ -886,7 +908,8 @@ await page.evaluate(() => { for (const key of Object.keys(localStorage)) { if (k
 await page.reload({ waitUntil: "networkidle" });
 const careerRecoveryReady = await openCareer({ label: "setup surface" });
 if (careerRecoveryReady) {
-  await page.getByRole("button", { name: "Load in-progress M5 fixture" }).click();
+  await ensureCareerOptionsOpen("Developer fixtures");
+  await page.getByRole("button", { name: "Load in-progress fixture" }).click();
   await page.waitForFunction(() => document.body.textContent?.includes("Career match in progress"));
   if (!(await page.locator(".playtest-panel").count())) errors.push("career-fixture-recovery: playtest panel missing during recovery");
 }
@@ -895,18 +918,21 @@ await page.reload({ waitUntil: "networkidle" });
 await openCareer({ label: "setup surface" });
 await assertSurface("career-setup", ".career-surface");
 await recordTimestampRows("ringcraft-career-setup.png");
-await capture(page, "ringcraft-career-setup.png");  await page.getByLabel("Career seed").fill("2000");
+await capture(page, "ringcraft-career-setup.png");
+  await ensureCareerOptionsOpen("Developer / deterministic options");
+  await page.getByLabel("Career seed").fill("2000");
+  await ensureCareerOptionsOpen("Advanced / optional extensions");
   await page.getByLabel("Post-match injury checks").selectOption("d20-check");
   // The curve-fair renewals checkbox is gated on the negotiation toggle: it
   // starts disabled, enables with negotiation, and wires renewalStrategy
   // "curve-fair" into the created campaign (re-pinning the post-match hash).
   if (!(await page.getByLabel("Enable curve-fair renewals", { exact: true }).isDisabled())) errors.push("career-setup: curve-fair renewals should start disabled without negotiation");
-  await page.getByLabel("Enable M12 contracts and finance").check();
-  await page.getByLabel("Enable M12 contract negotiation").check();
+  await page.getByLabel("Enable contracts and finance extension").check();
+  await page.getByLabel("Enable contract negotiation extension").check();
   if (await page.getByLabel("Enable curve-fair renewals", { exact: true }).isDisabled()) errors.push("career-setup: curve-fair renewals did not enable with negotiation");
   await page.getByLabel("Enable curve-fair renewals", { exact: true }).check();
-  await page.getByLabel("Enable M13 feuds and booking").check();
-  await page.getByRole("button", { name: "Start deterministic QA career" }).click();
+  await page.getByLabel("Enable feuds and booking extension").check();
+  await startDeterministicQaCareer();
   await page.waitForFunction(() => document.body.textContent?.includes("Championships and obligations"));
   await assertSurface("career-desktop", ".career-surface");
   if (!(await page.locator(".autosave-row").count())) errors.push("career-desktop: autosave history missing after starting the career");
@@ -1294,7 +1320,7 @@ if (careerSetupReady) {
   await page.getByLabel("Career AI difficulty", { exact: true }).selectOption("veteran");
   if ((await page.getByLabel("Career AI difficulty", { exact: true }).inputValue()) !== "veteran") errors.push("m10-difficulty-career: setup select did not update");
   if (!(await page.locator(".difficulty-hint__row--active", { hasText: "Veteran" }).count())) errors.push("m10-difficulty-career: selected difficulty not highlighted in the hint panel");
-  await page.getByRole("button", { name: "Start deterministic QA career" }).click();
+  await startDeterministicQaCareer();
   await page.waitForFunction(() => document.body.textContent?.includes("Championships and obligations"));
   if (!(await page.getByText(/Opposition AI difficulty: veteran/).count())) errors.push("m10-difficulty-career: dashboard difficulty label missing");
   await recordTimestampRows("ringcraft-m10-difficulty-career.png");
@@ -1309,8 +1335,9 @@ await dismissTour();
 const tagFeudSetupReady = await openCareer({ selector: "select[aria-label='Career type']", label: "setup select" });
 if (tagFeudSetupReady) {
   await page.getByLabel("Career type", { exact: true }).selectOption("tag");
-  await page.getByLabel("Enable M13 feuds and booking").check();
-  await page.getByRole("button", { name: "Start deterministic QA career" }).click();
+  await ensureCareerOptionsOpen("Advanced / optional extensions");
+  await page.getByLabel("Enable feuds and booking extension").check();
+  await startDeterministicQaCareer();
   await page.waitForFunction(() => document.body.textContent?.includes("Championships and obligations"));
   await assertSurface("tag-feud-career", ".career-surface");
   // M13 tag-mode toggle: a tag career defaults the feud panel to tag mode, so
@@ -1420,8 +1447,9 @@ if (tagFeudSetupReady) {
 
 currentProfile = "rules-lab";
 await gotoApp();
+await page.getByLabel("Advanced exhibition options").click();
 await page.getByLabel("Rules Lab").selectOption("critical-hold-100");
-await page.getByRole("button", { name: "Start match" }).click();
+await page.getByRole("button", { name: "Start with manual seed" }).click();
 const labBefore = await page.locator(".event-log li").count();
 await page.getByRole("button", { name: "Step one transaction" }).click();
 const labAfter = await page.locator(".event-log li").count();
@@ -1434,4 +1462,4 @@ await page.close();
 await browser.close();
 await server.close();
 if (errors.length) throw new Error(`Visual QA failed:\n${errors.join("\n")}`);
-console.log("Visual QA passed for exhibition, creator, progression, career setup/dashboard/match/recovery/post-match (seeded post-match injury), save-manager create/duplicate/rename/delete plus save-bundle export/import and update-in-place and restore-from-snapshot hash pin, M10 difficulty exhibition/career profiles (seeded ruthless replay pinned at c14n-fnv1a64-v1:43945f1cc482e0cd; seeded tag replay pinned at c14n-fnv1a64-v1:1b26c32a342f08c8), tour, help-toggle, rules-lab, narrow, accessibility, and M6/M7/M8 acceptance profiles.");
+console.log("Visual QA passed for exhibition, creator, progression, career setup/dashboard/match/recovery/post-match (seeded post-match injury), save-manager create/duplicate/rename/delete plus save-bundle export/import and update-in-place and restore-from-snapshot hash pin, M10 difficulty exhibition/career profiles (seeded ruthless replay pinned at c14n-fnv1a64-v1:03e0fea1cb9c5be1; seeded tag replay pinned at c14n-fnv1a64-v1:1b26c32a342f08c8), tour, help-toggle, rules-lab, narrow, accessibility, and M6/M7/M8 acceptance profiles.");

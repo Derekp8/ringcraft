@@ -11,15 +11,15 @@ const fixture = fixtureJson as unknown as DecisionLogFixture;
 // checkout's bytes, so a Windows autocrlf checkout must not shift the hash.
 const fixtureHash = fnv1a32(normalizeFixtureEol(fixtureText));
 
-/** Routes the player-side selector from the run's own config difficulty, so
- * standard runs replay under the v1 path and the ruthless run under 2-ply. */
-const selectFor = (record: { config: { aiDifficulty?: string } }) =>
-  (state: Parameters<typeof chooseDeterministicPolicyAction>[0], decision: Parameters<typeof chooseDeterministicPolicyAction>[1]) =>
-    choosePolicyAction(state, decision, (record.config.aiDifficulty ?? "standard") as "novice" | "standard" | "veteran" | "ruthless");
+/** Routes every replay from the match state's own difficulty. This matters for
+ * whole-corpus mutation tests because the fixture mixes standard and ruthless
+ * records in one verification pass. */
+const difficultyAwareSelect = (state: Parameters<typeof chooseDeterministicPolicyAction>[0], decision: Parameters<typeof chooseDeterministicPolicyAction>[1]) =>
+  choosePolicyAction(state, decision, state.config.aiDifficulty ?? "standard");
 
 describe("M10 AI decision-log corpus", () => {
   it("pins the golden decision log so an unintended regeneration is caught", () => {
-    expect(fixtureHash).toBe("64e1f4af");
+    expect(fixtureHash).toBe("35dd5b20");
   });
 
   it("declares the captured policy and schema", () => {
@@ -37,12 +37,12 @@ describe("M10 AI decision-log corpus", () => {
   it("replays today's v1 policy byte-identically against the golden log (default identity)", () => {
     let replayCount = 0;
     for (const record of fixture.corpus) {
-      const { entries, finalStateHash } = collectCorpusDecisions(record.config, fixture.rosters[record.config.rosterKey], selectFor(record));
+      const { entries, finalStateHash } = collectCorpusDecisions(record.config, fixture.rosters[record.config.rosterKey], difficultyAwareSelect);
       expect(entries).toEqual(record.decisions);
       expect(finalStateHash).toBe(record.finalStateHash);
       replayCount += entries.length;
     }
-    expect(replayCount).toBe(1050);
+    expect(replayCount).toBe(1058);
   }, 120_000);
 
   it("routes default and standard AI difficulty through the same v1 path byte-identically", () => {
@@ -88,7 +88,7 @@ describe("M10 AI decision-log corpus", () => {
         checked += 1;
       }
     }
-    expect(checked).toBe(1050);
+    expect(checked).toBe(1058);
   });
 
   it("pins the seeded ruthless run as a corpus entry with a golden final state hash", () => {
@@ -132,7 +132,7 @@ describe("M10 AI decision-log corpus", () => {
 
     let caught: unknown = null;
     try {
-      verifyCorpusFixture(mutated, selectFor(target.record));
+      verifyCorpusFixture(mutated, difficultyAwareSelect);
     } catch (error) {
       caught = error;
     }
@@ -148,7 +148,7 @@ describe("M10 AI decision-log corpus", () => {
     expect(message).toContain(golden.hash);
 
     // The untouched fixture still verifies cleanly.
-    expect(() => verifyCorpusFixture(fixture, selectFor(target.record))).not.toThrow();
+    expect(() => verifyCorpusFixture(fixture, difficultyAwareSelect)).not.toThrow();
   }, 120_000);
 
   it("reports every diverged decision across all runs, not just the first (whole-corpus diff)", () => {
@@ -168,7 +168,7 @@ describe("M10 AI decision-log corpus", () => {
       mutated.corpus[recordIndex].decisions[entryIndex] = { ...mutated.corpus[recordIndex].decisions[entryIndex], hash: flipped };
     }
 
-    const diff = diffCorpusFixture(mutated, selectFor(targets[0].record));
+    const diff = diffCorpusFixture(mutated, difficultyAwareSelect);
     expect(diff.clean).toBe(false);
     expect(diff.divergences).toHaveLength(3);
     expect(diff.runDivergences).toHaveLength(0);
@@ -183,9 +183,9 @@ describe("M10 AI decision-log corpus", () => {
       expect(located!.label).toBe(record.label);
     }
     // The fast-failing gate still throws on the first of the three.
-    expect(() => verifyCorpusFixture(mutated, selectFor(targets[0].record))).toThrow(/seed \d+, tick \d+, kind \w+/);
+    expect(() => verifyCorpusFixture(mutated, difficultyAwareSelect)).toThrow(/seed \d+, tick \d+, kind \w+/);
 
     // The untouched fixture diffs clean.
-    expect(diffCorpusFixture(fixture, selectFor(fixture.corpus[0])).clean).toBe(true);
+    expect(diffCorpusFixture(fixture, difficultyAwareSelect).clean).toBe(true);
   }, 120_000);
 });

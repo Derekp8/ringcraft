@@ -186,7 +186,555 @@
     {
       "type": "choose-damage-charm",
       "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "endurance",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "reenter"
+    },
+    {
+      "type": "recover",
+      "pool": "damage",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "damage",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "escape-hold",
+      "charm": 0
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "damage",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "damage",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "damage",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "damage",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "damage",
+      "charm": 0,
+      "free": true
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "reenter"
+    },
+    {
+      "type": "reenter"
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "attack",
+      "maneuverId": "arm-bar",
+      "attackCharm": 0
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "dodge-commit",
+      "dodge": false
+    },
+    {
+      "type": "maintain-hold",
+      "useRopes": false
+    },
+    {
+      "type": "choose-damage-charm",
+      "charm": 0
+    },
+    {
+      "type": "recover",
+      "pool": "damage",
+      "charm": 0,
+      "free": true
     }
   ],
-  "expectedStateHash": "c14n-fnv1a64-v1:43945f1cc482e0cd"
+  "expectedStateHash": "c14n-fnv1a64-v1:03e0fea1cb9c5be1"
 }

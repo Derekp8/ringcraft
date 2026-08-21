@@ -1,6 +1,6 @@
 export const M9_ARCHIVE_NAME = "asw91-project-ringcraft-m9-private-handoff-1.2.0.zip";
 
-export const M9_REQUIRED_ROOTS = ["src", "tests", "scripts", "fixtures/m5", "fixtures/m10", "fixtures/m11", "fixtures/saves", "fixtures/replays", "docs", "reference"] as const;
+export const M9_REQUIRED_ROOTS = ["src", "tests", "scripts", "fixtures/m5", "fixtures/m10", "fixtures/m11", "fixtures/m13", "fixtures/saves", "fixtures/replays", "docs"] as const;
 export const M9_REQUIRED_FILES = [
   "package.json",
   "package-lock.json",
@@ -19,7 +19,7 @@ export const M9_REQUIRED_FILES = [
 
 /**
  * Every tracked, byte-identical review screenshot. The visual QA gate reproduces
- * all 21 captures byte-for-byte (frozen clock + pixel-stability baseline), and
+ * all 22 captures byte-for-byte (frozen clock + pixel-stability baseline), and
  * each one is pinned in the manifest's `critical_file_sha256` so the clean-room
  * verifier hashes the archive's embedded bytes against the pin — a change to any
  * committed capture fails the gate, not just the run-to-run stability check.
@@ -44,6 +44,7 @@ export const M9_REVIEWED_SCREENSHOTS = [
   "output/qa/ringcraft-save-overwrite.png",
   "output/qa/ringcraft-singles-desktop.png",
   "output/qa/ringcraft-tag-desktop.png",
+  "output/qa/ringcraft-tag-feud-career.png",
   "output/qa/ringcraft-tag-narrow.png",
   "output/qa/ringcraft-tour.png",
 ] as const;

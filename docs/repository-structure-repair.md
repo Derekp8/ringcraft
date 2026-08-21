@@ -1,5 +1,7 @@
 # Repository structure repair report
 
+> Historical repair record. The deterministic and browser failures below describe the structural-repair branch before the follow-up reconciliation. Current results are recorded in `docs/verification-evidence-reconciliation.md`.
+
 ## Scope
 
 The August 20, 2026 `Add files via upload` commits flattened Project Ringcraft's source, test, script, fixture, documentation, workflow, hook, and reviewed-image paths. This repair restores the canonical paths established by imports, npm scripts, `HANDOFF-MANIFEST.json`, the M9 packaging contract, and the pre-upload repository history. It does not change match rules, probabilities, campaign schemas, data-pack identities, replay formats, or fixture contents.
