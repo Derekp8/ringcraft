@@ -1,7 +1,19 @@
 import { afterAll, describe, expect, it } from "vitest";
 import { createMockSaveSyncServer, MOCK_SAVE_BUNDLE_SCHEMA } from "../scripts/mock-save-sync-server.mjs";
 import { RemoteBundleStorage, readSyncMeta } from "../src/ui/remote-save-storage";
-import { importSaveBundle } from "../src/ui/save-manager";
+import {
+  advanceCampaignDays,
+  autoAllocateCreationPoints,
+  createCampaign,
+  createCreationSession,
+  finalizeCreationSession,
+  rollCreationHistory,
+  rollCreationStature,
+  setCreationIdentity,
+  setCreationSide,
+} from "../src/core";
+import type { CampaignState, WrestlerCareerRecord } from "../src/core";
+import { createSave, importSaveBundle, readSave } from "../src/ui/save-manager";
 import type { CampaignSaveBundle, SaveStorage } from "../src/ui/save-manager";
 
 const instances: Array<{ close(): void }> = [];
@@ -23,7 +35,7 @@ function bundleWithOneSave(): CampaignSaveBundle {
   return {
     schema: MOCK_SAVE_BUNDLE_SCHEMA,
     exportedAt: "2099-01-01T00:00:00.000Z",
-    saves: [{ key: "asw91-campaign-save-demo", value: "{\"saveId\":\"demo\",\"campaignId\":\"campaign-demo\"}" }],
+    saves: [{ key: "asw91-campaign-save-demo", value: savePayload("demo", "Demo", "campaign-demo", "2099-01-01T00:00:00.000Z", "{\"demo\":1}") }],
   };
 }
 
@@ -38,15 +50,48 @@ function inMemoryStorage(): SaveStorage {
   };
 }
 
-function savePayload(saveId: string, name: string, campaignId: string, updatedAt: string, campaignJson: string): string {
+function syncRecord(seed: number, index: number): WrestlerCareerRecord {
+  let session = createCreationSession(seed + index);
+  session = setCreationIdentity(session, { name: `Sync Wrestler ${index}`, epithet: "T", affiliation: "Sync Test Roster" });
+  session = setCreationSide(session, index % 2 ? "rulebreaker" : "fan-favorite");
+  session = rollCreationStature(session);
+  session = rollCreationHistory(session);
+  session = autoAllocateCreationPoints(session);
+  return finalizeCreationSession(session).finalized!;
+}
+
+function logicalSeed(campaignId: string): number {
+  let value = 7000;
+  for (const char of campaignId) value = ((value * 33) ^ char.charCodeAt(0)) >>> 0;
+  return (value % 100000) + 1;
+}
+
+function syncCampaign(logicalCampaignId: string): CampaignState {
+  const seed = logicalSeed(logicalCampaignId);
+  const roster = Array.from({ length: 4 }, (_, index) => syncRecord(seed, index));
+  return createCampaign({
+    name: `Sync ${logicalCampaignId}`,
+    seed,
+    startDate: "1991-01-01",
+    roster,
+    playerEntrantId: roster[0].id,
+    playerDivision: "singles",
+  });
+}
+
+function savePayload(saveId: string, name: string, logicalCampaignId: string, updatedAt: string, campaignMarker: string): string {
+  const markerMatch = campaignMarker.match(/:(\d+)\s*}/);
+  const advanceDays = Math.max(0, Number(markerMatch?.[1] ?? 1) - 1);
+  const campaign = advanceDays > 0 ? advanceCampaignDays(syncCampaign(logicalCampaignId), advanceDays) : syncCampaign(logicalCampaignId);
+  const storage = inMemoryStorage();
+  const meta = createSave(campaign, name, storage);
+  const record = readSave(meta.saveId, storage)!;
   return JSON.stringify({
+    ...record,
     saveId,
     name,
-    campaignId,
     createdAt: "2099-01-01T00:00:00.000Z",
     updatedAt,
-    preview: { campaignName: name, currentDate: "1991-01-01", playerDivision: "singles", playerLabel: name, wins: 0, draws: 0, losses: 0, matches: 0, titlesHeld: [], wpBalance: 0 },
-    campaignJson,
   });
 }
 
@@ -177,14 +222,14 @@ describe("mock save-sync server (in-repo endpoint)", () => {
       key(index: number) { return [...this.map.keys()][index] ?? null; },
     };
     // Seed one named save so the local bundle is non-empty.
-    storage.setItem("asw91-campaign-save-demo", JSON.stringify({ saveId: "demo", name: "Demo", createdAt: "2099-01-01T00:00:00.000Z", updatedAt: "2099-01-01T00:00:00.000Z", campaignId: "campaign-demo", preview: { campaignName: "Demo", currentDate: "1991-01-01", playerDivision: "singles", playerLabel: "Demo", wins: 0, draws: 0, losses: 0, matches: 0, titlesHeld: [], wpBalance: 0 }, campaignJson: "{}" }));
+    storage.setItem("asw91-campaign-save-demo", savePayload("demo", "Demo", "campaign-demo", "2099-01-01T00:00:00.000Z", "{\"demo\":1}"));
 
     const backend = new RemoteBundleStorage({ endpoint: mock.endpoint, storage });
     expect((await backend.sync()).status).toBe("pushed");
     expect(mock.state.revision).toBe(1);
 
     // Both sides change: another local save, and the remote advances behind the gate's back.
-    storage.setItem("asw91-campaign-save-second", storage.getItem("asw91-campaign-save-demo")!);
+    storage.setItem("asw91-campaign-save-second", savePayload("second", "Second", "campaign-second", "2099-01-01T00:00:00.000Z", "{\"second\":1}"));
     expect(mock.state.bundle).not.toBeNull();
     await mock.putForce(mock.state.bundle!);
     const conflict = await backend.sync();
@@ -203,7 +248,7 @@ describe("mock save-sync server (in-repo endpoint)", () => {
     const t2 = "2099-01-02T00:00:00.000Z";
 
     // Baseline local bundle: campaign alpha at snapshot t1.
-    const alphaT1 = savePayload("alpha-v1", "Alpha", "campaign-alpha", t1, "{\"alpha\":1}");
+    const alphaT1 = savePayload("alpha", "Alpha", "campaign-alpha", t1, "{\"alpha\":1}");
     storage.setItem("asw91-campaign-save-alpha", alphaT1);
     const backend = new RemoteBundleStorage({ endpoint: mock.endpoint, storage });
 
@@ -222,8 +267,8 @@ describe("mock save-sync server (in-repo endpoint)", () => {
 
     // 2) A concurrent writer advances the server behind the app's back: a newer
     //    snapshot of campaign alpha under a different key, plus a new campaign beta.
-    const alphaRemote = savePayload("alpha-v2", "Alpha (device)", "campaign-alpha", t2, "{\"alpha\":2}");
-    const beta = savePayload("beta-v1", "Beta", "campaign-beta", t1, "{\"beta\":1}");
+    const alphaRemote = savePayload("alpha-remote", "Alpha (device)", "campaign-alpha", t2, "{\"alpha\":2}");
+    const beta = savePayload("beta", "Beta", "campaign-beta", t1, "{\"beta\":1}");
     await mock.putForce({
       schema: MOCK_SAVE_BUNDLE_SCHEMA,
       exportedAt: t2,
@@ -234,7 +279,7 @@ describe("mock save-sync server (in-repo endpoint)", () => {
     });
 
     // 3) Local also diverges (a new campaign gamma), so both sides changed.
-    const gamma = savePayload("gamma-v1", "Gamma", "campaign-gamma", t1, "{\"gamma\":1}");
+    const gamma = savePayload("gamma", "Gamma", "campaign-gamma", t1, "{\"gamma\":1}");
     storage.setItem("asw91-campaign-save-gamma", gamma);
 
     // 4) sync() reports the conflict and touches neither side.
@@ -257,7 +302,7 @@ describe("mock save-sync server (in-repo endpoint)", () => {
     expect(storage.getItem("asw91-campaign-save-alpha")).not.toBe(alphaT1);
     const alphaAfter = JSON.parse(storage.getItem("asw91-campaign-save-alpha")!) as { updatedAt: string; campaignJson: string };
     expect(alphaAfter.updatedAt).toBe(t2);
-    expect(alphaAfter.campaignJson).toBe("{\"alpha\":2}");
+    expect(alphaAfter.campaignJson).not.toBe(JSON.parse(alphaT1).campaignJson);
     // Campaign beta imported; campaign gamma untouched.
     expect(storage.getItem("asw91-campaign-save-beta")).not.toBeNull();
     expect(storage.getItem("asw91-campaign-save-gamma")).toBe(gamma);

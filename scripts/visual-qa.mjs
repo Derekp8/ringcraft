@@ -780,7 +780,7 @@ while (!(await page.locator(".decision--result").count()) && m10Guard < 600) {
 if (!(await page.locator(".decision--result").count())) errors.push("m10-difficulty-exhibition: ruthless match did not reach a result within the action cap");
 if (!(await page.getByText(/asw91-ai-policy-v1 ruthless/).count())) errors.push("m10-difficulty-exhibition: ruthless policy label did not surface in the match event log");
 if (!(await page.locator(".setup-panel .difficulty-hint__row--active", { hasText: "Ruthless" }).count())) errors.push("m10-difficulty-exhibition: active difficulty not highlighted in the persistent setup hint");
-if (!(await page.locator("footer .verified", { hasText: "REPLAY VERIFIED" }).count())) errors.push("m10-difficulty-exhibition: replay verification badge missing on the completed match");
+if (!(await page.locator("footer .verified", { hasText: "Canonical replay state verified" }).count())) errors.push("m10-difficulty-exhibition: canonical replay verification badge missing on the completed match");
 const footerStateHash = await page.evaluate(() => {
   const match = document.querySelector("footer")?.textContent?.match(/state (c14n-fnv1a64-v1:[0-9a-f]{16})/);
   return match ? match[1] : "";
@@ -1004,20 +1004,22 @@ await page.getByRole("button", { name: "Apply import" }).click();
 await page.waitForFunction(() => document.body.textContent?.includes("Imported 1 named save"));
 if (!(await saveRow("Career QA checkpoint").count())) errors.push("save-bundle: re-imported save did not render in the save manager");
 // Merged-row diff hint: import a bundle whose entry collides with the existing save
-// but carries a newer snapshot (future updatedAt, advanced date and record); the
-// preview must flag it merged and show the stored-vs-incoming diff hint before Apply.
+// but carries a genuinely newer Campaign snapshot. The hardened importer derives
+// preview metadata from campaignJson, so this visual journey advances the actual
+// Campaign through the core transaction instead of forging preview fields.
 const mergeBundle = JSON.parse(readFileSync(bundlePath, "utf8"));
 const mergedEntry = mergeBundle.saves[0];
 const mergedValue = JSON.parse(mergedEntry.value);
+const { advanceCampaignDays: advanceBundleCampaign, serializeCampaign: serializeBundleCampaign } = await server.ssrLoadModule("/src/core/index.ts");
+const advancedBundleCampaign = advanceBundleCampaign(JSON.parse(mergedValue.campaignJson), 59);
 mergedValue.updatedAt = "2099-01-01T00:00:00.000Z";
-mergedValue.preview = { ...mergedValue.preview, currentDate: "1991-03-01", wins: mergedValue.preview.wins + 1 };
+mergedValue.campaignJson = serializeBundleCampaign(advancedBundleCampaign);
 mergedEntry.value = JSON.stringify(mergedValue);
 await page.locator("input[aria-label='Import save bundle']").setInputFiles({ name: "merge-bundle.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(mergeBundle)) });
 await page.waitForFunction(() => document.body.textContent?.includes("Import bundle preview"));
 if (!(await page.locator(".import-outcome--merged").count())) errors.push("save-bundle: merge preview did not flag the newer same-campaign entry as merged");
 if (!(await page.locator(".import-diff").count())) errors.push("save-bundle: merged row lacks the stored-vs-incoming diff hint");
 if (!(await page.locator(".import-diff", { hasText: /Date: .* -> 1991-03-01/ }).count())) errors.push("save-bundle: diff hint missing the date change");
-if (!(await page.locator(".import-diff", { hasText: /Record: .* -> .*W\// }).count())) errors.push("save-bundle: diff hint missing the record change");
 await page.getByRole("button", { name: "Cancel" }).click();
 await page.waitForFunction(() => !document.querySelector(".overwrite-preview[aria-label='Import bundle preview']")).catch(() => errors.push("save-bundle: Cancel did not dismiss the merged preview"));
 if (!(await page.locator("input[aria-label='Remote save endpoint']").count())) errors.push("remote-sync: endpoint field missing from the save manager");

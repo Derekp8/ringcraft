@@ -31,12 +31,45 @@ async function captureInventory() {
 
 async function prepareHostedVisualJourney() {
   const sourcePath = fileURLToPath(new URL("./visual-qa.mjs", import.meta.url));
-  const source = await readFile(sourcePath, "utf8");
-  const target = `  await ensureCareerOptionsOpen("Advanced / optional extensions");`;
-  const replacement = `  await ensureCareerOptionsOpen("Advanced / optional extensions");\n  // Extension-only visual profiles must explicitly opt out of the default\n  // Strict Manual profile through the rendered React control. This is a normal\n  // product state transition, not DOM mutation or timing-based synchronization.\n  const strictManualMode = page.getByLabel("Strict Manual Mode");\n  if (await strictManualMode.isChecked()) await strictManualMode.uncheck();\n  await page.getByText("Extensions may be enabled in Career setup.", { exact: false }).waitFor({ state: "visible" });\n  await page.waitForFunction(() => {\n    const control = (label) => document.querySelector(\`[aria-label="\${label}"]\`);\n    const injury = control("Post-match injury checks");\n    const finance = control("Enable contracts and finance extension");\n    const booking = control("Enable feuds and booking extension");\n    return injury instanceof HTMLSelectElement && !injury.disabled\n      && finance instanceof HTMLInputElement && !finance.disabled\n      && booking instanceof HTMLInputElement && !booking.disabled;\n  });`;
-  const occurrences = source.split(target).length - 1;
-  if (occurrences !== 2) throw new Error(`Visual QA extension disclosure count changed; expected 2 matches, found ${occurrences}.`);
-  await writeFile(runtimeVisualScript, source.replaceAll(target, replacement), "utf8");
+  let source = await readFile(sourcePath, "utf8");
+
+  const replaceOnce = (label, target, replacement) => {
+    const occurrences = source.split(target).length - 1;
+    if (occurrences !== 1) throw new Error(`${label} changed; expected 1 match, found ${occurrences}.`);
+    source = source.replace(target, replacement);
+  };
+
+  const strictTarget = `  await ensureCareerOptionsOpen("Advanced / optional extensions");`;
+  const strictReplacement = `  await ensureCareerOptionsOpen("Advanced / optional extensions");\n  // Extension-only visual profiles must explicitly opt out of the default\n  // Strict Manual profile through the rendered React control. This is a normal\n  // product state transition, not DOM mutation or timing-based synchronization.\n  const strictManualMode = page.getByLabel("Strict Manual Mode");\n  if (await strictManualMode.isChecked()) await strictManualMode.uncheck();\n  await page.getByText("Extensions may be enabled in Career setup.", { exact: false }).waitFor({ state: "visible" });\n  await page.waitForFunction(() => {\n    const control = (label) => document.querySelector(\`[aria-label="\${label}"]\`);\n    const injury = control("Post-match injury checks");\n    const finance = control("Enable contracts and finance extension");\n    const booking = control("Enable feuds and booking extension");\n    return injury instanceof HTMLSelectElement && !injury.disabled\n      && finance instanceof HTMLInputElement && !finance.disabled\n      && booking instanceof HTMLInputElement && !booking.disabled;\n  });`;
+  const strictOccurrences = source.split(strictTarget).length - 1;
+  if (strictOccurrences !== 2) throw new Error(`Visual QA extension disclosure count changed; expected 2 matches, found ${strictOccurrences}.`);
+  source = source.replaceAll(strictTarget, strictReplacement);
+
+  // Ordinary Exhibition intentionally starts from fresh secure entropy. Visual
+  // screenshots, however, are evidence captures and must compare the same
+  // rendered game state between hosted runs. Enter the explicit developer seed
+  // through the product UI for the three captures that otherwise retain the
+  // random initial Exhibition behind their foreground content. This does not
+  // alter product RNG, screenshot pins, or ignored pixel bands.
+  replaceOnce(
+    "hosted singles visual seed boundary",
+    `  await gotoApp();\n  await assertAccessibleNameCoverage(profile.name);`,
+    `  await gotoApp();\n  if (profile.name === "singles-desktop") {\n    await page.getByLabel("Advanced exhibition options").click();\n    await page.getByLabel("Seed", { exact: true }).fill("1991");\n    await page.getByRole("button", { name: "Start with manual seed" }).click();\n  }\n  await assertAccessibleNameCoverage(profile.name);`,
+  );
+
+  replaceOnce(
+    "hosted accessibility visual seed boundary",
+    `await gotoApp();\nawait page.locator(".accessibility summary").click();`,
+    `await gotoApp();\nawait page.getByLabel("Advanced exhibition options").click();\nawait page.getByLabel("Seed", { exact: true }).fill("1991");\nawait page.getByRole("button", { name: "Start with manual seed" }).click();\nawait page.locator(".accessibility summary").click();`,
+  );
+
+  replaceOnce(
+    "hosted tour visual seed boundary",
+    `await assertDialogAccessibility("tour", ".tour-overlay", tourPage);\nawait tourPage.getByRole("button", { name: "Next" }).click();`,
+    `await assertDialogAccessibility("tour", ".tour-overlay", tourPage);\n// Preserve the first-visit tour assertion, then seed the Exhibition behind the\n// modal through the rendered UI and reopen the tour for deterministic capture.\nawait tourPage.locator(".tour-overlay").press("Escape");\nawait tourPage.getByLabel("Advanced exhibition options").click();\nawait tourPage.getByLabel("Seed", { exact: true }).fill("1991");\nawait tourPage.getByRole("button", { name: "Start with manual seed" }).click();\nawait tourPage.getByRole("button", { name: "Open the guided tour" }).click();\nawait assertDialogAccessibility("tour", ".tour-overlay", tourPage);\nawait tourPage.getByRole("button", { name: "Next" }).click();`,
+  );
+
+  await writeFile(runtimeVisualScript, source, "utf8");
 }
 
 // One authoritative visual gate supports two integrity environments:
@@ -73,7 +106,8 @@ try {
     hostedRunnerReproducedWithinVisualQaTolerance: true,
     canonicalReviewedRenderComparedToHostedRunner: false,
     strictManualExtensionJourneyOptOut: true,
-    note: "Reviewed screenshot pins and hosted-render repeatability are separate claims. Extension-only Career captures opt out of Strict Manual through React state; cross-environment rendering is not silently re-pinned.",
+    explicitSeededEvidenceCaptures: ["singles-desktop", "accessibility", "tour"],
+    note: "Reviewed screenshot pins and hosted-render repeatability are separate claims. Extension-only Career captures opt out of Strict Manual through React state; fresh-entropy Exhibition backgrounds are stabilized for evidence capture through the rendered manual-seed control; cross-environment rendering is not silently re-pinned.",
   };
   await writeFile(`${readinessDirectory}/visual-ci-stability.json`, `${JSON.stringify(report, null, 2)}\n`, "utf8");
   console.log(`visual-ci: OK — ${first.names.length} captures; reviewed pins preserved and hosted run 2 reproduced run 1 within tolerance.`);
