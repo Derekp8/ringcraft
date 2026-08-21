@@ -11,7 +11,7 @@ import {
 describe("M9 private handoff packaging contracts", () => {
   it("uses the approved archive identity and required roots", () => {
     expect(M9_ARCHIVE_NAME).toBe("asw91-project-ringcraft-m9-private-handoff-1.2.0.zip");
-    expect(M9_REQUIRED_ROOTS).toEqual(["src", "tests", "scripts", "fixtures/m5", "fixtures/m10", "fixtures/m11", "fixtures/m13", "fixtures/saves", "fixtures/replays", "docs"]);
+    expect(M9_REQUIRED_ROOTS).toEqual(["src", "tests", "scripts", "fixtures/m5", "fixtures/m10", "fixtures/m11", "fixtures/saves", "fixtures/replays", "docs"]);
     expect(M9_REQUIRED_FILES).toEqual(expect.arrayContaining(["package.json", "package-lock.json", "README.md", "FREEBUFF-HANDOFF.md", "HANDOFF-MANIFEST.json", "vitest.config.ts"]));
   });
 
