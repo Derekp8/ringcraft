@@ -195,7 +195,7 @@
     "src/ui/playtest-presentation.ts": "55183ba79435af247dab79a1e92b87e9021bb1c38dd2faeee72fc567c5959325",
     "src/ui/playtest-fixtures.ts": "b6ca16970f2d1602b003ea281492dbaa477186b4a0e26312ebe1e37774f6f92c",
     "src/ui/playtest-panel.tsx": "2421a543f8d35a5c03f494302c062397599e06e0fc73e213e2c4efa99b1966ec",
-    "scripts/visual-qa.mjs": "d7cebddfea8c090615621912fef56ba8bfe1b855317702046391b7a4720ccc0e",
+    "scripts/visual-qa.mjs": "157f5f8345179c379cc3fe5d8702b7cf13c1e9dd965cb1e989165a9e782afd3b",
     "tests/m6-pres.test.ts": "1d20abc84e27d4e092f43f780bc944ba03870368620721eef93485c2529b42d2",
     "docs/m6-implementation-audit.md": "75ac304cc2acc6f9dacf23ea6c2d7af29c46b597c5e2e0c2d7750775e2c7e4e3",
     "docs/m7-implementation-audit.md": "34b715840e2bf6795cac24851e4fc5d8b39fa9bf23f20382dd8ac7d929d76e4a",
