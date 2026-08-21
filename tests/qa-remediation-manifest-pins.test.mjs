@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
@@ -13,10 +13,16 @@ function run(args) {
 }
 
 describe("QA remediation: manifest integrity domains", () => {
-  it("verifies the repository against committed Git blob bytes", () => {
+  it("verifies repository mode in a repository and fails closed without .git", () => {
     const result = run(["--repository", "--root", process.cwd()]);
-    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
-    expect(result.stdout).toContain("repository mode");
+    if (existsSync(join(process.cwd(), ".git"))) {
+      expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+      expect(result.stdout).toContain("repository mode");
+    } else {
+      expect(result.status).not.toBe(0);
+      expect(result.stderr).toContain("repository mode requires .git");
+      expect(result.stderr).toContain("Use --filesystem for an extracted clean-room archive");
+    }
   });
 
   it("verifies extracted filesystem bytes without a .git database", () => {
