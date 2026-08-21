@@ -79,7 +79,15 @@ try {
   browser = await chromium.launch({ args: launchArgs, executablePath: systemPath, headless: true });
 }
 const errors = [];
-const page = await browser.newPage({ viewport: { width: 1440, height: 1100 }, timezoneId: "UTC", locale: "en-US" });
+const browserContextOptions = {
+  viewport: { width: 1440, height: 1100 },
+  timezoneId: "UTC",
+  locale: "en-US",
+  deviceScaleFactor: 1,
+  colorScheme: "light",
+  reducedMotion: "no-preference",
+};
+const page = await browser.newPage(browserContextOptions);
 // Freeze the page clock at a fixed instant (persists across reloads and gotos)
 // so wall-clock-derived UI — autosave snapshot timestamps, save-bundle export
 // filenames — renders deterministically. Combined with the en-US/UTC context
@@ -535,10 +543,71 @@ async function freezeCaret(pageHandle) {
 /** Screenshot with the caret frozen so the capture bytes are blink-independent. */
 async function capture(pageHandle, fileName) {
   await freezeCaret(pageHandle);
+  // Fontconfig is part of the canonical Linux contract. Waiting for the CSS
+  // FontFaceSet prevents a capture from racing fallback text before the
+  // asserted Nimbus Sans Narrow substitution has settled.
+  await pageHandle.evaluate(() => document.fonts.ready);
   // Every capture is also a truncation check point: a hard-clipped text element
   // (e.g. a hash pair cut by overflow: hidden + nowrap) fails the gate here.
   await assertNoHardClippedText(fileName.replace(/^ringcraft-/, "").replace(/\.png$/, ""), pageHandle);
   await pageHandle.screenshot({ path: fileURLToPath(new URL(fileName, outputDirectory)), fullPage: true });
+}
+
+/**
+ * Browser-level proof that ordinary player buttons use fresh entropy while
+ * the deterministic manual-seed controls remain a separate advanced path.
+ * A fixed entropy source makes the assertion reproducible without changing
+ * the application's recorded match/campaign PRNG lifecycle.
+ */
+async function assertRandomizedNormalStartPaths() {
+  const randomSeed = 0x1badb002;
+  const randomPage = await browser.newPage(browserContextOptions);
+  try {
+    await randomPage.addInitScript((seed) => {
+      const original = Crypto.prototype.getRandomValues;
+      Crypto.prototype.getRandomValues = function (values) {
+        if (values instanceof Uint32Array && values.length === 1) {
+          values[0] = seed;
+          return values;
+        }
+        return original.call(this, values);
+      };
+    }, randomSeed);
+
+    await randomPage.goto(baseUrl);
+    if (await randomPage.locator(".tour-overlay").count()) {
+      await randomPage.getByRole("button", { name: /Skip/ }).click();
+    }
+    await randomPage.getByRole("button", { name: "Start match" }).click();
+    await randomPage.getByLabel("Advanced exhibition options").click();
+    if (!(await randomPage.getByText(`Current seed: ${randomSeed}`).count())) {
+      errors.push("random-start: ordinary Exhibition start did not use platform entropy");
+    }
+
+    await randomPage.evaluate(() => localStorage.clear());
+    await randomPage.reload();
+    if (await randomPage.locator(".tour-overlay").count()) {
+      await randomPage.getByRole("button", { name: /Skip/ }).click();
+    }
+    await randomPage.getByRole("button", { name: "Career" }).click();
+    await randomPage.getByRole("button", { name: "Start generated starter league" }).click();
+    await randomPage.waitForFunction(() => document.body.textContent?.includes("Championships and obligations"));
+    const campaignSeed = await randomPage.evaluate(() => {
+      for (let index = 0; index < localStorage.length; index += 1) {
+        const key = localStorage.key(index);
+        if (!key?.startsWith("asw91-project-ringcraft-autosave-v1-")) continue;
+        const snapshot = JSON.parse(localStorage.getItem(key) ?? "null");
+        if (typeof snapshot?.campaignJson !== "string") continue;
+        return JSON.parse(snapshot.campaignJson).seed;
+      }
+      return null;
+    });
+    if (campaignSeed !== randomSeed) {
+      errors.push(`random-start: ordinary Career start used seed ${String(campaignSeed)} instead of platform entropy ${randomSeed}`);
+    }
+  } finally {
+    await randomPage.close();
+  }
 }
 
 /** Records the full-page y-bands where timestamp-bearing rows currently render, as the only rows allowed to differ between runs. */
@@ -658,6 +727,8 @@ async function assertConsecutiveRunStability() {
   else console.log("pixel-stability: all captures byte-identical to the previous run.");
   return stabilityErrors;
 }
+
+await assertRandomizedNormalStartPaths();
 
 for (const profile of [
   { name: "singles-desktop", viewport: { width: 1440, height: 1100 }, mode: "singles" },

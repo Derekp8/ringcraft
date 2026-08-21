@@ -47,16 +47,16 @@ jobs:
         with:
           node-version: 24
 
-      # Chromium is portable, but its package intentionally carries no font
-      # files. The reviewed captures use DejaVu Sans / DejaVu Sans Mono; pin
-      # those files and the system Fontconfig entry point so Chromium cannot
-      # silently select a different runner fallback and change page layout.
+      # Chromium is portable, but its package intentionally omits the narrow
+      # display face used by the reviewed captures. Pin the URW package and
+      # assert the exact Arial Narrow -> Nimbus Sans Narrow substitution;
+      # DejaVu fallback changes wrapping and every full-page capture height.
       - name: Install canonical QA fonts
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends --yes fonts-dejavu-core
-          fc-match sans-serif | grep -q "DejaVuSans"
-          fc-match monospace | grep -q "DejaVuSansMono"
+          sudo apt-get install --no-install-recommends --yes fonts-urw-base35
+          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
+          fc-match monospace | grep -q "NimbusMono"
 
       # The gate imports playwright-core, vite, tar-fs and the portable
       # Chromium package at runtime, so a plain install is all the runner needs.
