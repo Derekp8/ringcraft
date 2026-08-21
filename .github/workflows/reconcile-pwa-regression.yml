@@ -6,6 +6,7 @@ on:
       - development/pwa-installable
     paths:
       - scripts/reconcile-pwa-regression-baseline.mjs
+      - .github/workflows/reconcile-pwa-regression.yml
   workflow_dispatch:
 
 permissions:
