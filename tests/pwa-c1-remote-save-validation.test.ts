@@ -14,6 +14,7 @@ import {
   CAMPAIGN_SAVE_PREFIX,
   SAVE_BUNDLE_SCHEMA,
   createSave,
+  diffSavePreviews,
   planSaveBundleImport,
   readSave,
 } from "../src/ui/save-manager";
@@ -109,5 +110,12 @@ describe("PWA-C1 remote conflict validation diagnostics", () => {
     inner.playerEntrantId = "";
     save.campaignJson = JSON.stringify(inner);
     expect(rejectionReason(save)).toMatch(/playerEntrantId: required non-empty string/i);
+  });
+
+  it("retains record-change formatting coverage without forging imported preview metadata", () => {
+    const stored = validSave().preview;
+    const incoming = { ...stored, wins: stored.wins + 1, matches: stored.matches + 1 };
+    const diff = diffSavePreviews(stored, incoming);
+    expect(diff.some((line) => line.startsWith("Record:") && line.includes(" -> "))).toBe(true);
   });
 });
