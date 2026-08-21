@@ -77,3 +77,16 @@ jobs:
       # matches the manifest's 22 screenshot pins.
       - name: Assert stable captures across two runs
         run: node scripts/check-visual-qa-stability.mjs
+
+      # Preserve the exact runner renders when the pin comparison fails so a
+      # reviewer can inspect every changed capture before any re-baseline.
+      - name: Upload visual drift diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-qa-drift-diagnostics
+          path: |
+            output/qa/ringcraft-*.png
+            output/qa/.stability-run1/*.png
+          if-no-files-found: error
+          retention-days: 30
