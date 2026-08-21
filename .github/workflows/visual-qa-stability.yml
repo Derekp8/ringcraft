@@ -38,6 +38,8 @@ jobs:
   double-run:
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    env:
+      FONTCONFIG_FILE: /etc/fonts/fonts.conf
     steps:
       - uses: actions/checkout@v4
 
@@ -45,15 +47,16 @@ jobs:
         with:
           node-version: 24
 
-      # Chromium is portable, but its package intentionally carries only a
-      # fontconfig file—not the fonts themselves. Pin the same narrow typeface
-      # package used to create the reviewed Linux captures so the runner does
-      # not silently substitute a different host font and change page layout.
+      # Chromium is portable, but its package intentionally carries no font
+      # files. The reviewed captures use DejaVu Sans / DejaVu Sans Mono; pin
+      # those files and the system Fontconfig entry point so Chromium cannot
+      # silently select a different runner fallback and change page layout.
       - name: Install canonical QA fonts
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends --yes fonts-urw-base35
-          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
+          sudo apt-get install --no-install-recommends --yes fonts-dejavu-core
+          fc-match sans-serif | grep -q "DejaVuSans"
+          fc-match monospace | grep -q "DejaVuSansMono"
 
       # The gate imports playwright-core, vite, tar-fs and the portable
       # Chromium package at runtime, so a plain install is all the runner needs.
