@@ -4,17 +4,19 @@ import { spawn, spawnSync } from "node:child_process";
 const host = "127.0.0.1";
 const port = 5173;
 const url = `http://localhost:${port}/`;
-const npm = process.platform === "win32" ? "npm.cmd" : "npm";
+const viteEntry = "node_modules/vite/bin/vite.js";
 
 function fail(message) {
   console.error(`\n${message}`);
   process.exitCode = 1;
 }
 
-function run(command, args) {
+function installDependencies() {
+  const command = process.platform === "win32" ? "cmd.exe" : "npm";
+  const args = process.platform === "win32" ? ["/d", "/s", "/c", "npm ci"] : ["ci"];
   const result = spawnSync(command, args, { stdio: "inherit", shell: false });
   if (result.error) throw result.error;
-  if (result.status !== 0) throw new Error(`${command} ${args.join(" ")} exited with code ${result.status}.`);
+  if (result.status !== 0) throw new Error(`npm ci exited with code ${result.status}.`);
 }
 
 async function ringcraftIsRunning() {
@@ -29,9 +31,10 @@ async function ringcraftIsRunning() {
 }
 
 function openBrowser() {
-  const command = process.platform === "win32" ? "cmd" : process.platform === "darwin" ? "open" : "xdg-open";
-  const args = process.platform === "win32" ? ["/c", "start", "", url] : [url];
+  const command = process.platform === "win32" ? "cmd.exe" : process.platform === "darwin" ? "open" : "xdg-open";
+  const args = process.platform === "win32" ? ["/d", "/s", "/c", "start", "", url] : [url];
   const child = spawn(command, args, { detached: true, stdio: "ignore", shell: false });
+  child.once("error", (error) => console.warn(`Could not open the browser automatically: ${error.message}\nOpen ${url} manually.`));
   child.unref();
 }
 
@@ -52,15 +55,15 @@ try {
     process.exit(0);
   }
 
-  if (!existsSync("node_modules/.package-lock.json")) {
+  if (!existsSync("node_modules/.package-lock.json") || !existsSync(viteEntry)) {
     console.log("Installing Ringcraft dependencies for this checkout...");
-    run(npm, ["ci"]);
+    installDependencies();
   }
 
   console.log(`Starting Project Ringcraft at ${url}`);
   console.log("Keep this window open while playing. Close it or press Ctrl+C to stop the local server.\n");
 
-  const server = spawn(npm, ["run", "dev", "--", "--host", host, "--port", String(port), "--strictPort"], {
+  const server = spawn(process.execPath, [viteEntry, "--host", host, "--port", String(port), "--strictPort"], {
     stdio: "inherit",
     shell: false,
   });
