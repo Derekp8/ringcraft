@@ -60,7 +60,7 @@ const report = {
   counts: {
     discoveredTestFiles: testFiles.length,
     complianceRecords: compliance.records?.length ?? 0,
-    playableSmokeScenarios: 2,
+    playableSmokeScenarios: 4,
   },
   deterministicIdentities: {
     note: "This verifier does not regenerate or rewrite deterministic pins. Fixture/replay identities remain authoritative in their committed fixtures and HANDOFF-MANIFEST.json unless an intentional reviewed behavior change versions them.",
