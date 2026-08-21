@@ -209,7 +209,7 @@
     "scripts/m9-packaging-contracts.ts": "3eba10a79e61cd2666112dd44ca7e62ca0225ab6d97d1b01edb5647416571f8c",
     "scripts/build-m9-handoff.mjs": "b85c6276b318fa46304c49d1d10ad8e2edf1334177f92300e7c3c79536c60013",
     "scripts/build-m9-handoff.ts": "bda3fb3e56bd4fee7651a3d52cb1295af565f985a0af6ba33c24b78a9e5260f4",
-    "scripts/verify-m9-handoff.mjs": "3dc96f9761f77932f43429629f78a88d8379c7572abf45d0af7623df2dfc0a11",
+    "scripts/verify-m9-handoff.mjs": "1a7fb92007f280bd875deee416fdd51f87542fc2f52ee88b10bed3ef9010a986",
     "scripts/verify-m9-handoff.ts": "f1e35b2f0e301b8cd68241a2be8895b7c2d551ca5a6382838a00db29d334fcf9",
     "tests/m9-packaging.test.ts": "a8ed802494f89b88a467e6d81dd386a8c8f42220edb28158e7dc1a672f200460",
     "vitest.config.ts": "e959e77736b57282ffe1f06544f3c711a3bbcad0572c1c8eee3bbedd61e4a9be",
