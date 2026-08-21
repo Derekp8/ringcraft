@@ -53,6 +53,11 @@ async function newPage(browser) {
   page.on("pageerror", (error) => errors.push(error.message));
   page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
   await page.goto(BASE_URL, { waitUntil: "networkidle" });
+  const startupTour = page.locator(".tour-overlay[role=dialog]");
+  if (await startupTour.count()) {
+    await startupTour.getByRole("button", { name: "Skip tour" }).click();
+    await startupTour.waitFor({ state: "detached" });
+  }
   return { context, page, errors };
 }
 
