@@ -7,6 +7,7 @@ export * from "./creation";
 export * from "./derived";
 export * from "./engine";
 export * from "./hash";
+export * from "./manual-mode";
 export * from "./progression";
 export * from "./prng";
 export * from "./rules";
