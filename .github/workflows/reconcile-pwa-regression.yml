@@ -7,6 +7,12 @@ on:
     paths:
       - scripts/reconcile-pwa-regression-baseline.mjs
       - .github/workflows/reconcile-pwa-regression.yml
+  pull_request:
+    branches:
+      - development/launchable-web
+    paths:
+      - scripts/reconcile-pwa-regression-baseline.mjs
+      - .github/workflows/reconcile-pwa-regression.yml
   workflow_dispatch:
 
 permissions:
@@ -14,10 +20,9 @@ permissions:
 
 jobs:
   reconcile:
-    if: ${{ !contains(github.event.head_commit.message || '', 'chore: reconcile stale PWA regression evidence') }}
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout branch head
+      - name: Checkout PWA branch head
         uses: actions/checkout@v7
         with:
           ref: development/pwa-installable
