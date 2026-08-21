@@ -24,7 +24,7 @@ jobs:
       - name: Verify compliance registry
         run: node scripts/verify-manual-compliance.mjs
       - name: Verify Strict Manual, RNG/replay, and QA remediation boundaries
-        run: npm exec -- vitest run tests/m14-manual-mode.test.ts tests/m15-strict-manual.test.ts tests/m14-playable-readiness.test.ts tests/randomized-play-fair-ai.test.ts tests/save-determinism.test.ts tests/qa-remediation-save-manager.test.ts tests/qa-remediation-ui-boundaries.test.mjs
+        run: npm exec -- vitest run tests/m14-manual-mode.test.ts tests/m15-strict-manual.test.ts tests/m14-playable-readiness.test.ts tests/randomized-play-fair-ai.test.ts tests/save-determinism.test.ts tests/qa-remediation-save-manager.test.ts tests/qa-remediation-ui-boundaries.test.mjs tests/qa-remediation-manifest-pins.test.mjs
       - name: Production build
         run: npm run build
 
