@@ -13,7 +13,7 @@ if errorlevel 1 (
   exit /b 1
 )
 
-node scripts\launch-local.mjs
+node scripts\launch-local.mjs %*
 if errorlevel 1 (
   echo.
   echo Ringcraft did not launch successfully. Review the error above.
