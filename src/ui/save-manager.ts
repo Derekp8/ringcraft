@@ -32,17 +32,11 @@ export interface CampaignSave extends CampaignSaveMeta {
   campaignJson: string;
 }
 
-/** One named-save entry inside a portable JSON bundle. */
 export interface CampaignSaveBundleEntry {
   key: string;
   value: string;
 }
 
-/**
- * A single downloadable document containing every named save. The bundle is a
- * storage-agnostic snapshot of the `asw91-campaign-save-*` keys, so it can be
- * re-imported into any `SaveStorage` (localStorage or `BundleStorage`).
- */
 export interface CampaignSaveBundle {
   schema: typeof SAVE_BUNDLE_SCHEMA;
   exportedAt: string;
@@ -50,24 +44,14 @@ export interface CampaignSaveBundle {
 }
 
 export interface ImportSaveBundleResult {
-  /** Brand-new campaign saves written to the storage. */
   imported: number;
-  /** Incoming saves that replaced an existing save for the same campaign in place (kept the existing key/name/createdAt, adopted the incoming snapshot and `updatedAt`). */
   merged: number;
-  /** Valid incoming saves not applied because an equal-or-newer save for the same campaign already exists. */
   keptLocal: number;
-  /** Invalid or non-save entries ignored. */
   skipped: number;
 }
 
-/**
- * Per-entry outcome of a save-bundle import, mirroring the merge rules of
- * `importSaveBundle` exactly but computed without touching storage so the UI
- * can show a preview before anything is applied.
- */
 export type SaveBundleImportOutcome = "imported" | "merged" | "keptLocal" | "skipped";
 
-/** One planned bundle entry: what would happen, plus why, plus the validated normalized entry to apply. */
 export interface SaveBundleImportRow {
   key: string;
   outcome: SaveBundleImportOutcome;
@@ -77,7 +61,6 @@ export interface SaveBundleImportRow {
   existingName: string | null;
   existingUpdatedAt: string | null;
   reason: string;
-  /** Validated and normalized save JSON. Empty for rows that are never written. */
   value: string;
   campaignId: string | null;
 }
@@ -383,13 +366,13 @@ export function planSaveBundleImport(json: string, storage: SaveStorage = defaul
     if (!existing) {
       totals.imported += 1;
       simulated.set(incoming.campaignId, incoming);
-      rows.push({ key: entry.key, outcome: "imported", preview: incoming.preview, existingPreview: null, incomingUpdatedAt: incoming.updatedAt, existingName: null, existingUpdatedAt: null, reason: `New validated save - will add "${incoming.name}" (${incoming.preview.currentDate}).`, value: normalizedValue, campaignId: incoming.campaignId });
+      rows.push({ key: entry.key, outcome: "imported", preview: incoming.preview, existingPreview: null, incomingUpdatedAt: incoming.updatedAt, existingName: null, existingUpdatedAt: null, reason: `New save - will add "${incoming.name}" (${incoming.preview.currentDate}).`, value: normalizedValue, campaignId: incoming.campaignId });
       continue;
     }
     if (incoming.updatedAt > existing.updatedAt) {
       totals.merged += 1;
       simulated.set(incoming.campaignId, { ...existing, updatedAt: incoming.updatedAt, preview: incoming.preview, campaignJson: incoming.campaignJson });
-      rows.push({ key: entry.key, outcome: "merged", preview: incoming.preview, existingPreview: existing.preview, incomingUpdatedAt: incoming.updatedAt, existingName: existing.name, existingUpdatedAt: existing.updatedAt, reason: `Newer validated snapshot will update "${existing.name}" in place (${incoming.updatedAt} > ${existing.updatedAt}).`, value: normalizedValue, campaignId: incoming.campaignId });
+      rows.push({ key: entry.key, outcome: "merged", preview: incoming.preview, existingPreview: existing.preview, incomingUpdatedAt: incoming.updatedAt, existingName: existing.name, existingUpdatedAt: existing.updatedAt, reason: `Newer snapshot will update "${existing.name}" in place (${incoming.updatedAt} > ${existing.updatedAt}).`, value: normalizedValue, campaignId: incoming.campaignId });
     } else {
       totals.keptLocal += 1;
       rows.push({ key: entry.key, outcome: "keptLocal", preview: incoming.preview, existingPreview: existing.preview, incomingUpdatedAt: incoming.updatedAt, existingName: existing.name, existingUpdatedAt: existing.updatedAt, reason: `Kept "${existing.name}" - the incoming snapshot is not newer (${incoming.updatedAt}).`, value: "", campaignId: incoming.campaignId });
@@ -426,8 +409,6 @@ export function applySaveBundlePlan(plan: SaveBundleImportPlan, storage: SaveSto
     }
     const existing = findSaveByCampaignId(row.campaignId, storage);
     if (!existing) {
-      // The preview promised a merge. If its target disappeared, fail closed
-      // rather than silently changing the operation to an import.
       skipped += 1;
       continue;
     }
@@ -505,7 +486,6 @@ function autosaveSequence(key: string): number {
   return Number.isSafeInteger(parsed) ? parsed : -1;
 }
 
-/** Lists autosave snapshots newest write first. Wall-clock timestamps are display metadata only. */
 export function listAutosaves(storage: SaveStorage = defaultStorage()): AutosaveSnapshotMeta[] {
   const metas: AutosaveSnapshotMeta[] = [];
   for (let index = 0; index < storage.length; index += 1) {
@@ -612,7 +592,6 @@ export function readLatestAutosave(storage: SaveStorage = defaultStorage()): Cam
   return null;
 }
 
-/** Loads a specific autosave and enforces its campaign identity/hash integrity boundary. */
 export function loadAutosaveSnapshot(key: string, storage: SaveStorage = defaultStorage()): CampaignState {
   const raw = storage.getItem(key);
   if (raw === null) throw new Error(`Autosave snapshot "${key}" does not exist.`);
