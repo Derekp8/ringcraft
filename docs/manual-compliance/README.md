@@ -1,13 +1,13 @@
 # M14 manual compliance and Strict Manual Mode
 
-M14 adds a machine-readable provenance layer without changing the match rules, dice probabilities, save schema, replay schema, data-pack identity, or AI policy.
+M14 adds a machine-readable provenance layer without changing the match rules, dice probabilities, save schema, replay schema, data-pack identity, AI policy, or the currently pinned `package.json` identity.
 
 ## Compliance registry
 
 `docs/manual-compliance/registry.json` maps stable rule/extension IDs to implementation paths and automated tests. Run:
 
 ```bash
-npm run compliance:verify
+node scripts/verify-manual-compliance.mjs
 ```
 
 The verifier fails for duplicate IDs, missing required metadata, missing implementation/test paths, adjudicated extensions without adjudication references, or a source record claiming verification without source provenance and automated coverage.
@@ -34,16 +34,18 @@ The M14 helper is currently a core enforcement/diagnostic boundary. A dedicated 
 
 ## Readiness commands
 
-M14 introduces verification tiers:
+M14 keeps the currently pinned package manifest unchanged while the new gates are being proven. The new commands are directly executable:
 
 ```bash
-npm run compliance:verify
-npm run e2e
-npm run check:fast
-npm run check:full
-npm run release:verify
+node scripts/verify-manual-compliance.mjs
+npm exec -- vitest run tests/m14-playable-readiness.test.ts tests/m14-manual-mode.test.ts tests/randomized-play-fair-ai.test.ts tests/save-determinism.test.ts
+node scripts/check-m14-fast.mjs
+node scripts/check-m14-full.mjs
+node scripts/release-verify.mjs
 ```
 
-`check:fast` is intended for development feedback. `check:full` retains the existing full unit/build/fixture evidence. `release:verify` adds visual QA and clean-room packaging verification and writes `output/readiness/release-verification.json`.
+`check-m14-fast.mjs` runs compliance, typecheck, focused rules/RNG/replay/playability tests, build, and manifest pins. `check-m14-full.mjs` retains the existing full unit/build/fixture evidence. `release-verify.mjs` adds the playable smoke selection, visual QA, and clean-room packaging verification and writes `output/readiness/release-verification.json`.
+
+Once the M14 gates are green and reviewed, they can be promoted into `package.json` scripts together with the corresponding deliberate handoff-manifest re-pin. That promotion is intentionally not mixed into the initial evidence-building slice.
 
 Passing automation does not complete the external source, accessibility, or human-playtest gates. See `docs/qa/m14-human-qa.md`.
