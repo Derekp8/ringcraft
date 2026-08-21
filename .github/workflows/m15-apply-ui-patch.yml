@@ -23,81 +23,39 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-
           path = Path('src/ui/App.tsx')
           source = path.read_text()
-
           replacements = [
-            (
-              '  generateRandomSeed,\n  setupRandomIndex,',
-              '  generateRandomSeed,\n  assertStrictManualCampaignConfig,\n  strictManualCampaignCompatibility,\n  setupRandomIndex,'
-            ),
-            (
-              '  const [postMatchInjury, setPostMatchInjury] = useState<"off" | "d20-check">("off");\n  const [financeEnabled, setFinanceEnabled] = useState(false);',
-              '  const [postMatchInjury, setPostMatchInjury] = useState<"off" | "d20-check">("off");\n  const [strictManualSetup, setStrictManualSetup] = useState(true);\n  const [financeEnabled, setFinanceEnabled] = useState(false);'
-            ),
-            (
-              '  function start(useDemo: boolean, manualSeed = false) {',
-              '''  function setStrictManualProfile(enabled: boolean) {\n    setStrictManualSetup(enabled);\n    if (!enabled) return;\n    setPostMatchInjury("off");\n    setFinanceEnabled(false);\n    setNegotiationEnabled(false);\n    setRenewalEnabled(false);\n    setBookingEnabled(false);\n    setOfferVariety("standard");\n  }\n\n  function start(useDemo: boolean, manualSeed = false) {'''
-            ),
-            (
-              '      const config = { name: careerName, startDate: "1991-01-01", roster: sourceRecords, teams, playerEntrantId, playerDivision: division, vacancyMethod, postMatchInjuryPolicy: postMatchInjury, aiDifficulty: careerAiDifficulty, ...finance, ...booking, ...negotiation };\n      commit(manualSeed ? createCampaign({ ...config, seed: Number(careerSeed) || 1991 }) : createRandomCampaign(config));',
-              '      const config = { name: careerName, startDate: "1991-01-01", roster: sourceRecords, teams, playerEntrantId, playerDivision: division, vacancyMethod, postMatchInjuryPolicy: postMatchInjury, aiDifficulty: careerAiDifficulty, ...finance, ...booking, ...negotiation };\n      if (strictManualSetup) assertStrictManualCampaignConfig(config);\n      commit(manualSeed ? createCampaign({ ...config, seed: Number(careerSeed) || 1991 }) : createRandomCampaign(config));'
-            ),
-            (
-              '<label>AI difficulty<select aria-label="Career AI difficulty" aria-describedby="career-difficulty-hint" value={careerAiDifficulty} onChange={(event) => setCareerAiDifficulty(event.target.value as AiDifficulty)}>{AI_DIFFICULTIES.map((difficulty) => <option key={difficulty} value={difficulty}>{difficulty[0].toUpperCase()}{difficulty.slice(1)}</option>)}</select></label><DifficultyHint id="career-difficulty-hint" difficulty={careerAiDifficulty} />',
-              '<label>AI difficulty<select aria-label="Career AI difficulty" aria-describedby="career-difficulty-hint" value={careerAiDifficulty} onChange={(event) => setCareerAiDifficulty(event.target.value as AiDifficulty)}>{AI_DIFFICULTIES.map((difficulty) => <option key={difficulty} value={difficulty}>{difficulty[0].toUpperCase()}{difficulty.slice(1)}</option>)}</select></label><DifficultyHint id="career-difficulty-hint" difficulty={careerAiDifficulty} /><label className="finance-toggle"><input type="checkbox" aria-label="Strict Manual Mode" checked={strictManualSetup} onChange={(event) => setStrictManualProfile(event.target.checked)} /> Strict Manual Mode</label><p className="form-card__note" aria-live="polite">{strictManualSetup ? "Strict Manual Mode is selected. Adjudicated and digital gameplay extensions are disabled for this new career; AI difficulty still changes legal-action selection only." : "Extensions may be enabled below. The resulting campaign will report exactly which settings place it outside Strict Manual compatibility."}</p>'
-            ),
-            (
-              '<label>Post-match injury checks<select aria-label="Post-match injury checks" value={postMatchInjury} onChange={(event) => setPostMatchInjury(event.target.value as "off" | "d20-check")}>',
-              '<label>Post-match injury checks<select aria-label="Post-match injury checks" value={postMatchInjury} disabled={strictManualSetup} onChange={(event) => setPostMatchInjury(event.target.value as "off" | "d20-check")}>'
-            ),
-            (
-              '<input type="checkbox" aria-label="Enable contracts and finance extension" checked={financeEnabled} onChange=',
-              '<input type="checkbox" aria-label="Enable contracts and finance extension" checked={financeEnabled} disabled={strictManualSetup} onChange='
-            ),
-            (
-              '<input type="checkbox" aria-label="Enable contract negotiation extension" checked={negotiationEnabled} disabled={!financeEnabled} onChange=',
-              '<input type="checkbox" aria-label="Enable contract negotiation extension" checked={negotiationEnabled} disabled={strictManualSetup || !financeEnabled} onChange='
-            ),
-            (
-              '<input type="checkbox" aria-label="Enable curve-fair renewals" checked={renewalEnabled} disabled={!negotiationEnabled} onChange=',
-              '<input type="checkbox" aria-label="Enable curve-fair renewals" checked={renewalEnabled} disabled={strictManualSetup || !negotiationEnabled} onChange='
-            ),
-            (
-              '<input type="checkbox" aria-label="Enable feuds and booking extension" checked={bookingEnabled} onChange=',
-              '<input type="checkbox" aria-label="Enable feuds and booking extension" checked={bookingEnabled} disabled={strictManualSetup} onChange='
-            ),
-            (
-              '  const summary = campaignSummary(campaign);\n  const due = campaign.schedule.find',
-              '  const summary = campaignSummary(campaign);\n  const manualCompatibility = strictManualCampaignCompatibility(campaign);\n  const due = campaign.schedule.find'
-            ),
-            (
-              '<small className="difficulty-label">Opposition AI difficulty: {campaign.aiDifficulty ?? "standard"} (visible setting - never changes rules dice)</small></div>',
-              '<small className="difficulty-label">Opposition AI difficulty: {campaign.aiDifficulty ?? "standard"} (visible setting - never changes rules dice)</small><span className={manualCompatibility.compatible ? "verified" : "status status--bad"}>{manualCompatibility.label}</span></div>'
-            ),
-            (
-              '    <div className="career-grid">\n      <section className="form-card"><h3>Match offer and public scouting</h3>',
-              '''    <div className="career-grid">\n      <section className="form-card" aria-label="Rules compatibility"><h3>Rules compatibility</h3><p className={manualCompatibility.compatible ? "validation validation--ok" : "validation validation--error"}>{manualCompatibility.label}</p>{manualCompatibility.compatible ? <p>This campaign currently uses the derived Strict Manual profile. No persisted compatibility flag is required.</p> : <><p>The campaign remains playable, but these settings use adjudicated or digital extensions:</p><ul>{manualCompatibility.violations.map((entry) => <li key={`${entry.field}:${entry.detail}`}><strong>{entry.field}</strong>: {entry.detail}</li>)}</ul></>}<details><summary>Compatibility profile</summary><code>{manualCompatibility.profileId}</code></details></section>\n      <section className="form-card"><h3>Match offer and public scouting</h3>'''
-            ),
+            ('  generateRandomSeed,\n  setupRandomIndex,', '  generateRandomSeed,\n  assertStrictManualCampaignConfig,\n  strictManualCampaignCompatibility,\n  setupRandomIndex,'),
+            ('  const [postMatchInjury, setPostMatchInjury] = useState<"off" | "d20-check">("off");\n  const [financeEnabled, setFinanceEnabled] = useState(false);', '  const [postMatchInjury, setPostMatchInjury] = useState<"off" | "d20-check">("off");\n  const [strictManualSetup, setStrictManualSetup] = useState(true);\n  const [financeEnabled, setFinanceEnabled] = useState(false);'),
+            ('  function start(useDemo: boolean, manualSeed = false) {', '  function setStrictManualProfile(enabled: boolean) {\n    setStrictManualSetup(enabled);\n    if (!enabled) return;\n    setPostMatchInjury("off");\n    setFinanceEnabled(false);\n    setNegotiationEnabled(false);\n    setRenewalEnabled(false);\n    setBookingEnabled(false);\n    setOfferVariety("standard");\n  }\n\n  function start(useDemo: boolean, manualSeed = false) {'),
+            ('      const config = { name: careerName, startDate: "1991-01-01", roster: sourceRecords, teams, playerEntrantId, playerDivision: division, vacancyMethod, postMatchInjuryPolicy: postMatchInjury, aiDifficulty: careerAiDifficulty, ...finance, ...booking, ...negotiation };\n      commit(manualSeed ? createCampaign({ ...config, seed: Number(careerSeed) || 1991 }) : createRandomCampaign(config));', '      const config = { name: careerName, startDate: "1991-01-01", roster: sourceRecords, teams, playerEntrantId, playerDivision: division, vacancyMethod, postMatchInjuryPolicy: postMatchInjury, aiDifficulty: careerAiDifficulty, ...finance, ...booking, ...negotiation };\n      if (strictManualSetup) assertStrictManualCampaignConfig(config);\n      commit(manualSeed ? createCampaign({ ...config, seed: Number(careerSeed) || 1991 }) : createRandomCampaign(config));'),
+            ('<label>AI difficulty<select aria-label="Career AI difficulty" aria-describedby="career-difficulty-hint" value={careerAiDifficulty} onChange={(event) => setCareerAiDifficulty(event.target.value as AiDifficulty)}>{AI_DIFFICULTIES.map((difficulty) => <option key={difficulty} value={difficulty}>{difficulty[0].toUpperCase()}{difficulty.slice(1)}</option>)}</select></label><DifficultyHint id="career-difficulty-hint" difficulty={careerAiDifficulty} />', '<label>AI difficulty<select aria-label="Career AI difficulty" aria-describedby="career-difficulty-hint" value={careerAiDifficulty} onChange={(event) => setCareerAiDifficulty(event.target.value as AiDifficulty)}>{AI_DIFFICULTIES.map((difficulty) => <option key={difficulty} value={difficulty}>{difficulty[0].toUpperCase()}{difficulty.slice(1)}</option>)}</select></label><DifficultyHint id="career-difficulty-hint" difficulty={careerAiDifficulty} /><label className="finance-toggle"><input type="checkbox" aria-label="Strict Manual Mode" checked={strictManualSetup} onChange={(event) => setStrictManualProfile(event.target.checked)} /> Strict Manual Mode</label><p className="form-card__note" aria-live="polite">{strictManualSetup ? "Strict Manual Mode is selected. Adjudicated and digital gameplay extensions are disabled for this new career; AI difficulty still changes legal-action selection only." : "Extensions may be enabled below. The resulting campaign will report exactly which settings place it outside Strict Manual compatibility."}</p>'),
+            ('<label>Post-match injury checks<select aria-label="Post-match injury checks" value={postMatchInjury} onChange={(event) => setPostMatchInjury(event.target.value as "off" | "d20-check")}>', '<label>Post-match injury checks<select aria-label="Post-match injury checks" value={postMatchInjury} disabled={strictManualSetup} onChange={(event) => setPostMatchInjury(event.target.value as "off" | "d20-check")}>'),
+            ('<input type="checkbox" aria-label="Enable contracts and finance extension" checked={financeEnabled} onChange=', '<input type="checkbox" aria-label="Enable contracts and finance extension" checked={financeEnabled} disabled={strictManualSetup} onChange='),
+            ('<input type="checkbox" aria-label="Enable contract negotiation extension" checked={negotiationEnabled} disabled={!financeEnabled} onChange=', '<input type="checkbox" aria-label="Enable contract negotiation extension" checked={negotiationEnabled} disabled={strictManualSetup || !financeEnabled} onChange='),
+            ('<input type="checkbox" aria-label="Enable curve-fair renewals" checked={renewalEnabled} disabled={!negotiationEnabled} onChange=', '<input type="checkbox" aria-label="Enable curve-fair renewals" checked={renewalEnabled} disabled={strictManualSetup || !negotiationEnabled} onChange='),
+            ('<input type="checkbox" aria-label="Enable feuds and booking extension" checked={bookingEnabled} onChange=', '<input type="checkbox" aria-label="Enable feuds and booking extension" checked={bookingEnabled} disabled={strictManualSetup} onChange='),
+            ('  const summary = campaignSummary(campaign);\n  const due = campaign.schedule.find', '  const summary = campaignSummary(campaign);\n  const manualCompatibility = strictManualCampaignCompatibility(campaign);\n  const due = campaign.schedule.find'),
+            ('<small className="difficulty-label">Opposition AI difficulty: {campaign.aiDifficulty ?? "standard"} (visible setting - never changes rules dice)</small></div>', '<small className="difficulty-label">Opposition AI difficulty: {campaign.aiDifficulty ?? "standard"} (visible setting - never changes rules dice)</small><span className={manualCompatibility.compatible ? "verified" : "status status--bad"}>{manualCompatibility.label}</span></div>'),
+            ('    <div className="career-grid">\n      <section className="form-card"><h3>Match offer and public scouting</h3>', '    <div className="career-grid">\n      <section className="form-card" aria-label="Rules compatibility"><h3>Rules compatibility</h3><p className={manualCompatibility.compatible ? "validation validation--ok" : "validation validation--error"}>{manualCompatibility.label}</p>{manualCompatibility.compatible ? <p>This campaign currently uses the derived Strict Manual profile. No persisted compatibility flag is required.</p> : <><p>The campaign remains playable, but these settings use adjudicated or digital extensions:</p><ul>{manualCompatibility.violations.map((entry) => <li key={`${entry.field}:${entry.detail}`}><strong>{entry.field}</strong>: {entry.detail}</li>)}</ul></>}<details><summary>Compatibility profile</summary><code>{manualCompatibility.profileId}</code></details></section>\n      <section className="form-card"><h3>Match offer and public scouting</h3>'),
           ]
-
           for old, new in replacements:
             count = source.count(old)
             if count != 1:
               raise SystemExit(f'Expected exactly one match, found {count}: {old[:100]}')
             source = source.replace(old, new, 1)
-
           path.write_text(source)
           PY
       - name: Verify TypeScript after patch
         run: |
           npm ci
           npm run typecheck
-      - name: Commit product-surface change
+      - name: Rebase and commit product-surface change
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- src/ui/App.tsx
           git commit -m "feat: expose strict manual profile in career UI"
+          git pull --rebase origin development/m15-release-candidate-hardening
           git push origin HEAD:development/m15-release-candidate-hardening
