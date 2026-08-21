@@ -38,12 +38,24 @@ jobs:
   double-run:
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    env:
+      FONTCONFIG_FILE: /etc/fonts/fonts.conf
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+
+      # Match the application's declared font stacks instead of relying on the
+      # hosted runner's fallback set. Inter is the body/UI face; Nimbus Sans
+      # Narrow is the reviewed Linux substitute for the Arial Narrow headings.
+      - name: Install canonical QA fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes fonts-inter fonts-urw-base35
+          fc-match Inter | grep -q "Inter"
+          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
 
       # The gate imports playwright-core, vite, tar-fs and the portable
       # Chromium package at runtime, so a plain install is all the runner needs.
@@ -61,6 +73,6 @@ jobs:
 
       # Runs visual-qa.mjs twice and asserts the two runs' PNG bytes match
       # (within the documented ±2/255 AA-jitter tolerance) and that run 2
-      # matches the manifest's 21 screenshot pins.
+      # matches the manifest's 22 screenshot pins.
       - name: Assert stable captures across two runs
         run: node scripts/check-visual-qa-stability.mjs

@@ -20,7 +20,7 @@ describe("replay verifier", () => {
     expect(report.errors).toEqual([]);
     expect(report.replayVersion).toBe(REPLAY_VERSION);
     expect(report.rulesetVersion).toBe(RULESET_VERSION);
-    expect(report.expectedStateHash).toBe("c14n-fnv1a64-v1:43945f1cc482e0cd");
+    expect(report.expectedStateHash).toBe("c14n-fnv1a64-v1:03e0fea1cb9c5be1");
     expect(report.actualStateHash).toBe(report.expectedStateHash);
     expect(report.derivedDataHash).toBe(report.dataHash);
     expect(report.schemaMissing).toEqual([]);
@@ -87,9 +87,9 @@ describe("replay verifier", () => {
     expect(report.schema).toBe("m10-ai-decision-log-v1");
     expect(report.capturedPolicy).toBe("asw91-ai-policy-v1");
     expect(report.runs).toBe(12);
-    expect(report.decisionsReplayed).toBe(1050);
+    expect(report.decisionsReplayed).toBe(1058);
     expect(report.ruthlessRunPresent).toBe(true);
-    expect(report.ruthlessFinalStateHash).toBe("c14n-fnv1a64-v1:7c2785c8f2aee021");
+    expect(report.ruthlessFinalStateHash).toBe("c14n-fnv1a64-v1:2ee17eb5bdfecf38");
   });
 
   it("locates a corpus decision divergence by run label and both hashes", { timeout: 60_000 }, () => {
@@ -176,7 +176,7 @@ describe("replay verifier", () => {
     expect(syncReport.errors.some((entry) => entry.includes("log/panel sync drift"))).toBe(true);
   });
 
-  it("locates manual-booking-leg drift by pinned field", () => {
+  it("locates manual-booking-leg drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).defendedCampaignHash = "c14n-fnv1a64-v1:0000000000000000";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
@@ -192,7 +192,11 @@ describe("replay verifier", () => {
     expect(outcomeReport.errors.some((entry) => entry.includes("Defense outcome drift"))).toBe(true);
   });
 
-  it("locates extra-shot grant-line drift and manual log/panel sync drift by pinned field", () => {
+  // This verifier intentionally re-derives the complete M13 campaign chain
+  // twice. It runs in ~3s alone and can exceed Vitest's 5s default only under
+  // full-suite CPU contention, so give this measured deterministic workload an
+  // explicit budget like the corpus replays above.
+  it("locates extra-shot grant-line drift and manual log/panel sync drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).extraGrantLine = "t3 granted extra World Tag shot (mandatory defenses complete 0/1).";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
@@ -265,7 +269,7 @@ describe("replay verifier", () => {
     expect(line).toContain("c14n-fnv1a64-v1:0000000000000000");
   });
 
-  it("locates heat-line and decay-line drift by pinned field", () => {
+  it("locates heat-line and decay-line drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(feudHeatChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).heatLine = "Feud championship tag grudge (t1 vs t2): heat 60 → 64 (+9); 1 feud match(es).";
     const report = verifyFeudHeatChainFixture(JSON.stringify(mutated));

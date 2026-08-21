@@ -13,7 +13,7 @@ interface MatchLengthRow { meanMinutes: number; medianMinutes: number; minMinute
  * balance view: win shares across the AI difficulty ladder and per batch,
  * match-length distributions by variety, and finish-method frequencies. The
  * report hash is shown so a reviewer can tie the on-screen analytics to the
- * pinned fixture identity (c14n-fnv1a64-v1:0cf1a58e2b994c0a).
+ * pinned fixture identity (c14n-fnv1a64-v1:ea2a8361db1e93e9).
  */
 
 export interface PlaytestReport {

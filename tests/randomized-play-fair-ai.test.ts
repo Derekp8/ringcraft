@@ -53,8 +53,14 @@ describe("randomized normal play", () => {
     const two = createRandomMatch({ mode: "singles" }, fixedSource(202));
     expect(one.config.seed).toBe(101);
     expect(two.config.seed).toBe(202);
-    expect(one.rng).toEqual(createRng(101));
-    expect(two.rng).toEqual(createRng(202));
+    // Match creation must consume the seeded initiative/referee dice exactly
+    // like the manual-seed path; retaining the untouched initial RNG would
+    // contradict the recorded match-start event.
+    expect(one).toEqual(createMatch({ mode: "singles", seed: 101 }));
+    expect(two).toEqual(createMatch({ mode: "singles", seed: 202 }));
+    expect(one.rng).not.toEqual(createRng(101));
+    expect(two.rng).not.toEqual(createRng(202));
+    expect(one.events[0].dice.map((die) => die.label)).toEqual(["match referee level"]);
 
     let manual = createMatch({ seed: 1991, mode: "singles", aiDifficulty: "standard" });
     for (let guard = 0; !manual.result && guard < 8_000; guard += 1) {
@@ -83,7 +89,15 @@ describe("randomized normal play", () => {
     const config = { name: "Random Career", startDate: "1991-01-01", roster, playerEntrantId: roster[4].id, playerDivision: "singles" as const, aiDifficulty: "standard" as const };
     const campaign = createRandomCampaign(config, fixedSource(303));
     expect(campaign.seed).toBe(303);
-    expect(campaign.rng).toEqual(createRng(303));
+    // Campaign creation consumes and records the seeded monthly title-defense
+    // rolls. Random seed acquisition changes only the seed source, not that
+    // deterministic initialization lifecycle.
+    expect(campaign.rng).not.toEqual(createRng(303));
+    expect(campaign.events[0].dice.map((die) => die.label)).toEqual([
+      "World Heavyweight monthly defense requirement",
+      "International monthly defense requirement",
+      "Television monthly defense requirement",
+    ]);
 
     const imported = importCampaignJson(serializeCampaign(campaign, false)).state;
     expect(imported.seed).toBe(campaign.seed);
