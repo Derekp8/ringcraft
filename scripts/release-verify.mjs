@@ -27,11 +27,11 @@ function runGate(name, command, args) {
 }
 
 const gates = [
-  ["manual-compliance", npm, ["run", "compliance:verify"]],
+  ["manual-compliance", process.execPath, ["scripts/verify-manual-compliance.mjs"]],
   ["typecheck", npm, ["run", "typecheck"]],
   ["unit-integration", npm, ["run", "test"]],
   ["production-build", npm, ["run", "build"]],
-  ["playable-e2e-smoke", npm, ["run", "e2e"]],
+  ["playable-e2e-smoke", npm, ["exec", "--", "vitest", "run", "tests/m14-playable-readiness.test.ts", "tests/m14-manual-mode.test.ts", "tests/randomized-play-fair-ai.test.ts", "tests/save-determinism.test.ts"]],
   ["fixture-replay-verification", npm, ["run", "fixtures:verify"]],
   ["manifest-pins", process.execPath, ["scripts/check-manifest-pins.mjs"]],
   ["visual-qa", npm, ["run", "visual:qa"]],
@@ -80,6 +80,6 @@ const report = {
 await mkdir(resolve("output/readiness"), { recursive: true });
 await writeFile(resolve("output/readiness/release-verification.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(`\nrelease-verification: ${report.automatedStatus}`);
-console.log(`release-verification report: output/readiness/release-verification.json`);
+console.log("release-verification report: output/readiness/release-verification.json");
 console.log(`release assessment: ${report.releaseAssessment}`);
 process.exit(failed ? 1 : 0);
