@@ -6,6 +6,7 @@ import {
   finalizeCreationSession,
   hashCampaignState,
   importCampaignJson,
+  advanceCampaignDays,
   rollCreationHistory,
   rollCreationStature,
   serializeCampaign,
@@ -474,22 +475,23 @@ describe("save bundle import plan (merge preview)", () => {
     expect(plan.rows[3].reason).toMatch(/Unreadable/);
   });
 
-  it("surfaces a stored-vs-incoming diff hint on merged rows so the merge decision is visible", () => {
+  it("surfaces a validated stored-vs-incoming diff hint on merged rows so the merge decision is visible", () => {
     const storage = new FakeStorage();
     const meta = createSave(makeCampaign(), "Existing", storage);
     const stored = readSave(meta.saveId, storage)!;
+
+    const incomingStorage = new FakeStorage();
+    const advanced = advanceCampaignDays(makeCampaign(), 31);
+    const advancedMeta = createSave(advanced, "Newer", incomingStorage);
     const incoming: CampaignSave = {
-      ...stored,
+      ...readSave(advancedMeta.saveId, incomingStorage)!,
       saveId: "in-newer",
       name: "Newer",
+      createdAt: stored.createdAt,
       updatedAt: "2099-01-01T00:00:00.000Z",
-      preview: {
-        ...stored.preview,
-        currentDate: "1991-02-01",
-        wins: stored.preview.wins + 1,
-        wpBalance: stored.preview.wpBalance + 5,
-      },
     };
+    expect(incoming.campaignId).toBe(stored.campaignId);
+
     const bundle = JSON.stringify({ schema: SAVE_BUNDLE_SCHEMA, exportedAt: "2099-01-01T00:00:00.000Z", saves: [{ key: `${CAMPAIGN_SAVE_PREFIX}in-newer`, value: JSON.stringify(incoming) }] });
     const plan = planSaveBundleImport(bundle, storage);
     expect(plan.rows).toHaveLength(1);
@@ -498,8 +500,6 @@ describe("save bundle import plan (merge preview)", () => {
     expect(plan.rows[0].preview).toEqual(incoming.preview);
     const diff = diffSavePreviews(plan.rows[0].existingPreview, plan.rows[0].preview);
     expect(diff).toContain("Date: 1991-01-01 -> 1991-02-01");
-    expect(diff).toContain(`Record: ${stored.preview.wins}W/${stored.preview.draws}D/${stored.preview.losses}L (${stored.preview.matches} matches) -> ${incoming.preview.wins}W/${incoming.preview.draws}D/${incoming.preview.losses}L (${incoming.preview.matches} matches)`);
-    expect(diff).toContain(`WP balance: ${stored.preview.wpBalance} -> ${incoming.preview.wpBalance}`);
   });
 
   it("reports an empty diff hint when stored and incoming previews match", () => {

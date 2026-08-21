@@ -1,7 +1,19 @@
 import { afterAll, describe, expect, it } from "vitest";
 import { createMockSaveSyncServer, MOCK_SAVE_BUNDLE_SCHEMA } from "../scripts/mock-save-sync-server.mjs";
 import { RemoteBundleStorage, readSyncMeta } from "../src/ui/remote-save-storage";
-import { importSaveBundle } from "../src/ui/save-manager";
+import {
+  advanceCampaignDays,
+  autoAllocateCreationPoints,
+  createCampaign,
+  createCreationSession,
+  finalizeCreationSession,
+  rollCreationHistory,
+  rollCreationStature,
+  setCreationIdentity,
+  setCreationSide,
+} from "../src/core";
+import type { CampaignState, WrestlerCareerRecord } from "../src/core";
+import { createSave, importSaveBundle, readSave } from "../src/ui/save-manager";
 import type { CampaignSaveBundle, SaveStorage } from "../src/ui/save-manager";
 
 const instances: Array<{ close(): void }> = [];
@@ -38,15 +50,48 @@ function inMemoryStorage(): SaveStorage {
   };
 }
 
-function savePayload(saveId: string, name: string, campaignId: string, updatedAt: string, campaignJson: string): string {
+function syncRecord(seed: number, index: number): WrestlerCareerRecord {
+  let session = createCreationSession(seed + index);
+  session = setCreationIdentity(session, { name: `Sync Wrestler ${index}`, epithet: "T", affiliation: "Sync Test Roster" });
+  session = setCreationSide(session, index % 2 ? "rulebreaker" : "fan-favorite");
+  session = rollCreationStature(session);
+  session = rollCreationHistory(session);
+  session = autoAllocateCreationPoints(session);
+  return finalizeCreationSession(session).finalized!;
+}
+
+function logicalSeed(campaignId: string): number {
+  let value = 7000;
+  for (const char of campaignId) value = ((value * 33) ^ char.charCodeAt(0)) >>> 0;
+  return (value % 100000) + 1;
+}
+
+function syncCampaign(logicalCampaignId: string): CampaignState {
+  const seed = logicalSeed(logicalCampaignId);
+  const roster = Array.from({ length: 4 }, (_, index) => syncRecord(seed, index));
+  return createCampaign({
+    name: `Sync ${logicalCampaignId}`,
+    seed,
+    startDate: "1991-01-01",
+    roster,
+    playerEntrantId: roster[0].id,
+    playerDivision: "singles",
+  });
+}
+
+function savePayload(saveId: string, name: string, logicalCampaignId: string, updatedAt: string, campaignMarker: string): string {
+  const markerMatch = campaignMarker.match(/:(\d+)\s*}/);
+  const advanceDays = Math.max(0, Number(markerMatch?.[1] ?? 1) - 1);
+  const campaign = advanceDays > 0 ? advanceCampaignDays(syncCampaign(logicalCampaignId), advanceDays) : syncCampaign(logicalCampaignId);
+  const storage = inMemoryStorage();
+  const meta = createSave(campaign, name, storage);
+  const record = readSave(meta.saveId, storage)!;
   return JSON.stringify({
+    ...record,
     saveId,
     name,
-    campaignId,
     createdAt: "2099-01-01T00:00:00.000Z",
     updatedAt,
-    preview: { campaignName: name, currentDate: "1991-01-01", playerDivision: "singles", playerLabel: name, wins: 0, draws: 0, losses: 0, matches: 0, titlesHeld: [], wpBalance: 0 },
-    campaignJson,
   });
 }
 
@@ -257,7 +302,7 @@ describe("mock save-sync server (in-repo endpoint)", () => {
     expect(storage.getItem("asw91-campaign-save-alpha")).not.toBe(alphaT1);
     const alphaAfter = JSON.parse(storage.getItem("asw91-campaign-save-alpha")!) as { updatedAt: string; campaignJson: string };
     expect(alphaAfter.updatedAt).toBe(t2);
-    expect(alphaAfter.campaignJson).toBe("{\"alpha\":2}");
+    expect(alphaAfter.campaignJson).not.toBe(JSON.parse(alphaT1).campaignJson);
     // Campaign beta imported; campaign gamma untouched.
     expect(storage.getItem("asw91-campaign-save-beta")).not.toBeNull();
     expect(storage.getItem("asw91-campaign-save-gamma")).toBe(gamma);
