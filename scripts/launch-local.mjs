@@ -1,0 +1,82 @@
+import { existsSync } from "node:fs";
+import { spawn, spawnSync } from "node:child_process";
+
+const host = "127.0.0.1";
+const port = 5173;
+const url = `http://localhost:${port}/`;
+const npm = process.platform === "win32" ? "npm.cmd" : "npm";
+
+function fail(message) {
+  console.error(`\n${message}`);
+  process.exitCode = 1;
+}
+
+function run(command, args) {
+  const result = spawnSync(command, args, { stdio: "inherit", shell: false });
+  if (result.error) throw result.error;
+  if (result.status !== 0) throw new Error(`${command} ${args.join(" ")} exited with code ${result.status}.`);
+}
+
+async function ringcraftIsRunning() {
+  try {
+    const response = await fetch(url, { signal: AbortSignal.timeout(1200) });
+    if (!response.ok) return false;
+    const html = await response.text();
+    return html.includes("Project Ringcraft");
+  } catch {
+    return false;
+  }
+}
+
+function openBrowser() {
+  const command = process.platform === "win32" ? "cmd" : process.platform === "darwin" ? "open" : "xdg-open";
+  const args = process.platform === "win32" ? ["/c", "start", "", url] : [url];
+  const child = spawn(command, args, { detached: true, stdio: "ignore", shell: false });
+  child.unref();
+}
+
+async function waitForServer(child, timeoutMs = 30_000) {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < timeoutMs) {
+    if (child.exitCode !== null) throw new Error(`The Ringcraft development server exited with code ${child.exitCode}.`);
+    if (await ringcraftIsRunning()) return;
+    await new Promise((resolve) => setTimeout(resolve, 400));
+  }
+  throw new Error(`Ringcraft did not become available at ${url} within ${timeoutMs / 1000} seconds.`);
+}
+
+try {
+  if (await ringcraftIsRunning()) {
+    console.log(`Ringcraft is already running at ${url}`);
+    openBrowser();
+    process.exit(0);
+  }
+
+  if (!existsSync("node_modules/.package-lock.json")) {
+    console.log("Installing Ringcraft dependencies for this checkout...");
+    run(npm, ["ci"]);
+  }
+
+  console.log(`Starting Project Ringcraft at ${url}`);
+  console.log("Keep this window open while playing. Close it or press Ctrl+C to stop the local server.\n");
+
+  const server = spawn(npm, ["run", "dev", "--", "--host", host, "--port", String(port), "--strictPort"], {
+    stdio: "inherit",
+    shell: false,
+  });
+
+  const stop = () => {
+    if (server.exitCode === null) server.kill("SIGTERM");
+  };
+  process.once("SIGINT", stop);
+  process.once("SIGTERM", stop);
+  process.once("exit", stop);
+
+  await waitForServer(server);
+  openBrowser();
+
+  const exitCode = await new Promise((resolve) => server.once("exit", (code) => resolve(code ?? 0)));
+  if (exitCode !== 0) fail(`Ringcraft development server stopped with code ${exitCode}.`);
+} catch (error) {
+  fail(error instanceof Error ? error.message : String(error));
+}
