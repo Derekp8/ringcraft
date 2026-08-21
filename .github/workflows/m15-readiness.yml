@@ -23,8 +23,8 @@ jobs:
         run: npm run typecheck
       - name: Verify compliance registry
         run: node scripts/verify-manual-compliance.mjs
-      - name: Verify Strict Manual and RNG/replay boundaries
-        run: npm exec -- vitest run tests/m14-manual-mode.test.ts tests/m15-strict-manual.test.ts tests/m14-playable-readiness.test.ts tests/randomized-play-fair-ai.test.ts tests/save-determinism.test.ts
+      - name: Verify Strict Manual, RNG/replay, and QA remediation boundaries
+        run: npm exec -- vitest run tests/m14-manual-mode.test.ts tests/m15-strict-manual.test.ts tests/m14-playable-readiness.test.ts tests/randomized-play-fair-ai.test.ts tests/save-determinism.test.ts tests/qa-remediation-save-manager.test.ts tests/qa-remediation-ui-boundaries.test.mjs
       - name: Production build
         run: npm run build
 
@@ -57,7 +57,7 @@ jobs:
           node-version: 24
       - name: Install dependencies
         run: npm ci
-      - name: Run browser playable journeys
+      - name: Run browser remediation journeys A-H
         run: node scripts/browser-e2e.mjs
       - uses: actions/upload-artifact@v4
         if: always()
