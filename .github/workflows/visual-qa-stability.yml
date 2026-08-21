@@ -48,15 +48,15 @@ jobs:
           node-version: 24
 
       # Chromium is portable, but its package intentionally omits the narrow
-      # display face used by the reviewed captures. Pin the URW package and
-      # assert the exact Arial Narrow -> Nimbus Sans Narrow substitution;
-      # DejaVu fallback changes wrapping and every full-page capture height.
+      # display face used by the reviewed captures. Pin both canonical families
+      # and assert Arial Narrow -> Nimbus Sans Narrow plus DejaVu Sans Mono;
+      # substituting DejaVu for the narrow face changes wrapping and page height.
       - name: Install canonical QA fonts
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends --yes fonts-urw-base35
+          sudo apt-get install --no-install-recommends --yes fonts-urw-base35 fonts-dejavu-core
           fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
-          fc-match monospace | grep -q "NimbusMono"
+          fc-match monospace | grep -q "DejaVuSansMono"
 
       # The gate imports playwright-core, vite, tar-fs and the portable
       # Chromium package at runtime, so a plain install is all the runner needs.
