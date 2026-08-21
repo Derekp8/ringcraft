@@ -18,15 +18,15 @@ jobs:
         with:
           node-version: 24
 
-      # The portable Chromium archive does not bundle actual fonts. Pin the
-      # DejaVu Sans / DejaVu Sans Mono files used by the reviewed captures and
-      # bind Chromium to the system Fontconfig entry point.
+      # Match the application's declared font stacks inside the clean room.
+      # Inter is the body/UI face; Nimbus Sans Narrow is the reviewed Linux
+      # substitute for the Arial Narrow heading stack used by the QA pins.
       - name: Install canonical QA fonts
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends --yes fonts-dejavu-core
-          fc-match sans-serif | grep -q "DejaVuSans"
-          fc-match monospace | grep -q "DejaVuSansMono"
+          sudo apt-get install --no-install-recommends --yes fonts-inter fonts-urw-base35
+          fc-match Inter | grep -q "Inter"
+          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
 
       # The build/verify wrappers SSR-load their TypeScript via Vite, which is
       # a runtime dependency, so a plain install is all the runner needs.
