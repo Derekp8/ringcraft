@@ -116,8 +116,9 @@ async function startDeterministicCareer(page) {
   }
   await page.getByText("Developer / deterministic options").click();
   await page.getByRole("button", { name: "Start generated league with manual seed" }).click();
+  await page.getByRole("heading", { name: "Championships and obligations" }).waitFor({ state: "visible" });
+  await page.getByText("Strict Manual compatible", { exact: true }).waitFor({ state: "visible" });
   if (!(await page.getByRole("heading", { name: "Rules compatibility" }).count())) throw new Error("Career dashboard omitted rules compatibility presentation.");
-  if (!(await page.getByText("Strict Manual compatible", { exact: true }).count())) throw new Error("Strict Manual campaign was not labeled compatible.");
 }
 
 async function scheduleAndOpenCareerMatch(page) {
