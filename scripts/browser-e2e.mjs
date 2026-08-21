@@ -55,7 +55,7 @@ async function newPage(browser) {
   await page.goto(BASE_URL, { waitUntil: "networkidle" });
   const startupTour = page.locator(".tour-overlay[role=dialog]");
   if (await startupTour.count()) {
-    await startupTour.getByRole("button", { name: "Skip tour" }).click();
+    await startupTour.locator('button[aria-label="Skip the tour and remember that choice"]').click();
     await startupTour.waitFor({ state: "detached" });
   }
   return { context, page, errors };
