@@ -53,11 +53,14 @@ function median(values: number[]): number {
 
 function legalityProbe(state: MatchState): { probes: number; illegal: number } {
   const actorId = state.teams.ai.legalInRingId;
-  const actions = enumerateTurnActions(state, actorId);
+  const probeState = structuredClone(state);
+  const actions = enumerateTurnActions(probeState, actorId);
   if (!actions.length) return { probes: 0, illegal: 0 };
   const decision = { actorId, completesActivationFor: actorId, kind: "turn" as const, prompt: "M15 AI legality probe", actions };
-  const selected = chooseAiAction(state, decision);
-  return { probes: 1, illegal: actions.includes(selected) ? 0 : 1 };
+  probeState.currentActorId = actorId;
+  probeState.decision = decision;
+  const selected = chooseAiAction(probeState, decision);
+  return { probes: 1, illegal: actions.some((candidate) => candidate.key === selected.key) ? 0 : 1 };
 }
 
 function play(mode: MatchMode, difficulty: AiDifficulty, seed: number): {
