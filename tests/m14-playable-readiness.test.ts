@@ -80,6 +80,21 @@ describe("M14 playable readiness smoke", () => {
     expect(replayed.events.map((event) => event.dice)).toEqual(completed.events.map((event) => event.dice));
   });
 
+  it("rejects an illegal player intent without consuming RNG or mutating the live match", () => {
+    const state = createMatch({ seed: 19_910_250, mode: "singles", aiDifficulty: "standard", variety: "standard" });
+    const beforeHash = hashMatchState(state);
+    const beforeRng = structuredClone(state.rng);
+    const beforeInputLog = structuredClone(state.inputLog);
+    const beforeEvents = structuredClone(state.events);
+
+    expect(() => submitPlayerIntent(state, { type: "recover", pool: "damage", charm: 3 })).toThrow();
+
+    expect(hashMatchState(state)).toBe(beforeHash);
+    expect(state.rng).toEqual(beforeRng);
+    expect(state.inputLog).toEqual(beforeInputLog);
+    expect(state.events).toEqual(beforeEvents);
+  });
+
   it("plays a Career match, commits it exactly once, saves/reloads, and replays the result", () => {
     let state = career(19_910_303);
     expect(isStrictManualCampaign(state)).toBe(true);
