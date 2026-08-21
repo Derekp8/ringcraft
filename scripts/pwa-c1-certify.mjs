@@ -98,7 +98,7 @@ try {
 
 const allExternalSucceeded = requiredExternalWorkflowNames.every((name) => workflowEvidence[name]?.conclusion === "success");
 const pagesPrerequisitesSucceeded = true;
-const allRequiredSucceeded = pagesPrerequisitesSucceeded && allExternalSucceeded && (testCount === null || testCount >= 490);
+const allRequiredSucceeded = pagesPrerequisitesSucceeded && allExternalSucceeded && testCount !== null && testCount >= 490;
 const report = {
   schema: "ringcraft-pwa-c1-certification-v1",
   generatedAt: new Date().toISOString(),
@@ -111,7 +111,7 @@ const report = {
   automatedStatus: allRequiredSucceeded ? "PWA AUTOMATED INSTALLABILITY GATES PASSED — HUMAN INSTALL QA PENDING" : "PWA INSTALLABLE WITH KNOWN BLOCKERS",
   workflowEvidence,
   regression: {
-    result: "PASS",
+    result: testCount !== null && testCount >= 490 ? "PASS" : "FAIL",
     testCount,
     minimumRequired: 490,
     deterministicFixtures: "PASS",
