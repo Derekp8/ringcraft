@@ -4,6 +4,8 @@ Project Ringcraft is a deterministic, rules-first private adaptation of the 1991
 
 This branch follows the August 20 structural repair and reconciles the mixed verification snapshots that were uploaded together. The canonical directory tree, deterministic fixtures, replay documents, automated tests, and browser QA now agree with the current source. It is still a review candidate—not a public release. Independent second-human table transcription, human accessibility review, and human playtest sign-off remain external QA gates.
 
+The current closure evidence is indexed in the [release-readiness audit](docs/release-readiness-audit.md), [manual-compliance packet](docs/manual-compliance-review-packet.md), [release traceability matrix](docs/release-traceability-matrix.md), [AI/pacing report](docs/match-pacing-ai-report.md), and [visual reconciliation report](docs/visual-baseline-reconciliation.md). The [human playtest](docs/human-playtest-checklist.md) and [human accessibility](docs/human-accessibility-checklist.md) checklists remain unsigned external gates.
+
 ## Clean install and run
 
 Requirements: Node.js 24 (the verified runtime) or a current Node.js LTS release.
@@ -36,7 +38,7 @@ The following gates pass on the reconciliation branch:
 - `npm run typecheck` — both emit-free project checks and `tsc -b` pass.
 - `npm run build` — 45 modules compile into a production Vite bundle.
 
-`npm run fixtures:verify` re-derives the M5 campaign fixtures, the 1,058-decision M10 corpus (`35dd5b20`), the M10 campaign, M11 match/playtest/trend fixtures, save-manager fixture, and all replay documents with zero drift. The current ruthless seed-1991 replay pins `c14n-fnv1a64-v1:03e0fea1cb9c5be1`; the tag replay remains `c14n-fnv1a64-v1:1b26c32a342f08c8`. `npm run visual:qa` passes all 22 reviewed browser captures.
+`npm run fixtures:verify` re-derives the M5 campaign fixtures, the 1,058-decision M10 corpus (`35dd5b20`), the M10 campaign, M11 match/playtest/trend fixtures, save-manager fixture, and all replay documents with zero drift. The current ruthless seed-1991 replay pins `c14n-fnv1a64-v1:03e0fea1cb9c5be1`; the tag replay remains `c14n-fnv1a64-v1:1b26c32a342f08c8`. `npm run visual:qa` passes all 22 reviewed browser captures and exercises the ordinary random Exhibition and starter-Career buttons with deterministic browser entropy, proving that those player paths use their generated start seeds rather than a fixed developer seed.
 
 To regenerate the included deterministic examples:
 

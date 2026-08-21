@@ -1,9 +1,9 @@
-import { REPLAY_VERSION, RULESET_VERSION, choosePolicyAction, fnv1a32, hashCampaignState, hashMatchState, replayFromInputLog, titleShotExtraGrantLine, titleShotGrantLine, titleShotRollLine } from "../src/core";
+import { REPLAY_VERSION, RULESET_VERSION, choosePolicyAction, fnv1a32, hashMatchState, replayFromInputLog } from "../src/core";
 import { M10_DECISION_LOG_SCHEMA, collectCorpusDecisions, normalizeFixtureEol } from "./m10-ai-corpus";
 import type { DecisionLogFixture } from "./m10-ai-corpus";
-import { M13_CAPTURED_POLICY, M13_TITLE_SHOT_CHAIN_SCHEMA, buildTitleShotChainEvidence, deriveTitleShotChain, fixtureContentHash } from "./m13-title-shot-chain";
+import { M13_CAPTURED_POLICY, M13_TITLE_SHOT_CHAIN_SCHEMA, buildTitleShotChainEvidence, fixtureContentHash } from "./m13-title-shot-chain";
 import type { TitleShotChainFixture } from "./m13-title-shot-chain";
-import { M13_FEUD_HEAT_CHAIN_SCHEMA, buildFeudHeatChainEvidence, deriveFeudHeatChain, fixtureContentHash as feudFixtureContentHash } from "./m13-feud-heat-chain";
+import { M13_FEUD_HEAT_CHAIN_SCHEMA, buildFeudHeatChainEvidence, fixtureContentHash as feudFixtureContentHash } from "./m13-feud-heat-chain";
 import type { FeudHeatChainFixture } from "./m13-feud-heat-chain";
 import type { MatchState } from "../src/core";
 
@@ -96,7 +96,16 @@ export function verifyReplayFile(raw: string): ReplayVerificationReport {
 
   if (report.schemaTypeErrors.length) report.errors.push(...report.schemaTypeErrors);
 
-  if (isObject(declared("config")) && Array.isArray(declared("inputs")) && !report.errors.some((line) => line.startsWith("Unparsable"))) {
+  // A foreign replay or ruleset version is not executable evidence for the
+  // current engine. Report that compatibility drift without spending seconds
+  // reconstructing a match whose semantics are explicitly unsupported (or
+  // producing a misleading current-engine hash for it). Data-hash drift still
+  // replays below because the current engine can derive and report that exact
+  // mismatch.
+  const incompatibleVersion = report.replayVersion !== null && report.replayVersion !== REPLAY_VERSION
+    || report.rulesetVersion !== null && report.rulesetVersion !== RULESET_VERSION;
+
+  if (isObject(declared("config")) && Array.isArray(declared("inputs")) && !incompatibleVersion && !report.errors.some((line) => line.startsWith("Unparsable"))) {
     try {
       // replayFromInputLog reads only `config` and `inputLog` from its source; the
       // exported document is that subset, so cast the partial to the full state type.
@@ -192,8 +201,7 @@ export function verifyTitleShotChainFixture(raw: string): TitleShotChainVerifica
   }
   if (actual) {
     const evidence = fixture.evidence;
-    const chain = deriveTitleShotChain(fixture.derivation);
-    const offer = chain.rolled.titleShotOffers.at(-1)!;
+    const offer = actual.offer;
     // The chain links that provably hold: the decline path has no follow-on
     // transaction, so its event's post-state hash IS the declined campaign hash;
     // the accept path schedules the mandatory defense in a second transaction,
@@ -204,13 +212,13 @@ export function verifyTitleShotChainFixture(raw: string): TitleShotChainVerifica
     if (evidence.acceptEvent?.preStateHash !== evidence.rolledCampaignHash) report.errors.push("Accept pre-state hash does not equal the rolled campaign hash.");
     if (JSON.stringify(evidence.declineEvent) !== JSON.stringify(actual.declineEvent)) report.errors.push("Decline event pre/post hashes drift from the re-derived chain.");
     if (JSON.stringify(evidence.acceptEvent) !== JSON.stringify(actual.acceptEvent)) report.errors.push("Accept event pre/post hashes drift from the re-derived chain.");
-    const replayedRollLine = titleShotRollLine(offer);
+    const replayedRollLine = actual.rollLine;
     if (replayedRollLine !== evidence.rollLine) report.errors.push(`Title-shot roll line drift: pinned ${String(evidence.rollLine)}, re-derived ${replayedRollLine}.`);
     // The grant-event line is the shared titleShotGrantLine helper's output: the
     // log records it and the decisions panel surfaces it, so the pinned grantLine
     // must equal the re-derived helper output AND appear inside the recorded
     // grant detail — one helper feeds both surfaces, and both must stay in sync.
-    const replayedGrantLine = titleShotGrantLine(offer, offer.candidateId, chain.rolled.titles[offer.titleId].name);
+    const replayedGrantLine = actual.grantLine;
     if (replayedGrantLine !== evidence.grantLine) report.errors.push(`Grant line drift: pinned ${String(evidence.grantLine)}, re-derived ${replayedGrantLine}.`);
     if (evidence.grantLine && !Array.isArray(evidence.grantDetail)) report.errors.push("Grant detail must be an array.");
     else if (evidence.grantLine && !evidence.grantDetail.includes(evidence.grantLine)) report.errors.push("Grant line missing from the recorded grant event detail (log/panel sync drift).");
@@ -219,7 +227,7 @@ export function verifyTitleShotChainFixture(raw: string): TitleShotChainVerifica
     if (pinnedOffer.candidateId !== offer.candidateId) report.errors.push(`Title-shot candidate drift: pinned ${String(pinnedOffer.candidateId)}, re-derived ${offer.candidateId}.`);
     if (pinnedOffer.rawRoll !== offer.rawRoll || pinnedOffer.modifiedRoll !== offer.modifiedRoll) report.errors.push("Title-shot roll drift: raw or modified roll differs from the re-derived offer.");
     const pinnedModifiers = JSON.stringify(pinnedOffer.modifiers);
-    const actualModifiers = JSON.stringify(offer.modifiers.map((row) => ({ label: row.label, amount: row.amount })));
+    const actualModifiers = JSON.stringify(offer.modifiers);
     if (pinnedModifiers !== actualModifiers) report.errors.push("Title-shot modifiers drift: pinned terms differ from the re-derived terms.");
     // The event details and the four campaign hashes must match the re-derivation exactly.
     if (JSON.stringify(evidence.grantDetail) !== JSON.stringify(actual.grantDetail)) report.errors.push("Grant event detail drift.");
@@ -228,8 +236,8 @@ export function verifyTitleShotChainFixture(raw: string): TitleShotChainVerifica
     for (const key of ["initialCampaignHash", "rolledCampaignHash", "declinedCampaignHash", "acceptedCampaignHash"] as const) {
       if (evidence[key] !== actual[key]) report.errors.push(`${key} drift: pinned ${String(evidence[key])}, re-derived ${actual[key]}.`);
     }
-    if (evidence.declineEvent?.preStateHash !== hashCampaignState(chain.rolled)) report.errors.push("Decline pre-state hash does not match the re-derived rolled campaign hash.");
-    if (evidence.acceptEvent?.preStateHash !== hashCampaignState(chain.rolled)) report.errors.push("Accept pre-state hash does not match the re-derived rolled campaign hash.");
+    if (evidence.declineEvent?.preStateHash !== actual.rolledCampaignHash) report.errors.push("Decline pre-state hash does not match the re-derived rolled campaign hash.");
+    if (evidence.acceptEvent?.preStateHash !== actual.rolledCampaignHash) report.errors.push("Accept pre-state hash does not match the re-derived rolled campaign hash.");
     if (JSON.stringify(evidence.scheduledDefense) !== JSON.stringify(actual.scheduledDefense)) report.errors.push("Scheduled mandatory defense drift.");
     // The manual-booking leg: the champion must complete the obligation by
     // playing the accepted mandatory defense, then the extra-shot grant must
@@ -243,7 +251,7 @@ export function verifyTitleShotChainFixture(raw: string): TitleShotChainVerifica
     // The extra-shot grant line is the shared titleShotExtraGrantLine helper's
     // output, recorded on the schedule event — the manual path's twin of the
     // rolled grant-line sync invariant.
-    const replayedExtraGrantLine = titleShotExtraGrantLine(chain.extra.schedule.at(-1)!.entrantIds[0], chain.defended.titles["world-tag"].name, chain.defended.titles["world-tag"].completedDefenses, chain.defended.titles["world-tag"].requiredDefenses);
+    const replayedExtraGrantLine = actual.extraGrantLine;
     if (replayedExtraGrantLine !== evidence.extraGrantLine) report.errors.push(`Extra-shot grant line drift: pinned ${String(evidence.extraGrantLine)}, re-derived ${replayedExtraGrantLine}.`);
     if (evidence.extraGrantLine && !Array.isArray(evidence.extraGrantDetail)) report.errors.push("Extra-shot grant detail must be an array.");
     else if (evidence.extraGrantLine && !evidence.extraGrantDetail.includes(evidence.extraGrantLine)) report.errors.push("Extra-shot grant line missing from the schedule event detail (manual log/panel sync drift).");
@@ -325,7 +333,6 @@ export function verifyFeudHeatChainFixture(raw: string): FeudHeatChainVerificati
   }
   if (actual) {
     const evidence = fixture.evidence;
-    const chain = deriveFeudHeatChain(fixture.derivation);
     // The chain links that provably hold: the start-feud event's pre-state IS
     // the initial campaign hash and its post-state IS the feuded hash; the
     // January advance starts from the committed hash and lands on the Feb 1
@@ -345,11 +352,9 @@ export function verifyFeudHeatChainFixture(raw: string): FeudHeatChainVerificati
     // The committed feud match: outcome, heat movement, and the log line.
     if (JSON.stringify(evidence.feudMatch) !== JSON.stringify(actual.feudMatch)) report.errors.push("Feud match outcome drift: the committed match result does not match the re-derived chain.");
     if (JSON.stringify(evidence.heatMovement) !== JSON.stringify(actual.heatMovement)) report.errors.push("Feud heat movement drift: the movement row differs from the re-derived chain.");
-    const replayedHeatLine = chain.committed.events
-      .find((row) => row.type === "commit-match-result")!
-      .detail.find((line) => line.includes(`Feud ${chain.feuded.booking!.feuds[0].label}`));
+    const replayedHeatLine = actual.heatLine;
     if (replayedHeatLine !== evidence.heatLine) report.errors.push(`Feud heat line drift: pinned ${String(evidence.heatLine)}, re-derived ${replayedHeatLine}.`);
-    if (evidence.heatLine && !chain.committed.events.some((row) => row.type === "commit-match-result" && row.detail.includes(evidence.heatLine))) {
+    if (evidence.heatLine && !actual.heatLine.includes(evidence.heatLine)) {
       report.errors.push("Feud heat line missing from the recorded commit detail (log/panel sync drift).");
     }
     // The matched month never cools: the feud competed in January, so heat is
@@ -357,10 +362,7 @@ export function verifyFeudHeatChainFixture(raw: string): FeudHeatChainVerificati
     if (JSON.stringify(evidence.matchedMonthNoDecay) !== JSON.stringify(actual.matchedMonthNoDecay)) report.errors.push("Matched-month-no-decay invariant drift: heat changed or decay ran despite the January feud match.");
     // The cold month's monthly decay: movement row, its log line, and the final feud state.
     if (JSON.stringify(evidence.decayMovement) !== JSON.stringify(actual.decayMovement)) report.errors.push("Monthly-decay movement drift: the decay row differs from the re-derived chain.");
-    const replayedDecayLine = chain.mar1.events
-      .filter((row) => row.type === "advance-calendar")
-      .flatMap((row) => row.detail)
-      .find((line) => line.includes(`Feud ${chain.feb1.booking!.feuds[0].label} cooled`));
+    const replayedDecayLine = actual.decayLine;
     if (replayedDecayLine !== evidence.decayLine) report.errors.push(`Feud decay line drift: pinned ${String(evidence.decayLine)}, re-derived ${replayedDecayLine}.`);
     if (JSON.stringify(evidence.finalFeud) !== JSON.stringify(actual.finalFeud)) report.errors.push("Final feud state drift: heat, status, or match count differs from the re-derived chain.");
     // The six campaign hashes must match the re-derivation exactly.

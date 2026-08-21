@@ -1,5 +1,7 @@
 # Adjudication register
 
+Independent review status (2026-08-21): **pending**. The repository does not contain the authorized manual/GDD PDFs, and no second-human initials or approval have been recorded. Reviewers should use `manual-compliance-review-packet.md` and `release-traceability-matrix.md`; automated checks must not change any row's human-sign-off status.
+
 This register supplements the audited GDD Appendix A. It records M4–M5 interpretation and implementation decisions so that no source ambiguity is silently resolved. None of these entries claims independent sign-off.
 
 | ID | Question | Decision | Authority | Regression/evidence | Status |

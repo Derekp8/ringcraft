@@ -47,15 +47,15 @@ jobs:
         with:
           node-version: 24
 
-      # Chromium is portable, but its package intentionally carries no font
-      # files. The reviewed captures use DejaVu Sans / DejaVu Sans Mono; pin
-      # those files and the system Fontconfig entry point so Chromium cannot
-      # silently select a different runner fallback and change page layout.
+      # Chromium is portable, but its package intentionally omits the narrow
+      # display face used by the reviewed captures. Pin both canonical families
+      # and assert Arial Narrow -> Nimbus Sans Narrow plus DejaVu Sans Mono;
+      # substituting DejaVu for the narrow face changes wrapping and page height.
       - name: Install canonical QA fonts
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends --yes fonts-dejavu-core
-          fc-match sans-serif | grep -q "DejaVuSans"
+          sudo apt-get install --no-install-recommends --yes fonts-urw-base35 fonts-dejavu-core
+          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
           fc-match monospace | grep -q "DejaVuSansMono"
 
       # The gate imports playwright-core, vite, tar-fs and the portable
@@ -77,3 +77,16 @@ jobs:
       # matches the manifest's 22 screenshot pins.
       - name: Assert stable captures across two runs
         run: node scripts/check-visual-qa-stability.mjs
+
+      # Preserve the exact runner renders when the pin comparison fails so a
+      # reviewer can inspect every changed capture before any re-baseline.
+      - name: Upload visual drift diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-qa-drift-diagnostics
+          path: |
+            output/qa/ringcraft-*.png
+            output/qa/.stability-run1/*.png
+          if-no-files-found: error
+          retention-days: 30

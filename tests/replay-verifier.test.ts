@@ -111,7 +111,10 @@ describe("replay verifier", () => {
     expect(report.errors.some((entry) => entry.includes("Corpus schema drift"))).toBe(true);
   });
 
-  it("verifies the committed respond-title-shot event chain fixture end to end", () => {
+  // This is the baseline full title-shot chain derivation used by the drift
+  // tests below. It stays below 5s in isolation but measured 7.2s under the
+  // complete suite's parallel CPU load, so give only this workload headroom.
+  it("verifies the committed respond-title-shot event chain fixture end to end", { timeout: 15_000 }, () => {
     const report = verifyTitleShotChainFixture(JSON.stringify(titleShotChainFixture));
     expect(report.status).toBe("verified");
     expect(report.errors).toEqual([]);
@@ -146,7 +149,7 @@ describe("replay verifier", () => {
     expect(titleShotChainFixture.evidence.extraShot).toMatchObject({ titleId: "world-tag", candidateId: "t3", mandatoryDefense: false });
   });
 
-  it("locates a respond-title-shot chain divergence by pinned field", () => {
+  it("locates a respond-title-shot chain divergence by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).acceptedCampaignHash = "c14n-fnv1a64-v1:0000000000000000";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
@@ -156,7 +159,7 @@ describe("replay verifier", () => {
     expect(line).toContain("c14n-fnv1a64-v1:0000000000000000");
   });
 
-  it("locates grant-line drift and log/panel sync drift by pinned field", () => {
+  it("locates grant-line drift and log/panel sync drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).grantLine = "t2 granted World Tag offer title-shot-4c1632ac; roll 6 = 6.";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
@@ -176,7 +179,12 @@ describe("replay verifier", () => {
     expect(syncReport.errors.some((entry) => entry.includes("log/panel sync drift"))).toBe(true);
   });
 
-  it("locates manual-booking-leg drift by pinned field", () => {
+  // This test re-derives the complete title-shot campaign chain twice. It
+  // measures at ~3s in isolation on the verified Node 24 host, but exceeded
+  // Vitest's 5s default under full-suite GitHub runner contention. Keep the
+  // budget scoped to this deterministic workload rather than weakening the
+  // suite globally.
+  it("locates manual-booking-leg drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).defendedCampaignHash = "c14n-fnv1a64-v1:0000000000000000";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
@@ -215,7 +223,7 @@ describe("replay verifier", () => {
     expect(syncReport.errors.some((entry) => entry.includes("manual log/panel sync drift"))).toBe(true);
   });
 
-  it("reports title-shot chain schema drift and offer-id drift", () => {
+  it("reports title-shot chain schema drift and offer-id drift", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(titleShotChainFixture)) as Record<string, unknown>;
     mutated.schema = "m13-title-shot-chain-v9";
     const report = verifyTitleShotChainFixture(JSON.stringify(mutated));
@@ -229,7 +237,7 @@ describe("replay verifier", () => {
     expect(offerReport.errors.some((entry) => entry.includes("offer id drift"))).toBe(true);
   });
 
-  it("verifies the committed feud-heat event chain fixture end to end", () => {
+  it("verifies the committed feud-heat event chain fixture end to end", { timeout: 15_000 }, () => {
     const report = verifyFeudHeatChainFixture(JSON.stringify(feudHeatChainFixture));
     expect(report.status).toBe("verified");
     expect(report.errors).toEqual([]);
@@ -259,7 +267,7 @@ describe("replay verifier", () => {
     expect(report.fixtureHash).toBe(feudHeatChainFixture.fixtureHash);
   });
 
-  it("locates a feud-heat chain divergence by pinned field", () => {
+  it("locates a feud-heat chain divergence by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(feudHeatChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).mar1CampaignHash = "c14n-fnv1a64-v1:0000000000000000";
     const report = verifyFeudHeatChainFixture(JSON.stringify(mutated));
@@ -269,7 +277,11 @@ describe("replay verifier", () => {
     expect(line).toContain("c14n-fnv1a64-v1:0000000000000000");
   });
 
-  it("locates heat-line and decay-line drift by pinned field", () => {
+  // Three complete feud-chain derivations measure at ~3.3s in isolation and
+  // can exceed the 5s default only when the full clean-room suite competes for
+  // CPU. Match the adjacent chain-verifier budget without hiding hangs behind
+  // a large global timeout.
+  it("locates heat-line and decay-line drift by pinned field", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(feudHeatChainFixture)) as Record<string, unknown>;
     (mutated.evidence as Record<string, unknown>).heatLine = "Feud championship tag grudge (t1 vs t2): heat 60 → 64 (+9); 1 feud match(es).";
     const report = verifyFeudHeatChainFixture(JSON.stringify(mutated));
@@ -294,7 +306,7 @@ describe("replay verifier", () => {
     expect(decayReport.errors.some((entry) => entry.includes("Feud decay line drift"))).toBe(true);
   });
 
-  it("reports feud-heat chain schema drift and matched-month invariant drift", () => {
+  it("reports feud-heat chain schema drift and matched-month invariant drift", { timeout: 15_000 }, () => {
     const mutated = JSON.parse(JSON.stringify(feudHeatChainFixture)) as Record<string, unknown>;
     mutated.schema = "m13-feud-heat-chain-v9";
     const report = verifyFeudHeatChainFixture(JSON.stringify(mutated));
