@@ -51,11 +51,12 @@ async function waitForServer(child, timeoutMs = 30_000) {
 
 async function stopServer(server) {
   if (server.exitCode !== null) return;
+  const exited = new Promise((resolve) => server.once("exit", resolve));
   server.kill("SIGTERM");
   const forced = setTimeout(() => {
     if (server.exitCode === null) server.kill("SIGKILL");
   }, 5000);
-  await new Promise((resolve) => server.once("exit", resolve));
+  await exited;
   clearTimeout(forced);
 }
 
