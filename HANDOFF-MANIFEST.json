@@ -99,7 +99,7 @@
     "fixture_completed_campaign_hash": "c14n-fnv1a64-v1:1a11f20c552d50ba",
     "fixture_completed_match_hash": "c14n-fnv1a64-v1:b5cc3ccccd2e25ee",
     "fixture_recovered_final_campaign_hash": "c14n-fnv1a64-v1:bd2c470ca5bf286a",
-    "fixture_ruthless_campaign_final_hash": "c14n-fnv1a64-v1:64936edc8e1bd790",
+    "fixture_ruthless_campaign_final_hash": "c14n-fnv1a64-v1:57d08699c66d7f5a",
     "m10_corpus_fixture_fnv1a32": "35dd5b20",
     "m10_corpus_hash_column_checked": "1058",
     "m10_corpus_final_state_hashes_replayed": "12",

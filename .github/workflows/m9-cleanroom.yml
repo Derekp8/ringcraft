@@ -16,6 +16,15 @@ jobs:
         with:
           node-version: 24
 
+      # The portable Chromium archive does not bundle actual fonts. Install
+      # the reviewed-capture font package before the archive verifier runs its
+      # visual gate, and assert the expected Arial Narrow substitution.
+      - name: Install canonical QA fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes fonts-urw-base35
+          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
+
       # The build/verify wrappers SSR-load their TypeScript via Vite, which is
       # a runtime dependency, so a plain install is all the runner needs.
       - name: Install dependencies
