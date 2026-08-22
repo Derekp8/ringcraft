@@ -190,9 +190,19 @@ jobs:
       M16_HOSTED_GATE: PASS
       M16_WINDOWS_LAUNCHER_GATE: PASS
       M16_PR_NUMBER: 8
+      M16_CANDIDATE_SHA: ${{ github.sha }}
     steps:
       - name: Checkout exact deployed M16 source
         uses: actions/checkout@v7
+        with:
+          ref: ${{ env.M16_CANDIDATE_SHA }}
+
+      - name: Verify exact deployed source checkout
+        run: |
+          actual="$(git rev-parse HEAD)"
+          echo "Expected deployed M16 SHA: ${M16_CANDIDATE_SHA}"
+          echo "Actual certification checkout SHA: ${actual}"
+          test "${actual}" = "${M16_CANDIDATE_SHA}"
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
@@ -221,6 +231,7 @@ jobs:
           path: |
             output/readiness/m16-release-verification.json
             output/readiness/m16-ai-quality.json
+            output/readiness/m16-tag-stress.json
             output/readiness/m16-browser-e2e.json
             output/readiness/pwa-installability.json
             output/readiness/visual-ci-stability.json
