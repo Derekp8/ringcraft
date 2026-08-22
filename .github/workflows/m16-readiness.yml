@@ -1,0 +1,114 @@
+name: m16-readiness
+
+on:
+  pull_request:
+    branches:
+      - development/pwa-installable
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fast:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Run M16 fast verification
+        run: npm run check:fast
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-fast-verification
+          path: output/readiness/m16-fast-verification.json
+          if-no-files-found: warn
+
+  ai-quality:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Verify all AI difficulties in Singles and Tag
+        run: npm run ai:quality
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-ai-quality
+          path: output/readiness/m16-ai-quality.json
+          if-no-files-found: error
+
+  browser-a-h:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Run authoritative browser A-H suite
+        run: npm run e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-browser-e2e
+          path: output/readiness/m16-browser-e2e.json
+          if-no-files-found: error
+
+  launcher-smoke:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Verify one-click Windows launcher
+        shell: cmd
+        run: call "Launch Ringcraft.bat" --check
+
+  release-verification:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      FONTCONFIG_FILE: /etc/fonts/fonts.conf
+      M16_PR_NUMBER: ${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install canonical QA fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes fonts-inter fonts-urw-base35
+          fc-match Inter | grep -q "Inter"
+          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
+      - run: npm ci
+      - name: Run authoritative M16 release verification
+        run: npm run release:verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-release-verification
+          path: |
+            output/readiness/m16-release-verification.json
+            output/readiness/m16-ai-quality.json
+            output/readiness/m16-browser-e2e.json
+            output/readiness/pwa-installability.json
+            output/readiness/visual-ci-stability.json
+            output/m9/m9-build.json
+            output/m9/m9-verification.json
+            output/m9/asw91-project-ringcraft-m9-private-handoff-1.2.0.zip
+          if-no-files-found: warn
