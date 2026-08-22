@@ -134,16 +134,34 @@ async function exhibitionTag(page) {
   const partnerLabels = await page.locator(".wrestler-card__eyebrow:visible").allTextContents();
   if (!partnerLabels.some((text) => text.includes("APRON"))) throw new Error("Tag board did not expose an outside partner state.");
   let actualTag = null;
+  let tagAttempts = 0;
+  let failedTagAttempts = 0;
   let decisions = 0;
   while (decisions < 600 && !(await page.getByText("MATCH COMPLETE", { exact: true }).count())) {
     const tag = page.locator("button.action:visible").filter({ hasText: /^Tag/ }).first();
     if (await tag.count()) {
-      const before = await page.locator(".wrestler-card--player.wrestler-card--legal h2").textContent();
+      const legalWrestler = page.locator(".wrestler-card--player.wrestler-card--legal h2");
+      const before = await legalWrestler.textContent();
+      if (!before) throw new Error("Rendered Tag action did not expose the current legal player wrestler before the attempt.");
+      const beforeHash = await exhibitionStateHash(page);
       await tag.click();
-      await page.waitForFunction((previous) => document.querySelector(".wrestler-card--player.wrestler-card--legal h2")?.textContent !== previous, before);
-      const after = await page.locator(".wrestler-card--player.wrestler-card--legal h2").textContent();
-      if (!before || !after || before === after) throw new Error("Rendered Tag action did not change the legal player wrestler.");
-      actualTag = { before, after };
+      await page.waitForFunction((oldHash) => {
+        const text = document.querySelector("details.technical-details footer span")?.textContent ?? "";
+        const hash = text.match(/c14n-fnv1a64-v1:[0-9a-f]{16}/)?.[0];
+        return Boolean(hash && hash !== oldHash);
+      }, beforeHash);
+      const afterHash = await exhibitionStateHash(page);
+      const after = await legalWrestler.textContent();
+      if (!after) throw new Error("Rendered Tag action did not expose a legal player wrestler after the attempt.");
+      if (beforeHash === afterHash) throw new Error("Rendered Tag action did not advance canonical Exhibition state.");
+      tagAttempts += 1;
+      if (before === after) {
+        const failedTagEvent = page.locator(".event-log ol > li > details > summary").filter({ hasText: /fails to tag/i }).first();
+        if (!(await failedTagEvent.count())) throw new Error("Tag attempt preserved the legal wrestler without a rendered failed-Tag event.");
+        failedTagAttempts += 1;
+      } else {
+        actualTag = { before, after, beforeHash, afterHash };
+      }
     } else {
       const action = page.locator("button.action:visible").first();
       if (!(await action.count())) throw new Error(`No visible tag action at decision ${decisions}.`);
@@ -152,9 +170,9 @@ async function exhibitionTag(page) {
     decisions += 1;
   }
   if (!(await page.getByText("MATCH COMPLETE", { exact: true }).count())) throw new Error("Tag browser match did not finish.");
-  if (!actualTag) throw new Error("Tag journey never executed a legal rendered Tag action.");
+  if (!actualTag) throw new Error("Tag journey never executed a successful legal rendered Tag action.");
   if (!(await page.getByText(/Canonical replay state verified/i).count())) throw new Error("Tag canonical replay verification indicator missing.");
-  return { decisions, actualTag };
+  return { decisions, tagAttempts, failedTagAttempts, actualTag };
 }
 
 async function startDeterministicCareer(page, { strict = true, finance = false } = {}) {

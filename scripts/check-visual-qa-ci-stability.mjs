@@ -29,6 +29,19 @@ async function captureInventory() {
   return { names, hashes };
 }
 
+async function captureCanonicalQaSnapshot() {
+  const names = (await readdir(qaDirectory)).filter((name) => name.startsWith("ringcraft-") && name.endsWith(".png")).sort();
+  const snapshot = new Map();
+  for (const name of names) snapshot.set(name, await readFile(`${qaDirectory}/${name}`));
+  return snapshot;
+}
+
+async function restoreCanonicalQaSnapshot(snapshot) {
+  const current = (await readdir(qaDirectory)).filter((name) => name.startsWith("ringcraft-") && name.endsWith(".png"));
+  for (const name of current) if (!snapshot.has(name)) await rm(`${qaDirectory}/${name}`, { force: true });
+  for (const [name, bytes] of snapshot) await writeFile(`${qaDirectory}/${name}`, bytes);
+}
+
 async function prepareHostedVisualJourney() {
   const sourcePath = fileURLToPath(new URL("./visual-qa.mjs", import.meta.url));
   let source = await readFile(sourcePath, "utf8");
@@ -80,9 +93,13 @@ const repositoryMode = existsSync(`${projectRoot}/.git`);
 console.log(`visual-ci: verifying committed reviewed pins in ${repositoryMode ? "repository" : "filesystem"} mode before rendering`);
 await runNode("scripts/check-manifest-pins.mjs", [repositoryMode ? "--repository" : "--filesystem", "--root", projectRoot]);
 
-await rm(baselineDirectory, { recursive: true, force: true });
-await prepareHostedVisualJourney();
+// Hosted repeatability renders intentionally overwrite output/qa while they run.
+// Preserve the canonical reviewed bytes so this gate cannot contaminate later
+// clean-room/package verification in the same workspace.
+const canonicalQaSnapshot = await captureCanonicalQaSnapshot();
 try {
+  await rm(baselineDirectory, { recursive: true, force: true });
+  await prepareHostedVisualJourney();
   console.log("visual-ci: hosted-render stability run 1/2");
   await runNode("scripts/.visual-qa-ci-runtime.mjs");
   const first = await captureInventory();
@@ -113,4 +130,5 @@ try {
   console.log(`visual-ci: OK — ${first.names.length} captures; reviewed pins preserved and hosted run 2 reproduced run 1 within tolerance.`);
 } finally {
   await rm(runtimeVisualScript, { force: true });
+  await restoreCanonicalQaSnapshot(canonicalQaSnapshot);
 }

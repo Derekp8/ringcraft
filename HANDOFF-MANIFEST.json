@@ -175,7 +175,7 @@
     "output/qa/ringcraft-tag-narrow.png"
   ],
   "critical_file_sha256": {
-    "package.json": "72f92b9d0b5f91183ecc572b0ddda35e6a6c148a97bce0d96618e21f2a52473e",
+    "package.json": "9ec8aad5cfb81b5258eb6a312d2eb80e89380ee6c19eb32b21311ad624e47b4d",
     "package-lock.json": "75df7420e4fde2ce02020b348f296772b65860076dd85a9d749d9970122acb33",
     "README.md": "3ac6f40906db9585e97eac6a1fe52b83930b8b6978268dbecdbd481c75cf777e",
     "FREEBUFF-HANDOFF.md": "f9b0ef21555fae61e352b228bb1ecefb9a8bd17b6b18498d675ee5d629d3ba6d",

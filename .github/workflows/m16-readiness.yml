@@ -1,0 +1,184 @@
+name: m16-readiness
+
+on:
+  pull_request:
+    branches:
+      - development/pwa-installable
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  M16_CANDIDATE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+jobs:
+  fast:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.M16_CANDIDATE_SHA }}
+      - name: Verify exact candidate checkout
+        run: |
+          actual="$(git rev-parse HEAD)"
+          echo "Expected candidate SHA: ${M16_CANDIDATE_SHA}"
+          echo "Actual checkout SHA: ${actual}"
+          test "${actual}" = "${M16_CANDIDATE_SHA}"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Run M16 fast verification
+        run: npm run check:fast
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-fast-verification
+          path: output/readiness/m16-fast-verification.json
+          if-no-files-found: warn
+
+  ai-quality:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.M16_CANDIDATE_SHA }}
+      - name: Verify exact candidate checkout
+        run: |
+          actual="$(git rev-parse HEAD)"
+          echo "Expected candidate SHA: ${M16_CANDIDATE_SHA}"
+          echo "Actual checkout SHA: ${actual}"
+          test "${actual}" = "${M16_CANDIDATE_SHA}"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Verify all AI difficulties in Singles and Tag
+        run: npm run ai:quality
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-ai-quality
+          path: output/readiness/m16-ai-quality.json
+          if-no-files-found: error
+
+  browser-a-h:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.M16_CANDIDATE_SHA }}
+      - name: Verify exact candidate checkout
+        run: |
+          actual="$(git rev-parse HEAD)"
+          echo "Expected candidate SHA: ${M16_CANDIDATE_SHA}"
+          echo "Actual checkout SHA: ${actual}"
+          test "${actual}" = "${M16_CANDIDATE_SHA}"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Run authoritative browser A-H suite
+        run: npm run e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-browser-e2e
+          path: output/readiness/m16-browser-e2e.json
+          if-no-files-found: error
+
+  tag-stress:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.M16_CANDIDATE_SHA }}
+      - name: Verify exact candidate checkout
+        run: |
+          actual="$(git rev-parse HEAD)"
+          echo "Expected candidate SHA: ${M16_CANDIDATE_SHA}"
+          echo "Actual checkout SHA: ${actual}"
+          test "${actual}" = "${M16_CANDIDATE_SHA}"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Run 10 consecutive focused Tag Exhibition scenarios
+        run: node scripts/m16-tag-stress.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-tag-stress
+          path: output/readiness/m16-tag-stress.json
+          if-no-files-found: error
+
+  launcher-smoke:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.M16_CANDIDATE_SHA }}
+      - name: Verify exact candidate checkout
+        shell: pwsh
+        run: |
+          $actual = (git rev-parse HEAD).Trim()
+          Write-Host "Expected candidate SHA: $env:M16_CANDIDATE_SHA"
+          Write-Host "Actual checkout SHA: $actual"
+          if ($actual -ne $env:M16_CANDIDATE_SHA) { exit 1 }
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Verify one-click Windows launcher
+        shell: cmd
+        run: call "Launch Ringcraft.bat" --check
+
+  local-full-verification:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      FONTCONFIG_FILE: /etc/fonts/fonts.conf
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.M16_CANDIDATE_SHA }}
+      - name: Verify exact candidate checkout
+        run: |
+          actual="$(git rev-parse HEAD)"
+          echo "Expected candidate SHA: ${M16_CANDIDATE_SHA}"
+          echo "Actual checkout SHA: ${actual}"
+          test "${actual}" = "${M16_CANDIDATE_SHA}"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install canonical QA fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends --yes fonts-inter fonts-urw-base35
+          fc-match Inter | grep -q "Inter"
+          fc-match "Arial Narrow" | grep -q "NimbusSansNarrow"
+      - run: npm ci
+      - name: Run complete local M16 candidate verification
+        run: npm run check:full
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-local-full-verification
+          path: |
+            output/readiness/m16-full-verification.json
+            output/readiness/m16-ai-quality.json
+            output/readiness/m16-browser-e2e.json
+            output/readiness/pwa-installability.json
+            output/readiness/visual-ci-stability.json
+            output/m9/m9-build.json
+            output/m9/m9-verification.json
+            output/m9/asw91-project-ringcraft-m9-private-handoff-1.2.0.zip
+          if-no-files-found: warn
