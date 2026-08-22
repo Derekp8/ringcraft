@@ -156,7 +156,7 @@ async function exhibitionTag(page) {
       if (beforeHash === afterHash) throw new Error("Rendered Tag action did not advance canonical Exhibition state.");
       tagAttempts += 1;
       if (before === after) {
-        const latestSummary = await page.locator(".event-log ol li").first().locator("summary").textContent();
+        const latestSummary = await page.locator(".event-log ol li").first().locator("summary").first().textContent();
         if (!String(latestSummary ?? "").toLowerCase().includes("fails to tag")) throw new Error(`Tag attempt preserved the legal wrestler without recording a failed Tag: ${latestSummary}`);
         failedTagAttempts += 1;
       } else {
