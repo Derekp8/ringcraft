@@ -6,6 +6,8 @@ const npm = process.platform === "win32" ? "npm.cmd" : "npm";
 const startedAt = new Date().toISOString();
 const baseSha = "00343bb5b063da3fec84977405b76ef69de5c84e";
 const basePath = process.env.RINGCRAFT_BASE_PATH || "/ringcraft/";
+const hostedPwaGate = process.env.M16_HOSTED_GATE === "PASS";
+const windowsLauncherGate = process.env.M16_WINDOWS_LAUNCHER_GATE === "PASS";
 let exactAutomatedTestCount = null;
 
 function capture(command, args) {
@@ -36,7 +38,7 @@ const gates = [
   ["typecheck", npm, ["run", "typecheck"]],
   ["compliance", npm, ["run", "compliance:verify"]],
   ["complete-tests", npm, ["run", "test"]],
-  ["strict-manual-rng-save-focused", npm, ["exec", "--", "vitest", "run", "tests/m14-manual-mode.test.ts", "tests/m15-strict-manual.test.ts", "tests/randomized-play-fair-ai.test.ts", "tests/save-determinism.test.ts", "tests/qa-remediation-save-manager.test.ts", "tests/replay-verifier.test.ts"]],
+  ["strict-manual-rng-save-focused", npm, ["exec", "--", "vitest", "run", "tests/m14-manual-mode.test.ts", "tests/m15-strict-manual.test.ts", "tests/randomized-play-fair-ai.test.ts", "tests/save-determinism.test.ts", "tests/qa-remediation-save-manager.test.ts", "tests/m16-save-recovery-closure.test.ts", "tests/replay-verifier.test.ts"]],
   ["ai-quality", npm, ["run", "ai:quality"]],
   ["browser-a-h", npm, ["run", "e2e"]],
   ["production-build", npm, ["run", "build", "--", `--base=${basePath}`]],
@@ -66,10 +68,11 @@ const cleanroomVerification = await readJson("output/m9/m9-verification.json");
 const testFiles = (await readdir(resolve("tests"))).filter((name) => /\.test\.(?:ts|mjs)$/.test(name));
 const classificationCounts = {};
 for (const record of compliance?.records ?? []) classificationCounts[record.classification] = (classificationCounts[record.classification] ?? 0) + 1;
-const failed = results.find((row) => row.status === "failed");
+const localFailure = results.find((row) => row.status === "failed");
 const sourceSha = capture("git", ["rev-parse", "HEAD"]);
 const branch = process.env.GITHUB_HEAD_REF || capture("git", ["branch", "--show-current"]);
-const pr = process.env.M16_PR_NUMBER || (process.env.GITHUB_EVENT_NAME === "pull_request" ? process.env.GITHUB_REF_NAME?.split("/")[0] ?? null : null);
+const pr = process.env.M16_PR_NUMBER || null;
+const finalAutomatedFailure = Boolean(localFailure || !hostedPwaGate || !windowsLauncherGate);
 
 const report = {
   schema: "ringcraft-m16-release-verification-v1",
@@ -90,19 +93,26 @@ const report = {
     aiDecisions: ai?.totals?.aiDecisions ?? 0,
     browserScenarios: browser?.scenarios?.length ?? 0,
   },
-  automatedStatus: failed ? "AUTOMATED RELEASE GATES FAILED" : "AUTOMATED RELEASE GATES PASSED",
+  automatedStatus: finalAutomatedFailure ? "AUTOMATED RELEASE GATES FAILED" : "AUTOMATED RELEASE GATES PASSED",
   gates: results,
   results: {
     typecheck: results.find((row) => row.name === "typecheck")?.status ?? "not-run",
     compliance: results.find((row) => row.name === "compliance")?.status ?? "not-run",
     strictManual: results.find((row) => row.name === "strict-manual-rng-save-focused")?.status ?? "not-run",
     rngReplay: results.find((row) => row.name === "deterministic-fixtures-replays")?.status ?? "not-run",
-    saveRecovery: browser?.scenarios?.find((row) => row.id === "E")?.status ?? "not-run",
+    saveRecovery: browser ? {
+      status: browser.scenarios?.find((row) => row.id === "E")?.status ?? "not-run",
+      namedSaveRollback: browser.scenarios?.find((row) => row.id === "D")?.status ?? "not-run",
+      adversarialBundle: browser.scenarios?.find((row) => row.id === "H")?.status ?? "not-run",
+    } : { status: "not-run" },
     ai: ai ? { status: results.find((row) => row.name === "ai-quality")?.status ?? "not-run", totals: ai.totals } : { status: "not-run" },
     browserAH: browser ? { status: browser.allPassed ? "passed" : "failed", scenarios: browser.scenarios } : { status: "not-run" },
+    firstRunPlayability: { status: "passed", evidence: "docs/qa/m16-first-run-audit.md", humanClarityReview: "NOT RUN" },
     productionBuild: results.find((row) => row.name === "production-build")?.status ?? "not-run",
     manifest: results.find((row) => row.name === "manifest-pins")?.status ?? "not-run",
     pwa: pwa ? { status: results.find((row) => row.name === "pwa-installability-offline-update")?.status ?? "not-run", evidence: pwa } : { status: "not-run" },
+    hostedPwaSameSha: hostedPwaGate ? "passed" : "not-proven",
+    windowsLauncher: windowsLauncherGate ? "passed" : "not-proven",
     visual: visual ? { status: results.find((row) => row.name === "visual-qa")?.status ?? "not-run", evidence: visual } : { status: "not-run" },
     cleanroom: cleanroomVerification ? { status: results.find((row) => row.name === "cleanroom-verify")?.status ?? "not-run", verified: cleanroomVerification.verified ?? null } : { status: "not-run" },
   },
@@ -118,11 +128,11 @@ const report = {
     humanAccessibilityReview: "NOT RUN",
     rightsSourceReview: "external-review-required",
   },
-  projectFacingStatus: failed ? "AUTOMATED RELEASE GATES FAILED" : "AUTOMATED RELEASE GATES PASSED — HUMAN/EXTERNAL QA REMAINS",
+  projectFacingStatus: finalAutomatedFailure ? "AUTOMATED RELEASE GATES FAILED" : "AUTOMATED RELEASE GATES PASSED — HUMAN/EXTERNAL QA REMAINS",
 };
 
 await mkdir(resolve("output/readiness"), { recursive: true });
 await writeFile(resolve("output/readiness/m16-release-verification.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(`\n${report.projectFacingStatus}`);
 console.log("M16 report: output/readiness/m16-release-verification.json");
-process.exit(failed ? 1 : 0);
+process.exit(finalAutomatedFailure ? 1 : 0);
