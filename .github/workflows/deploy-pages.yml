@@ -5,10 +5,12 @@ on:
     branches:
       - development/launchable-web
       - development/pwa-installable
+      - development/m16-full-playability-closure
   pull_request:
     branches:
       - development/m15-release-candidate-hardening
       - development/launchable-web
+      - development/pwa-installable
   workflow_dispatch:
 
 permissions:
