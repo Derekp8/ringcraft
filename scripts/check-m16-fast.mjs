@@ -6,7 +6,7 @@ const npm = process.platform === "win32" ? "npm.cmd" : "npm";
 const gates = [
   ["typecheck", npm, ["run", "typecheck"]],
   ["compliance", process.execPath, ["scripts/verify-manual-compliance.mjs"]],
-  ["focused-playability", npm, ["exec", "--", "vitest", "run", "tests/m14-manual-mode.test.ts", "tests/m15-strict-manual.test.ts", "tests/m14-playable-readiness.test.ts", "tests/randomized-play-fair-ai.test.ts", "tests/save-determinism.test.ts", "tests/qa-remediation-save-manager.test.ts", "tests/qa-remediation-ui-boundaries.test.mjs"]],
+  ["focused-playability", npm, ["exec", "--", "vitest", "run", "tests/m14-manual-mode.test.ts", "tests/m15-strict-manual.test.ts", "tests/m14-playable-readiness.test.ts", "tests/randomized-play-fair-ai.test.ts", "tests/save-determinism.test.ts", "tests/qa-remediation-save-manager.test.ts", "tests/m16-save-recovery-closure.test.ts", "tests/qa-remediation-ui-boundaries.test.mjs"]],
 ];
 
 const results = [];
