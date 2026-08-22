@@ -180,7 +180,7 @@ jobs:
           if-no-files-found: warn
 
   certify:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/development/pwa-installable'
     runs-on: ubuntu-24.04
     needs:
       - live-smoke
