@@ -92,6 +92,33 @@ jobs:
           path: output/readiness/m16-browser-e2e.json
           if-no-files-found: error
 
+  tag-stress:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.M16_CANDIDATE_SHA }}
+      - name: Verify exact candidate checkout
+        run: |
+          actual="$(git rev-parse HEAD)"
+          echo "Expected candidate SHA: ${M16_CANDIDATE_SHA}"
+          echo "Actual checkout SHA: ${actual}"
+          test "${actual}" = "${M16_CANDIDATE_SHA}"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Run 10 consecutive focused Tag Exhibition scenarios
+        run: node scripts/m16-tag-stress.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: m16-tag-stress
+          path: output/readiness/m16-tag-stress.json
+          if-no-files-found: error
+
   launcher-smoke:
     runs-on: windows-latest
     steps:
