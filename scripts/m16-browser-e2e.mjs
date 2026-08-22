@@ -102,7 +102,8 @@ try {
   await target.getByRole("button", { name: "Duplicate" }).click();
   if ((await page.locator(".save-row").count()) !== 2) throw new Error("Duplicate did not create exactly one additional named save.");
 
-  const duplicate = page.locator(".save-row").nth(1);
+  const duplicate = page.locator(".save-row").filter({ hasText: "Lifecycle Target (copy)" });
+  await duplicate.waitFor({ state: "visible" });
   page.once("dialog", (dialog) => dialog.accept("Lifecycle Renamed"));
   await duplicate.getByRole("button", { name: "Rename" }).click();
   const renamed = page.locator(".save-row").filter({ hasText: "Lifecycle Renamed" });
