@@ -40,6 +40,7 @@ const gates = [
   ["complete-tests", npm, ["run", "test"]],
   ["strict-manual-rng-save-focused", npm, ["exec", "--", "vitest", "run", "tests/m14-manual-mode.test.ts", "tests/m15-strict-manual.test.ts", "tests/randomized-play-fair-ai.test.ts", "tests/save-determinism.test.ts", "tests/qa-remediation-save-manager.test.ts", "tests/m16-save-recovery-closure.test.ts", "tests/replay-verifier.test.ts"]],
   ["ai-quality", npm, ["run", "ai:quality"]],
+  ["tag-stress", process.execPath, ["scripts/m16-tag-stress.mjs"]],
   ["browser-a-h", npm, ["run", "e2e"]],
   ["production-build", npm, ["run", "build", "--", `--base=${basePath}`]],
   ["deterministic-fixtures-replays", npm, ["run", "fixtures:verify"]],
@@ -60,6 +61,7 @@ for (const gate of gates) {
 
 const compliance = await readJson("docs/manual-compliance/registry.json");
 const ai = await readJson("output/readiness/m16-ai-quality.json");
+const tagStress = await readJson("output/readiness/m16-tag-stress.json");
 const browser = await readJson("output/readiness/m16-browser-e2e.json");
 const pwa = await readJson("output/readiness/pwa-installability.json");
 const visual = await readJson("output/readiness/visual-ci-stability.json");
@@ -72,7 +74,18 @@ const localFailure = results.find((row) => row.status === "failed");
 const sourceSha = capture("git", ["rev-parse", "HEAD"]);
 const branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME || capture("git", ["branch", "--show-current"]) || "development/m16-full-playability-closure";
 const pr = process.env.M16_PR_NUMBER || null;
-const finalAutomatedFailure = Boolean(localFailure || !hostedPwaGate || !windowsLauncherGate);
+const tagStressValid = Boolean(
+  tagStress
+  && tagStress.sourceSha === sourceSha
+  && tagStress.runsRequested === 10
+  && tagStress.runsPassed === 10
+  && tagStress.allPassed === true
+  && tagStress.failedTagPathObserved === true
+  && tagStress.successfulTagPathObserved === true
+  && tagStress.timeouts === 0
+  && tagStress.retries === 0
+);
+const finalAutomatedFailure = Boolean(localFailure || !tagStressValid || !hostedPwaGate || !windowsLauncherGate);
 
 const report = {
   schema: "ringcraft-m16-release-verification-v1",
@@ -91,6 +104,10 @@ const report = {
     aiRows: ai?.rows?.length ?? 0,
     aiMatches: ai?.totals?.matches ?? 0,
     aiDecisions: ai?.totals?.aiDecisions ?? 0,
+    tagStressRuns: tagStress?.runsPassed ?? 0,
+    tagStressAttempts: tagStress?.totalTagAttempts ?? 0,
+    tagStressFailedAttempts: tagStress?.totalFailedTagAttempts ?? 0,
+    tagStressSuccessfulTags: tagStress?.totalSuccessfulTags ?? 0,
     browserScenarios: browser?.scenarios?.length ?? 0,
   },
   automatedStatus: finalAutomatedFailure ? "AUTOMATED RELEASE GATES FAILED" : "AUTOMATED RELEASE GATES PASSED",
@@ -106,6 +123,7 @@ const report = {
       adversarialBundle: browser.scenarios?.find((row) => row.id === "H")?.status ?? "not-run",
     } : { status: "not-run" },
     ai: ai ? { status: results.find((row) => row.name === "ai-quality")?.status ?? "not-run", totals: ai.totals } : { status: "not-run" },
+    tagStress: tagStress ? { status: tagStressValid ? "passed" : "failed", evidence: tagStress } : { status: "not-run" },
     browserAH: browser ? { status: browser.allPassed ? "passed" : "failed", scenarios: browser.scenarios } : { status: "not-run" },
     firstRunPlayability: { status: "passed", evidence: "docs/qa/m16-first-run-audit.md", humanClarityReview: "NOT RUN" },
     productionBuild: results.find((row) => row.name === "production-build")?.status ?? "not-run",
