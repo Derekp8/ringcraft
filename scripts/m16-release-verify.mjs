@@ -70,7 +70,7 @@ const classificationCounts = {};
 for (const record of compliance?.records ?? []) classificationCounts[record.classification] = (classificationCounts[record.classification] ?? 0) + 1;
 const localFailure = results.find((row) => row.status === "failed");
 const sourceSha = capture("git", ["rev-parse", "HEAD"]);
-const branch = process.env.GITHUB_HEAD_REF || capture("git", ["branch", "--show-current"]);
+const branch = process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME || capture("git", ["branch", "--show-current"]) || "development/m16-full-playability-closure";
 const pr = process.env.M16_PR_NUMBER || null;
 const finalAutomatedFailure = Boolean(localFailure || !hostedPwaGate || !windowsLauncherGate);
 
