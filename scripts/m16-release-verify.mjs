@@ -6,17 +6,28 @@ const npm = process.platform === "win32" ? "npm.cmd" : "npm";
 const startedAt = new Date().toISOString();
 const baseSha = "00343bb5b063da3fec84977405b76ef69de5c84e";
 const basePath = process.env.RINGCRAFT_BASE_PATH || "/ringcraft/";
+let exactAutomatedTestCount = null;
 
 function capture(command, args) {
   const result = spawnSync(command, args, { encoding: "utf8", env: process.env });
   return result.status === 0 ? result.stdout.trim() : null;
 }
+function stripAnsi(value) { return String(value ?? "").replace(/\u001b\[[0-9;]*m/g, ""); }
 async function readJson(path) {
   try { return JSON.parse(await readFile(resolve(path), "utf8")); } catch { return null; }
 }
 function runGate(name, command, args) {
   const started = Date.now();
   console.log(`\n=== M16 release gate: ${name} ===`);
+  if (name === "complete-tests") {
+    const result = spawnSync(command, args, { encoding: "utf8", env: process.env, maxBuffer: 64 * 1024 * 1024 });
+    if (result.stdout) process.stdout.write(result.stdout);
+    if (result.stderr) process.stderr.write(result.stderr);
+    const text = stripAnsi(`${result.stdout ?? ""}\n${result.stderr ?? ""}`);
+    const matches = [...text.matchAll(/Tests\s+.*?(\d+)\s+passed/g)];
+    if (matches.length) exactAutomatedTestCount = Number(matches.at(-1)[1]);
+    return { name, command: [command, ...args].join(" "), status: result.status === 0 && exactAutomatedTestCount !== null ? "passed" : "failed", exitCode: result.status ?? 1, durationMs: Date.now() - started, exactTestCount: exactAutomatedTestCount };
+  }
   const result = spawnSync(command, args, { stdio: "inherit", env: process.env });
   return { name, command: [command, ...args].join(" "), status: result.status === 0 ? "passed" : "failed", exitCode: result.status ?? 1, durationMs: Date.now() - started };
 }
@@ -70,6 +81,7 @@ const report = {
   completedAt: new Date().toISOString(),
   environment: { node: process.version, npm: capture(npm, ["--version"]), platform: process.platform, arch: process.arch },
   testCounts: {
+    exactAutomatedTests: exactAutomatedTestCount,
     discoveredTestFiles: testFiles.length,
     complianceRecords: compliance?.records?.length ?? 0,
     complianceByClassification: classificationCounts,
